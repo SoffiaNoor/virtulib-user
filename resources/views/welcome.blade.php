@@ -189,24 +189,19 @@
     </div>
     <div id="__layout">
         <div class="min-h-screen font-sans antialiased relative">
-            <header class="bg-[#F9F3CC] drop-shadow-md">
-                <nav class="bg-[#F9F3CC] border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
+            <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
+                <nav
+                    class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
                     <div class="flex flex-wrap justify-between items-center py-2 mx-auto max-w-screen-xl">
 
                         <div class="flex items-center lg:order-2">
-                            <a href="#"
-                                class="mx-2">
+                            <a href="#" class="mx-2">
                                 <i class="fa fa-bell fa-lg mr-2"></i>
                             </a>
                             <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
+                                class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
                             <a href="#"
-                                class="text-gray-700 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm lg:pl-10 lg:pr-1 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                            Account
-                            </a><a href="#"
-                            class="bg-black rounded-full w-10 h-10">
-                            <img src="{{ asset('assets/images/Caraousel1.png') }}" class="object-fit rounded-full w-10 h-10"/>
-                            </a>
+                                class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
                             <button data-collapse-toggle="mobile-menu-2" type="button"
                                 class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                 aria-controls="mobile-menu-2" aria-expanded="false">
@@ -230,13 +225,14 @@
                             <ul class="flex flex-col mt-4 ml-6 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                                 <li>
                                     <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Seller Center</a>
-                                </li>        
+                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Seller
+                                        Center</a>
+                                </li>
                                 <li>
                                     <a href="#"
                                         class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Download</a>
-                                </li>   
-                                
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -256,8 +252,8 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                     <circle cx="10" cy="10" r="7" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>

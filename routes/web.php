@@ -13,16 +13,18 @@ use App\Http\Controllers\PesanKonsulController;
 use App\Http\Controllers\PesanKursusController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\BuyerController;
-
+use App\Http\Controllers\TestController;
 
 
 Route::get('/detail', [BuyerController::class, 'index']);
+Route::get('/test', [TestController::class, 'index']);
 // draft
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/kursus', [WelcomeController::class, 'kursus']);
 Route::get('/pelayanan', [WelcomeController::class, 'pelayanan']);
 Route::get('/konsultasi', [WelcomeController::class, 'konsultasi']);
 Route::get('/pesan', [WelcomeController::class, 'pesan']);
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
