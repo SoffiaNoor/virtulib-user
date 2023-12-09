@@ -1,0 +1,29 @@
+[
+  {
+    "name": "produk5",
+    "deskripsi": "barang bagus",
+    "seller": "string",
+    "harga": 25000.0,
+    "stok": 2,
+    "rating": 2.3,
+    "terjual": 3,
+    "status": "available",
+    "ulasan": [
+      {
+        "pelanggan": "Customer1",
+        "komentar": "Produk bagus, sangat puas!",
+        "rating": 5
+      },
+      {
+        "pelanggan": "Customer2",
+        "komentar": "Cocok dengan deskripsi, pengiriman cepat!",
+        "rating": 4
+      },
+      {
+        "pelanggan": "Customer3",
+        "komentar": "Stok cepat habis, harap restock!",
+        "rating": 3
+      }
+    ]
+  }
+]

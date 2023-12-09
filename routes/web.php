@@ -19,7 +19,7 @@ use App\Http\Controllers\TestController;
 Route::get('/detail', [BuyerController::class, 'index']);
 Route::get('/test', [TestController::class, 'index']);
 // draft
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [BuyerController::class, 'welcome']);
 Route::get('/kursus', [WelcomeController::class, 'kursus']);
 Route::get('/pelayanan', [WelcomeController::class, 'pelayanan']);
 Route::get('/konsultasi', [WelcomeController::class, 'konsultasi']);
