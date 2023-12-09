@@ -12,7 +12,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PesanKonsulController;
 use App\Http\Controllers\PesanKursusController;
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\BuyerController;
 
+
+
+Route::get('/detail', [BuyerController::class, 'index']);
+// draft
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/kursus', [WelcomeController::class, 'kursus']);
 Route::get('/pelayanan', [WelcomeController::class, 'pelayanan']);
