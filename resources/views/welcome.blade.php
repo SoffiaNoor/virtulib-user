@@ -239,8 +239,8 @@
 
                     <div
                         class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
-                        <a href="https://flowbite.com" class="flex items-center mx-3">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9"
+                        <a href="/" class="flex items-center mx-3">
+                            <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
                                 alt="Virtulib Logo" />
                             <span
                                 class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
@@ -335,7 +335,7 @@
                 <div class="flex flex-wrap -mx-4">
                     @foreach($products as $item)
                     <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                        <a href=""
+                        <a href="{{ route('detail', $item->id) }}"
                             class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
                             <div class="relative pb-48 overflow-hidden">
                                 @if (isset($item->image_path) && !empty($item->image_path))
@@ -354,18 +354,16 @@
                                 <h2 class="mt-2 mb-2  font-bold">{{$item->name}}</h2>
                                 <p class="text-sm">{{$item->deskripsi}}</p>
                                 <div class="mt-3 flex items-center">
-                                    <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                                        class="font-bold text-xl">45,00</span>&nbsp;<span
-                                        class="text-sm font-semibold">€</span>
+                                    <span class="font-bold text-xl">Rp. </span>&nbsp;<span
+                                        class="font-bold text-xl">{{$item->harga}}</span>
                                 </div>
                             </div>
                             <div class="p-4 border-t border-b text-xs text-gray-700">
                                 <span class="flex items-center mb-1">
-                                    <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
+                                    <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock : {{$item->stok}}
                                 </span>
                                 <span class="flex items-center">
-                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                                    Karte
+                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Status : {{$item->status}}
                                 </span>
                             </div>
                             <div class="p-4 flex items-center text-sm text-gray-600">
@@ -399,8 +397,8 @@
             <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
-                        <a href="https://flowbite.com/" class="flex items-center">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3"
+                        <a href="/" class="flex items-center">
+                            <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
                                 alt="FlowBite Logo" />
                             <span
                                 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
@@ -412,7 +410,7 @@
                             </h2>
                             <ul class="text-black dark:text-gray-400 font-medium">
                                 <li class="mb-4">
-                                    <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                                    <a href="/" class="hover:underline">Flowbite</a>
                                 </li>
                                 <li>
                                     <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>

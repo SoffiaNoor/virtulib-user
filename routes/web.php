@@ -18,6 +18,7 @@ use App\Http\Controllers\TestController;
 
 Route::get('/detail', [BuyerController::class, 'index']);
 Route::get('/test', [TestController::class, 'index']);
+Route::get('/product/{id}', [BuyerController::class, 'detail'])->name('detail');
 // draft
 Route::get('/', [BuyerController::class, 'welcome']);
 Route::get('/kursus', [WelcomeController::class, 'kursus']);

@@ -21,4 +21,10 @@ class BuyerController extends Controller
 
         return view('welcome', compact('products'));
     }
+    public function detail($id)
+    {
+        $products = Products::find($id);
+
+        return view('buyer.detail', compact('products'));
+    }
 }

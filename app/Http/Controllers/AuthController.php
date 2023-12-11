@@ -16,9 +16,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::guard('web')->attempt($request->only('email', 'password'))) {
             return redirect('/');
-        } else{
+        } else {
             return redirect('/login')->with('error', 'Email atau Password tidak sesuai');
         }
     }

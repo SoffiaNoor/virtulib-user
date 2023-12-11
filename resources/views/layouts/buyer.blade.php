@@ -239,8 +239,8 @@
 
                     <div
                         class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
-                        <a href="https://flowbite.com" class="flex items-center mx-3">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9"
+                        <a href="/" class="flex items-center mx-3">
+                            <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
                                 alt="Virtulib Logo" />
                             <span
                                 class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
@@ -275,8 +275,8 @@
                 <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                     <div class="md:flex md:justify-between">
                         <div class="mb-6 md:mb-0">
-                            <a href="https://flowbite.com/" class="flex items-center">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3"
+                            <a href="/" class="flex items-center">
+                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
                                     alt="FlowBite Logo" />
                                 <span
                                     class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
