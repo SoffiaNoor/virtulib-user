@@ -10,7 +10,7 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta name="keywords" content="">
-    <link rel='icon' type="image/x-icon" href='{{ asset('assets/images/logo2.ico') }}'>
+    <link rel='icon' type="image/x-icon" href='{{ asset('assets/images/logo.ico') }}'>
 
     <title>Edulink</title>
 
@@ -83,18 +83,18 @@
 
         /* Track */
         ::-webkit-scrollbar-track {
-            background: #2e1065;
+            background: #48709b;
         }
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #4c1d95;
+            background: #afc6df;
             border-radius: 5px;
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
-            background: #4c1d95;
+            background: #b8c9db;
         }
 
         @keyframes spin {
@@ -149,7 +149,7 @@
         }
 
         .loader {
-            border-top-color: #7e22ce;
+            border-top-color: #173350;
             -webkit-animation: spinner 1.5s linear infinite;
             animation: spinner 1.5s linear infinite;
         }
@@ -183,15 +183,14 @@
 
 <body class="bg-[#8EACCD] text-black ">
     <div id="loader" wire:loading
-        class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gradient-to-r from-indigo-950 to-blue-950 flex flex-col items-center justify-center">
+        class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gradient-to-r from-indigo-200 to-indigo-300 flex flex-col items-center justify-center">
         <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-        <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo" class="w-24 xl:w-28">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Nefa Logo" class="w-8 xl:w-16">
     </div>
     <div id="__layout">
         <div class="min-h-screen font-sans antialiased relative">
             <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
-                <nav
-                    class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
+                <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
                     <div class="flex flex-wrap justify-between items-center py-2 mx-auto max-w-screen-xl">
 
                         <div class="flex items-center lg:order-2">
@@ -200,8 +199,27 @@
                             </a>
                             <a href="#"
                                 class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
-                            <a href="#"
-                                class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            @if (Auth::check())
+                                <details class="dropdown mx-3">
+                                    <summary
+                                        class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}</summary>
+                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                        <li><a href="/dashboard"
+                                                class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
+                                        </li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button class="block" type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </details>
+                            @else
+                                <a href="/login"
+                                    class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            @endif
                             <button data-collapse-toggle="mobile-menu-2" type="button"
                                 class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                 aria-controls="mobile-menu-2" aria-expanded="false">
@@ -232,7 +250,6 @@
                                     <a href="#"
                                         class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Download</a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -252,14 +269,13 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                     <circle cx="10" cy="10" r="7" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
-
                         <a href="https://flowbite.com" class="mx-3">
                             <i class="fas fa-shopping-cart fa-lg mr-2"></i>
                         </a>
@@ -333,61 +349,62 @@
         <section class="px-5 lg:mx-24 mx-11">
             <div class="container mx-auto">
                 <div class="flex flex-wrap -mx-4">
-                    @foreach($products as $item)
-                    <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                        <a href="{{ route('detail', $item->id) }}"
-                            class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
-                            <div class="relative pb-48 overflow-hidden">
-                                @if (isset($item->image_path) && !empty($item->image_path))
-                                    <img class="absolute inset-0 h-full w-full object-cover"
-                                        src="{{ asset($item->image_path) }}"
-                                        alt="{{ $product->name }}">
-                                @else
-                                    <img class="absolute inset-0 h-full w-full object-cover"
-                                        src="{{ asset('assets/images/no-picture.png') }}"
-                                        alt="No Picture">
-                                @endif
-                            </div>
-                            <div class="p-4">
-                                <span
-                                    class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{$item->seller}}</span>
-                                <h2 class="mt-2 mb-2  font-bold">{{$item->name}}</h2>
-                                <p class="text-sm">{{$item->deskripsi}}</p>
-                                <div class="mt-3 flex items-center">
-                                    <span class="font-bold text-xl">Rp. </span>&nbsp;<span
-                                        class="font-bold text-xl">{{$item->harga}}</span>
+                    @foreach ($products as $item)
+                        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                            <a href="{{ route('detail', $item->id) }}"
+                                class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
+                                <div class="relative pb-48 overflow-hidden">
+                                    @if (isset($item->image_path) && !empty($item->image_path))
+                                        <img class="absolute inset-0 h-full w-full object-cover"
+                                            src="{{ asset($item->image_path) }}" alt="{{ $product->name }}">
+                                    @else
+                                        <img class="absolute inset-0 h-full w-full object-cover"
+                                            src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
+                                    @endif
                                 </div>
-                            </div>
-                            <div class="p-4 border-t border-b text-xs text-gray-700">
-                                <span class="flex items-center mb-1">
-                                    <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock : {{$item->stok}}
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Status : {{$item->status}}
-                                </span>
-                            </div>
-                            <div class="p-4 flex items-center text-sm text-gray-600">
-                                @php
-                                    $rating = $item->rating;
-                                    $roundedRating = round($rating);
-                                @endphp
-                            
-                                @for ($i = 1; $i <= 5; $i++)
-                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                        class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
-                                        <path
-                                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                                        </path>
-                                    </svg>
-                                @endfor
-                                <div class="grid grid-cols-2 w-full">
-                                    <div class="ml-2">{{ $item->rating }} / 5 </div>
-                                    <div class="text-right" style="float:right">{{ $item->terjual }} Terjual</div>
+                                <div class="p-4">
+                                    <span
+                                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{ $item->seller }}</span>
+                                    <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
+                                    <p class="text-sm">{{ $item->deskripsi }}</p>
+                                    <div class="mt-3 flex items-center">
+                                        <span class="font-bold text-xl">Rp. </span>&nbsp;<span
+                                            class="font-bold text-xl">{{ $item->harga }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                        </a>
-                    </div>
+                                <div class="p-4 border-t border-b text-xs text-gray-700">
+                                    <span class="flex items-center mb-1">
+                                        <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
+                                        {{ $item->stok }}
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
+                                        {{ $item->status }}
+                                    </span>
+                                </div>
+                                <div class="p-4 flex items-center text-sm text-gray-600">
+                                    @php
+                                        $rating = $item->rating;
+                                        $roundedRating = round($rating);
+                                    @endphp
+
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                            class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
+                                            <path
+                                                d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
+                                            </path>
+                                        </svg>
+                                    @endfor
+                                    <div class="grid grid-cols-2 w-full">
+                                        <div class="ml-2">{{ $item->rating }} / 5 </div>
+                                        <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -398,10 +415,9 @@
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
                         <a href="/" class="flex items-center">
-                            <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
-                                alt="FlowBite Logo" />
+                            <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
                             <span
-                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Virtulib</span>
                         </a>
                     </div>
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -410,7 +426,7 @@
                             </h2>
                             <ul class="text-black dark:text-gray-400 font-medium">
                                 <li class="mb-4">
-                                    <a href="/" class="hover:underline">Flowbite</a>
+                                    <a href="/" class="hover:underline">Virtulib</a>
                                 </li>
                                 <li>
                                     <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
@@ -446,7 +462,7 @@
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a
-                            href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+                            href="/" class="hover:underline">Virtulib™</a>. All Rights Reserved.
                     </span>
                     <div class="flex mt-4 sm:justify-center sm:mt-0">
                         <a href="#" class="text-black hover:text-black dark:hover:text-white">
@@ -502,15 +518,7 @@
 
     <div class="fixed bottom-20 left-10 z-10">
         <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-            class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-purple-400 to-pink-600 text-white text-3xl font-bold">&uarr;</button>
-    </div>
-
-    <div class="fixed bottom-10 right-10 z-10">
-        <a title="Chat Whatsapp" href="{{ url('/login') }}" target="_blank"
-            class="block rounded-full transition-all transform hover:scale-110 hover:rotate-12">
-            <img class="object-cover object-center lg:w-full lg:h-24 w-full h-24"
-                src="{{ asset('assets/images/order.png') }}" alt="Saya mau pesan">
-        </a>
+            class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-[#3c628b] to-[#4f79a7] text-white text-3xl font-bold">&uarr;</button>
     </div>
 
     </div>
@@ -520,6 +528,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const movingImage = document.getElementById('movingImage');

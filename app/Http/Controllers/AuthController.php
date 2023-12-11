@@ -29,27 +29,28 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
-        {
-            try {
-                $data = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                ];
-        
-                User::create($data);
-        
-                return redirect()->route('register')->with('success', 'Account created successfully.');
-        
-            } catch (\Exception $e) {
-        
-                return redirect()->route('register')->with('error', 'Gagal create account. Account sudah ada.');
-        
-            }
-        }
+{
+    try {
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ];
+
+        // Tambahkan penanganan peran di sini
+        $role = $request->input('role'); // Ambil nilai peran dari formulir
+        $data['role'] = $role; // Tambahkan peran ke data
+
+        User::create($data);
+
+        return redirect()->route('register')->with('success', 'Account created successfully.');
+
+    } catch (\Exception $e) {
+
+        return redirect()->route('register')->with('error', 'Failed to create account. Account already exists.');
 
     }
+}
 
     public function logout()
     {

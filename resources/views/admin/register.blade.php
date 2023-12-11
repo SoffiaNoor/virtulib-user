@@ -256,6 +256,23 @@
                             id="grid-password">
                     </div>
                 </div>
+                <div class="flex flex-wrap mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">
+                            Role
+                        </label>
+                        <div class="flex items-center">
+                            <input type="radio" name="role" value="admin" class="mr-2">
+                            <label class="text-white mr-4">Admin</label>
+            
+                            <input type="radio" name="role" value="buyer" class="mr-2">
+                            <label class="text-white mr-4">Buyer</label>
+            
+                            <input type="radio" name="role" value="seller" class="mr-2">
+                            <label class="text-white">Seller</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="text-center mx-3 items-center">
                     <button type="submit"
                         class="shadow bg-purple-500 w-full my-4 mx-auto hover:bg-purple-400 w-24 focus:shadow-outline focus:outline-none text-white font-bold py-4 rounded-lg">

@@ -190,8 +190,7 @@
     <div id="__layout">
         <div class="min-h-screen font-sans antialiased relative">
             <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
-                <nav
-                    class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
+                <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
                     <div class="flex flex-wrap justify-between items-center py-2 mx-auto max-w-screen-xl">
 
                         <div class="flex items-center lg:order-2">
@@ -200,8 +199,28 @@
                             </a>
                             <a href="#"
                                 class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
-                            <a href="#"
-                                class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            @if (Auth::check())
+                                <details class="dropdown mx-3">
+                                    <summary
+                                        class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
+                                    </summary>
+                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                        <li><a href="/dashboard"
+                                                class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
+                                        </li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button class="block" type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </details>
+                            @else
+                                <a href="/login"
+                                    class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            @endif
                             <button data-collapse-toggle="mobile-menu-2" type="button"
                                 class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                 aria-controls="mobile-menu-2" aria-expanded="false">
@@ -232,7 +251,6 @@
                                     <a href="#"
                                         class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Download</a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -252,14 +270,13 @@
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                     <circle cx="10" cy="10" r="7" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
-
                         <a href="https://flowbite.com" class="mx-3">
                             <i class="fas fa-shopping-cart fa-lg mr-2"></i>
                         </a>
@@ -276,10 +293,9 @@
                     <div class="md:flex md:justify-between">
                         <div class="mb-6 md:mb-0">
                             <a href="/" class="flex items-center">
-                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
-                                    alt="FlowBite Logo" />
+                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
                                 <span
-                                    class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                                    class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Virtulib</span>
                             </a>
                         </div>
                         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -288,7 +304,7 @@
                                 </h2>
                                 <ul class="text-black dark:text-gray-400 font-medium">
                                     <li class="mb-4">
-                                        <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                                        <a href="/" class="hover:underline">Virtulib</a>
                                     </li>
                                     <li>
                                         <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
@@ -324,8 +340,7 @@
                     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                     <div class="sm:flex sm:items-center sm:justify-between">
                         <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a
-                                href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights
-                            Reserved.
+                                href="/" class="hover:underline">Virtulib™</a>. All Rights Reserved.
                         </span>
                         <div class="flex mt-4 sm:justify-center sm:mt-0">
                             <a href="#" class="text-black hover:text-black dark:hover:text-white">
@@ -384,14 +399,7 @@
                 class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-[#3c628b] to-[#4f79a7] text-white text-3xl font-bold">&uarr;</button>
         </div>
 
-        <div class="fixed bottom-10 right-10 z-10">
-            <a title="Chat Whatsapp" href="{{ url('/login') }}" target="_blank"
-                class="block rounded-full transition-all transform hover:scale-110 hover:rotate-12">
-                <img class="object-cover object-center lg:w-full lg:h-24 w-full h-24"
-                    src="{{ asset('assets/images/order.png') }}" alt="Saya mau pesan">
-            </a>
-        </div>
-
+        
     </div>
     </div>
     </div>
