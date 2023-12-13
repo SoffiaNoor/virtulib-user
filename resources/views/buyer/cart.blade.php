@@ -3,10 +3,36 @@
     <section class="text-center p-10 mt-10 w-full bg-white rounded-2xl drop-shadow-md">
         @foreach ($products as $item)
             <div class="bg-blue-400">
-                @if (empty($item->name))
-                    <div>Tambahkan Item ke Keranjang Bang!</div>
+                @if (!empty($item->name))
+                    <div class="flex flex-cols-7 h-64 gap-3">
+                        <div><input type="checkbox" id="myCheckbox"></div>
+                        <div>
+                            @if (isset($item->image_path) && !empty($item->image_path))
+                                <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset($item->image_path) }}"
+                                    alt="{{ $product->name }}">
+                            @else
+                                <div class="w-8 h-8">
+                                    <img src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
+                                </div>
+                            @endif
+                        </div>
+                        <div>{{ $item->name }}</div>
+                        <div>{{ $item->price }}</div>
+                        <!-- Div dengan counter -->
+                        <div class="bg-gray-200 p-4 rounded-md">
+                            <p class="text-lg font-bold mb-2">Counter</p>
+                            <div class="flex items-center justify-center bg-blue-500 text-white w-10 h-10 rounded-full">
+                                <span id="counter" class="text-2xl">1</span>
+                            </div>
+                            <div class="mt-4">
+                                <button id="plusBtn"
+                                    class="bg-green-500 text-white px-4 py-2 rounded-md mr-2">Plus</button>
+                                <button id="minusBtn" class="bg-red-500 text-white px-4 py-2 rounded-md">Minus</button>
+                            </div>
+                        </div>
+                    </div>
                 @else
-                    <div>{{ $item->name }}</div>
+                    <div>Tambahkan Item ke Keranjang Bang!</div>
                 @endif
             </div>
         @endforeach
@@ -357,5 +383,40 @@
 @endsection
 
 @section('jquery')
-    <script></script>
+<script>
+    // Ambil elemen-elemen yang dibutuhkan
+    const counterElement = document.getElementById('counter');
+    const plusBtn = document.getElementById('plusBtn');
+    const minusBtn = document.getElementById('minusBtn');
+
+    // Nilai awal counter
+    let counterValue = 1;
+
+    // Fungsi untuk menampilkan nilai counter
+    function displayCounter() {
+      counterElement.textContent = counterValue;
+    }
+
+    // Fungsi untuk menambah nilai counter
+    function increaseCounter() {
+      counterValue++;
+      displayCounter();
+    }
+
+    // Fungsi untuk mengurangi nilai counter
+    function decreaseCounter() {
+      if (counterValue > 1) {
+        counterValue--;
+        displayCounter();
+      }
+    }
+
+    // Tambahkan event listener untuk tombol plus dan minus
+    plusBtn.addEventListener('click', increaseCounter);
+    minusBtn.addEventListener('click', decreaseCounter);
+
+    // Tampilkan nilai awal counter
+    displayCounter();
+  </script>
+    
 @endsection
