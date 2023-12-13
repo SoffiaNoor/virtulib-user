@@ -14,6 +14,7 @@ use App\Http\Controllers\PesanKursusController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CartController;
 
 
 Route::get('/detail', [BuyerController::class, 'index']);
@@ -49,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('/user', UserController::class);
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
+    Route::get('/cart', [CartController::class, 'index']);
 });
 
 Route::get('/404', function () {

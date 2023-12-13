@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         User::create($data);
 
-        return redirect()->route('register')->with('success', 'Account created successfully.');
+        return redirect()->route('login')->with('success', 'Account created successfully.');
 
     } catch (\Exception $e) {
 
