@@ -10,14 +10,15 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta name="keywords" content="">
-    <link rel='icon' type="image/x-icon" href='{{ asset('assets/images/logo2.ico') }}'>
-    <title>Edulink</title>
+    <link rel='icon' type="image/x-icon" href='{{ asset(' assets/images/logo2.ico') }}'>
+    <title>Virtulib</title>
 
     <!--CSS-->
     @vite('resources/css/app.css')
 
 
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
     <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -179,129 +180,59 @@
         <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo" class="w-24 xl:w-28">
     </div>
     <div class="h-screen md:flex justify-center">
-        <div class="bg-[#F9F3CC] w-1/3 my-20 rounded-2xl shadow-xl">
+        <div class="bg-[#F9F3CC] w-1/3 my-20 rounded-2xl shadow-xl px-10">
             <form role="form mx-5" method="POST" action="{{ route('login') }}" class="w-full max-w-lg  mx-auto my-20">
                 @csrf
                 <h2 class="ml-2">Welcome to</h2>
                 <h1 style="padding-top:1rem"
-                    class="ml-2 font-extrabold pb-3 font-['Poppins'] text-5xl bg-clip-text text-black">
+                    class="ml-2 font-bold pb-3 font-['Poppins'] text-5xl bg-clip-text text-black">
                     VirtuLib
                 </h1>
                 <h3 class="ml-2 my-2">Sign In</h3>
                 @if (session('success'))
-                    <div class="alert alert-success mb-3" style="color:white;font-weight:bold" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-warning mb-3" style="color:white;font-weight:bold" role="alert">
-                        {{ session('error') }}
-                    </div>
-                @endif
-                <div class="flex flex-wrap mb-6">
-                    <div class="w-full px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Email </label>
-                        <input type="email" name="email"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name">
-                    </div>
-                </div>
-                <div class="flex flex-wrap mb-6">
-                    <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
-                            for="grid-password">
-                            Password
-                        </label>
-                        <input type="password" name="password"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-password">
-                    </div>
-                </div>
-                <div class="text-center mx-3 items-center">
-                    <button type="submit"
-                        class="shadow bg-[#8EACCD] w-full my-4 mx-auto hover:bg-[#6d90b7] duration-500 hover:text-white focus:shadow-outline focus:outline-none text-black font-bold py-4 rounded-lg">
-                        Sign In
-                    </button>
-                </div>
-                <div class="mx-3 text-black text-center">
-                    <div>Don’t you have account yet?</div>
-                    <div><a href="/register" class="text-blue-700 hover:text-blue-400"> Register for free</a></div>   
-                </div>
-            </form>
-        </div>
-    </div>
-
-    {{-- <div class="h-screen md:flex">
-        <div class="relative overflow-hidden shadow-2xl md:flex w-1/2 bg-gradient-to-r from-fuchsia-600 to-violet-800 i justify-around items-center hidden"
-            style="text-align:-webkit-center">
-            <div>
-                <a href="/">
-                    <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo"
-                        class="w-72 items-center xl:w-72">
-                </a>
-                <p class="text-white text-xl text-center  mt-1">Rahasia Keberhasilan Para Ahli Industri
-                </p>
-            </div>
-            <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8">
-            </div>
-            <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8">
-            </div>
-            <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-            <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        </div>
-        <div class="flex md:w-1/2 justify-center py-4 items-center">
-            <form role="form mx-5" method="POST" action="{{ route('login') }}" class="w-full max-w-lg ">
-                @csrf
-                <h1 style="padding-top:3rem"
-                    class="font-extrabold text-transparent text-center pb-10 font-['Fredoka'] text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                    Login ke EduLink
-                </h1>
-                @if (session('success'))
-                <div class="alert alert-success mb-5" style="color:white;font-weight:bold" role="alert">
+                <div class="alert alert-success mb-3" style="color:white;font-weight:bold" role="alert">
                     {{ session('success') }}
                 </div>
                 @endif
                 @if (session('error'))
-                <div class="alert alert-warning mb-5" style="color:white;font-weight:bold" role="alert">
+                <div class="alert alert-warning mb-3" style="color:white;font-weight:bold" role="alert">
                     {{ session('error') }}
                 </div>
                 @endif
                 <div class="flex flex-wrap mb-6">
                     <div class="w-full px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
                             for="grid-first-name">
                             Email </label>
                         <input type="email" name="email"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-first-name">
                     </div>
                 </div>
                 <div class="flex flex-wrap mb-6">
                     <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
                             for="grid-password">
                             Password
                         </label>
                         <input type="password" name="password"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-password">
                     </div>
                 </div>
                 <div class="text-center mx-3 items-center">
                     <button type="submit"
-                        class="shadow bg-purple-500 w-full my-4 mx-auto hover:bg-purple-400 w-24 focus:shadow-outline focus:outline-none text-white font-bold py-4 rounded-lg">
-                        Login
+                        class="shadow bg-[#8EACCD] w-full mx-auto hover:bg-[#6d90b7] duration-500 hover:text-white focus:shadow-outline focus:outline-none text-black font-bold py-4 rounded-lg">
+                        Sign In
                     </button>
                 </div>
-                <div class="mx-3 text-white">
-                    Belum punya akun? <a href="/register" class="text-violet-300"> Daftar disini</a>
+                <div class="mx-3 text-black text-center">
+                    <div class="mt-2">Don’t you have account yet?</div>
+                    <div><a href="/register" class="text-blue-700 hover:text-blue-400"> Register for free</a></div>
                 </div>
             </form>
         </div>
-    </div> --}}
-
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
