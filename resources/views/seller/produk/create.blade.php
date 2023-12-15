@@ -26,7 +26,7 @@
                         <div class="col-md-6" style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Seller</label>
-                                <input type="text" class="form-control" id="rating" name="RatingProduk" readonly>
+                                <input type="text" class="form-control" id="seller" name="seller" required>
                             </div>
                         </div> 
                     </div> 
@@ -34,13 +34,13 @@
                         <div class="col-md-6" style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Gambar Produk</label>
-                                <input type="text" class="form-control" id="GambarProduk" name="GambarProduk" required>
+                                <input type="text" class="form-control" id="gambar" name="gambar" required>
                             </div>
                         </div> 
                         <div class="col-md-6"style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Deskripsi Produk</label>
-                                <input type="text" class="form-control" id="DeskripsiProduk" name="DeskripsiProduk" required>
+                                <input type="text" class="form-control" id="description" name="description" required>
                             </div>
                         </div>
                     </div>
@@ -48,43 +48,16 @@
                         <div class="col-md-6" style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Harga</label>
-                                <input type="number" class="form-control" id="HargaProduk" name="HargaProduk" required>
+                                <input type="number" class="form-control" id="price" name="price" required>
                             </div>
                         </div> 
                         <div class="col-md-6"style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Stok</label>
-                                <input type="number" class="form-control" id="StokProduk" name="StokProduk" required>
+                                <input type="number" class="form-control" id="stock" name="stock" required>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6" style="align-self:end!important;">
-                            <div class="form-group">
-                                <label>Harga</label>
-                                <input type="number" class="form-control" id="HargaProduk" name="HargaProduk" required>
-                            </div>
-                        </div> 
-                        <div class="col-md-6"style="align-self:end!important;">
-                            <div class="form-group">
-                                <label>Stok</label>
-                                <input type="number" class="form-control" id="StokProduk" name="StokProduk" required>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <div class="row">                        
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Jenis Kelamin</label>
-                                <select class="form-select" id="JenisKelamin" name="JenisKelamin">
-                                    <option value="Perempuan">Perempuan
-                                    </option>
-                                    <option value="Laki-laki">Laki-Laki
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">

@@ -17,5 +17,6 @@ class Products extends Model
     protected  $collection = 'products';
 
     // defines the schema for top-level properties (optional).
-    protected  $fillable = ['name', 'seller', 'harga', "stok", "rating", "terjual" , "status", "ulasan",''];
+    protected  $fillable = ['name', 'seller', 'gambar', "description", "price", "stock"];
 }
+

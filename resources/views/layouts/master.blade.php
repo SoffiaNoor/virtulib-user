@@ -97,9 +97,9 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 {{ preg_match('/dashboard/', Route::current()->uri) == 1 ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 font-weight-bolder' : '' }}"
-                        href="/dashboard"
-                        style="{{ preg_match('/dashboard/', Route::current()->uri) == 1 ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                    <a class="nav-link mx-3 my-1 {{ preg_match('/admin/', Route::current()->uri) == 1 ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 font-weight-bolder' : '' }}"
+                        href="/admin"
+                        style="{{ preg_match('/admin/', Route::current()->uri) == 1 ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Dashboard</span>
                     </a>

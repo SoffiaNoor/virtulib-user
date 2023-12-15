@@ -20,11 +20,7 @@ class ProdukController extends Controller
 
     public function create()
     {
-        // $mahasiswa = Mahasiswa::all();
-        // $model1 = new Mahasiswa();
-        // $dosen = Dosen::all();
-        // $model2 = new Dosen();
-        // return view("mahasiswa.create", compact('mahasiswa','model1','dosen','model2'));
+        
         return view("seller.produk.create");
     }
 
@@ -55,32 +51,23 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'NRP' => 'required|max:5|string',
-            'NamaMhs' => 'required|string',
-            'Alamat' => 'required|string',
-            'IDDosen' => 'required|max:5|string',
-            'IPK' => 'required|numeric|max:4|min:0',
-            'JenisKelamin' => 'required|string',
-        ]);
-
-        try {
-            $data = [
-                'NRP' => $request->input('NRP'),
-                'NamaMhs' => $request->input('NamaMhs'),
-                'Alamat' => $request->input('Alamat'),
-                'IDDosen' => $request->input('IDDosen'),
-                'IPK' => $request->input('IPK'),
-                'JenisKelamin' => $request->input('JenisKelamin')
-            ];
-    
-            Products::create($data);
-    
-            return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambah!');
-        } catch (\Exception $e) {
-            return redirect()->route('mahasiswa.create')->with('error', 'Gagal input Mahasiswa. Pastikan data yang Anda masukkan benar.');
+            try {
+                $data = [
+                    'name' => $request->input('name'),
+                    'seller' => $request->input('seller'),
+                    'gambar' => $request->input('gambar'),
+                    'description' => $request->input('description'),
+                    'price' => $request->input('price'),
+                    'stock' => $request->input('stock')
+                ];
+        
+                Products::create($data);
+        
+                return redirect()->route('produk.index')->with('success', 'Mahasiswa berhasil ditambah!');
+            } catch (\Exception $e) {
+                return redirect()->route('produk.create')->with('error', 'Gagal input Mahasiswa. Pastikan data yang Anda masukkan benar.');
+            }
         }
-    }
 
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
