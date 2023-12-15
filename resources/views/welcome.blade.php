@@ -10,7 +10,7 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta name="keywords" content="">
-    <link rel='icon' type="image/x-icon" href='{{ asset('assets/images/logo.ico') }}'>
+    <link rel='icon' type="image/x-icon" href='{{ asset(' assets/images/logo.ico') }}'>
 
     <title>Edulink</title>
 
@@ -18,7 +18,8 @@
     @vite('resources/css/app.css')
 
 
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -190,8 +191,9 @@
     <div id="__layout">
         <div class="font-sans antialiased relative">
             <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
-                <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
+                <nav class="border-gray-200 lg:px-6 pb-2.5 px-5 lg:mx-24 mx-11 pt-2">
+                    <div
+                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
 
                         <div class="flex items-center lg:order-2">
                             <a href="#" class="mx-2">
@@ -200,29 +202,29 @@
                             <a href="#"
                                 class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
                             @if (Auth::check())
-                                <details class="dropdown mx-3">
-                                    <summary
-                                        class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
-                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}</summary>
-                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                        <li><a href="/dashboard"
-                                                class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
-                                        </li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <button class="block" type="submit">Logout</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </details>
+                            <details class="dropdown mx-3">
+                                <summary
+                                    class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                    <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
+                                </summary>
+                                <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                    <li><a href="/dashboard"
+                                            class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="block" type="submit">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </details>
                             @else
-                                <a href="/login"
-                                    class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            <a href="/login"
+                                class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
                             @endif
-                            <button data-collapse-toggle="mobile-menu-2" type="button"
-                                class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                aria-controls="mobile-menu-2" aria-expanded="false">
+                            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
+                                aria-controls=" mobile-menu-2" aria-expanded="false">
                                 <span class="sr-only">Open main menu</span>
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -254,24 +256,24 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
+                    <div
+                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
                         <a href="/" class="flex items-center mx-3">
                             <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
                                 alt="Virtulib Logo" />
-                            <span
-                                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
+                            <span class="self-center text-xl font-semibold whitespace-nowrap ">VirtuLib</span>
                         </a>
 
                         <div class="relative lg:w-full mx-5">
                             <input type="text" placeholder="Search..."
-                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500" />
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2"
+                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" />
-                                    <circle cx="10" cy="10" r="7" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
@@ -349,85 +351,86 @@
             <div class="container mx-auto">
                 <div class="flex flex-wrap -mx-4">
                     @foreach ($products as $item)
-                        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                            <a href="{{ route('detail', $item->id) }}"
-                                class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
-                                <div class="relative pb-48 overflow-hidden">
-                                    @if (isset($item->gambar) && !empty($item->gambar))
-                                        <img class="absolute inset-0 h-full w-full object-cover"
-                                            src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
-                                    @else
-                                        <img class="absolute inset-0 h-full w-full object-cover"
-                                            src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
-                                    @endif
+                    <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                        <a href="{{ route('detail', $item->id) }}"
+                            class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
+                            <div class="relative pb-48 overflow-hidden">
+                                @if (isset($item->gambar) && !empty($item->gambar))
+                                <img class="absolute inset-0 h-full w-full object-cover"
+                                    src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
+                                @else
+                                <img class="absolute inset-0 h-full w-full object-cover"
+                                    src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
+                                @endif
+                            </div>
+                            <div class="p-4">
+                                <span
+                                    class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{
+                                    $item->seller }}</span>
+                                <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
+                                <p class="text-sm">{{ $item->description }}</p>
+                                <div class="mt-3 flex items-center">
+                                    <span class="font-bold text-xl">Rp. </span>&nbsp;<span class="font-bold text-xl">{{
+                                        $item->price }}</span>
                                 </div>
-                                <div class="p-4">
-                                    <span
-                                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{ $item->seller }}</span>
-                                    <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
-                                    <p class="text-sm">{{ $item->description }}</p>
-                                    <div class="mt-3 flex items-center">
-                                        <span class="font-bold text-xl">Rp. </span>&nbsp;<span
-                                            class="font-bold text-xl">{{ $item->price }}</span>
+                            </div>
+                            <div class="p-4 border-t border-b text-xs text-gray-700">
+                                <span class="flex items-center mb-1">
+                                    <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
+                                    {{ $item->stock }}
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
+                                    @if($item->stock > 0)
+                                    <div class="text-center text-white bg-green-500 rounded-full px-3 py-2 m-2">Tersedia
                                     </div>
-                                </div>
-                                <div class="p-4 border-t border-b text-xs text-gray-700">
-                                    <span class="flex items-center mb-1">
-                                        <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
-                                        {{ $item->stock }}
-                                    </span>
-                                    <span class="flex items-center">
-                                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
-                                        @if($item->stock > 0)
-                                            <div class="text-center text-white bg-green-500 rounded-full px-3 py-2 m-2">Tersedia</div>
-                                        @else
-                                            <div class="text-center text-white bg-red-500 rounded-full px-3 py-2 m-2">Tidak Tersedia</div>
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="p-4 flex items-center text-sm text-gray-600">
-                                    @php
-                                        $rating = $item->rating;
-                                        $roundedRating = round($rating);
-                                    @endphp
+                                    @else
+                                    <div class="text-center text-white bg-red-500 rounded-full px-3 py-2 m-2">Tidak
+                                        Tersedia</div>
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="p-4 flex items-center text-sm text-gray-600">
+                                @php
+                                $rating = $item->rating;
+                                $roundedRating = round($rating);
+                                @endphp
 
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                            class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
-                                            <path
-                                                d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                                            </path>
-                                        </svg>
+                                @for ($i = 1; $i <= 5; $i++) <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
+                                    <path
+                                        d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
+                                    </path>
+                                    </svg>
                                     @endfor
                                     <div class="grid grid-cols-2 w-full">
                                         <div class="ml-2">{{ $item->rating }} / 5 </div>
                                         <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
                                         </div>
                                     </div>
-                                </div>
+                            </div>
 
-                            </a>
-                        </div>
+                        </a>
+                    </div>
                     @endforeach
                 </div>
             </div>
         </section>
 
-        <footer class="bg-transparent dark:bg-gray-900 lg:mx-24 mx-11 mt-10">
+        <footer class="bg-transparent  lg:mx-24 mx-11 mt-10">
             <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
                         <a href="/" class="flex items-center">
                             <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
-                            <span
-                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Virtulib</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap ">Virtulib</span>
                         </a>
                     </div>
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Resources
+                            <h2 class="mb-6 text-sm font-semibold text-black uppercase ">Resources
                             </h2>
-                            <ul class="text-black dark:text-gray-400 font-medium">
+                            <ul class="text-black  font-medium">
                                 <li class="mb-4">
                                     <a href="/" class="hover:underline">Virtulib</a>
                                 </li>
@@ -437,12 +440,11 @@
                             </ul>
                         </div>
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Follow us
+                            <h2 class="mb-6 text-sm font-semibold text-black uppercase ">Follow us
                             </h2>
-                            <ul class="text-black dark:text-gray-400 font-medium">
+                            <ul class="text-black  font-medium">
                                 <li class="mb-4">
-                                    <a href="https://github.com/themesberg/flowbite"
-                                        class="hover:underline ">Github</a>
+                                    <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
                                 </li>
                                 <li>
                                     <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
@@ -450,8 +452,8 @@
                             </ul>
                         </div>
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Legal</h2>
-                            <ul class="text-black dark:text-gray-400 font-medium">
+                            <h2 class="mb-6 text-sm font-semibold text-black uppercase ">Legal</h2>
+                            <ul class="text-black  font-medium">
                                 <li class="mb-4">
                                     <a href="#" class="hover:underline">Privacy Policy</a>
                                 </li>
@@ -462,13 +464,13 @@
                         </div>
                     </div>
                 </div>
-                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
                 <div class="sm:flex sm:items-center sm:justify-between">
-                    <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a
-                            href="/" class="hover:underline">Virtulib™</a>. All Rights Reserved.
+                    <span class="text-sm text-black sm:text-center ">© 2023 <a href="/"
+                            class="hover:underline">Virtulib™</a>. All Rights Reserved.
                     </span>
                     <div class="flex mt-4 sm:justify-center sm:mt-0">
-                        <a href="#" class="text-black hover:text-black dark:hover:text-white">
+                        <a href="#" class="text-black hover:text-black ">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 8 19">
                                 <path fill-rule="evenodd"
@@ -477,7 +479,7 @@
                             </svg>
                             <span class="sr-only">Facebook page</span>
                         </a>
-                        <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                        <a href="#" class="text-black hover:text-black  ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 21 16">
                                 <path
@@ -485,7 +487,7 @@
                             </svg>
                             <span class="sr-only">Discord community</span>
                         </a>
-                        <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                        <a href="#" class="text-black hover:text-black  ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 20 17">
                                 <path fill-rule="evenodd"
@@ -494,7 +496,7 @@
                             </svg>
                             <span class="sr-only">Twitter page</span>
                         </a>
-                        <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                        <a href="#" class="text-black hover:text-black  ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -503,7 +505,7 @@
                             </svg>
                             <span class="sr-only">GitHub account</span>
                         </a>
-                        <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                        <a href="#" class="text-black hover:text-black  ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
