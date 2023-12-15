@@ -12,10 +12,9 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        // $mahasiswa = Mahasiswa::paginate(5);
-
-        // return view("mahasiswa.index", compact('mahasiswa'));
-        return view("seller.produk.index");
+        
+        $products = Products::paginate(5);
+        return view("seller.produk.index", compact('products'));
     }
 
     public function create()

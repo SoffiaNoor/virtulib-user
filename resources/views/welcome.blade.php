@@ -354,9 +354,9 @@
                             <a href="{{ route('detail', $item->id) }}"
                                 class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
                                 <div class="relative pb-48 overflow-hidden">
-                                    @if (isset($item->image_path) && !empty($item->image_path))
+                                    @if (isset($item->gambar) && !empty($item->gambar))
                                         <img class="absolute inset-0 h-full w-full object-cover"
-                                            src="{{ asset($item->image_path) }}" alt="{{ $product->name }}">
+                                            src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
                                     @else
                                         <img class="absolute inset-0 h-full w-full object-cover"
                                             src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
@@ -366,20 +366,24 @@
                                     <span
                                         class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{ $item->seller }}</span>
                                     <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
-                                    <p class="text-sm">{{ $item->deskripsi }}</p>
+                                    <p class="text-sm">{{ $item->description }}</p>
                                     <div class="mt-3 flex items-center">
                                         <span class="font-bold text-xl">Rp. </span>&nbsp;<span
-                                            class="font-bold text-xl">{{ $item->harga }}</span>
+                                            class="font-bold text-xl">{{ $item->price }}</span>
                                     </div>
                                 </div>
                                 <div class="p-4 border-t border-b text-xs text-gray-700">
                                     <span class="flex items-center mb-1">
                                         <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
-                                        {{ $item->stok }}
+                                        {{ $item->stock }}
                                     </span>
                                     <span class="flex items-center">
                                         <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
-                                        {{ $item->status }}
+                                        @if($item->stock > 0)
+                                            <div class="text-center text-white  bg-green-500 rounded-full px-3 py-2 m-2">Tersedia</div>
+                                        @else
+                                            <div class="btn btn-danger">Tidak Tersedia</div>
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="p-4 flex items-center text-sm text-gray-600">
