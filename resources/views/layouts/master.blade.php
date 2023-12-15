@@ -83,10 +83,10 @@
     </div> --}}
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="mask bg-gradient-warning opacity-10"
-        style="background: linear-gradient(45deg, #0e1737, #0e1737);background-size: cover;"></span>
+        style="background:#6d8eb3;background-size: cover;"></span>
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
-        id="sidenav-main" style="background-color:#2c0a71">
-        <div class="sidenav-header">
+        id="sidenav-main" style="background-color:#F9F3CC                           ">
+        <div class="sidenav-header" style="background-color:#4b6d93">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="/">
@@ -97,59 +97,59 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/admin/', Route::current()->uri) == 1 ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/"
-                        style="{{ preg_match('/admin/', Route::current()->uri) == 1 ? 'background:#7523d6;background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 {{ preg_match('/dashboard/', Route::current()->uri) == 1 ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 font-weight-bolder' : '' }}"
+                        href="/dashboard"
+                        style="{{ preg_match('/dashboard/', Route::current()->uri) == 1 ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/mentor/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/mentor"
-                        style="{{ preg_match('/mentor/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/produk/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/produk"
+                        style="{{ preg_match('/produk/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Mentor</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Produk</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/murid/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/murid"
-                        style="{{ preg_match('/murid/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/penjualan/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/penjualan"
+                        style="{{ preg_match('/penjualan/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Murid</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Penjualan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/mata_pelajaran/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/mata_pelajaran"
-                        style="{{ preg_match('/mata_pelajaran/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/pengiriman"
+                        style="{{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Mata Pelajaran</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Pengiriman</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesan_kursus/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/pesan_kursus"
-                        style="{{ preg_match('/pesan_kursus/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                        style="{{ preg_match('/pesan_kursus/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Pesan Kursus</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Lainnya</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesan_konsul/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/pesan_konsul"
-                        style="{{ preg_match('/pesan_konsul/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                        style="{{ preg_match('/pesan_konsul/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Pesan Konsul</span>
                     </a>
-                </li>
-                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder text-white opacity-6">User Configuration
+                </li> --}}
+                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder " style='color=black'>User Configuration
                 </h6>
                 <li class="nav-item">
                     <a class="nav-link mx-3 my-1 text-white {{ preg_match('/user/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/user"
-                        style="{{ preg_match('/user/',Route::current()->uri) == true ? 'background:#7523d6;background-size: cover;' : '' }}">
+                        style="{{ preg_match('/user/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-save" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">List User</span>
                     </a>
@@ -207,18 +207,18 @@
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        <div class="input-group">
+                        {{-- <div class="input-group">
                             <span class="input-group-text text-body"><i class="fas fa-search"
                                     aria-hidden="true"></i></span>
                             <input type="text" class="form-control" id="searchInput" placeholder="Type here...">
-                        </div>
+                        </div> --}}
                     </div>
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-center">
-                            <a href="/user/{{{$loggedInUser->id}}}" class="nav-link text-white font-weight-bold px-0">
+                            {{-- <!-- <a href="/user/{{{$loggedInUser->id}}}" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">{{ ucfirst($loggedInUser->name) }}</span>
-                            </a>
+                            </a> --> --}}
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
