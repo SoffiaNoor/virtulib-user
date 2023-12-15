@@ -380,9 +380,9 @@
                                     <span class="flex items-center">
                                         <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
                                         @if($item->stock > 0)
-                                            <div class="text-center text-white  bg-green-500 rounded-full px-3 py-2 m-2">Tersedia</div>
+                                            <div class="text-center text-white bg-green-500 rounded-full px-3 py-2 m-2">Tersedia</div>
                                         @else
-                                            <div class="btn btn-danger">Tidak Tersedia</div>
+                                            <div class="text-center text-white bg-red-500 rounded-full px-3 py-2 m-2">Tidak Tersedia</div>
                                         @endif
                                     </span>
                                 </div>
