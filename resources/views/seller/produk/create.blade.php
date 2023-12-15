@@ -17,18 +17,18 @@
                 <form class="p-3" method="POST" action="{{ route('produk.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6" style="align-self:end!important;">
-                            <div class="form-group">
-                                <label>Kode Variasi Produk</label>
-                                <input type="text" class="form-control" id="IDProduk" name="IDProduk" required>
-                            </div>
-                        </div> 
                         <div class="col-md-6"style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Nama Produk</label>
-                                <input type="text" class="form-control" id="NamaProduk" name="NamaProduk" required>
+                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
                         </div>
+                        <div class="col-md-6" style="align-self:end!important;">
+                            <div class="form-group">
+                                <label>Seller</label>
+                                <input type="text" class="form-control" id="rating" name="RatingProduk" readonly>
+                            </div>
+                        </div> 
                     </div> 
                     <div class="row">
                         <div class="col-md-6" style="align-self:end!important;">
@@ -48,13 +48,27 @@
                         <div class="col-md-6" style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Harga</label>
-                                <input type="text" class="form-control" id="HargaProduk" name="HargaProduk" required>
+                                <input type="number" class="form-control" id="HargaProduk" name="HargaProduk" required>
                             </div>
                         </div> 
                         <div class="col-md-6"style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Stok</label>
-                                <input type="text" class="form-control" id="StokProduk" name="StokProduk" required>
+                                <input type="number" class="form-control" id="StokProduk" name="StokProduk" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="align-self:end!important;">
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input type="number" class="form-control" id="HargaProduk" name="HargaProduk" required>
+                            </div>
+                        </div> 
+                        <div class="col-md-6"style="align-self:end!important;">
+                            <div class="form-group">
+                                <label>Stok</label>
+                                <input type="number" class="form-control" id="StokProduk" name="StokProduk" required>
                             </div>
                         </div>
                     </div>

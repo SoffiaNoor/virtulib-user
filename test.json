@@ -1,29 +1,10 @@
 [
   {
-    "name": "produk5",
-    "description": "barang bagus",
-    "seller": "string",
-    "price": 25000.0,
-    "stock": 2,
-    "rating": 2.3,
-    "sold": 3,
-    "status": "available",
-    "review": [
-      {
-        "buyer": "Customer1",
-        "comment": "Produk bagus, sangat puas!",
-        "rating": 5
-      },
-      {
-        "buyer": "Customer2",
-        "comment": "Cocok dengan deskripsi, pengiriman cepat!",
-        "rating": 4
-      },
-      {
-        "buyer": "Customer3",
-        "comment": "Stok cepat habis, harap restock!",
-        "rating": 3
-      }
-    ]
+    "name": "produk2",
+    "image_path": null,
+    "price": 35000.0,
+    "counter": null,
+    "total_price": null
+    
   }
 ]

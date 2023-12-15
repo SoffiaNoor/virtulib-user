@@ -5,14 +5,16 @@
             <div class="relative pb-48 overflow-hidden rounded-2xl">
                 @if (isset($products->image_path) && !empty($products->image_path))
                     <img class="absolute inset-0 h-full w-full object-cover rounded-xl"
-                        src="{{ asset($products->image_path) }}" alt="{{ $products->name }}">
+                        src="{{ asset($products->image_path) }}" alt="">
                 @else
                     <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('assets/images/no-picture.png') }}"
                         alt="No Picture">
                 @endif
             </div>
             <div class="text-left">
-                <div class="font-bold text-3xl my-5">Happy Place - Blabla</div>
+                <div class="font-bold text-3xl my-5">
+                    {{ $products->name }}
+                </div>
                 <div class="grid grid-cols-4 my-3">
                     <div class="flex items-center text-sm text-gray-600">
                         @php

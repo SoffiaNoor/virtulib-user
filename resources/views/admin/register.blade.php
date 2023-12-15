@@ -245,9 +245,6 @@
                             Role
                         </label>
                         <div class="flex items-center">
-                            <input type="radio" name="role" value="admin" class="mr-2 w-5 h-5">
-                            <label class="text-black mr-10">Admin</label>
-            
                             <input type="radio" name="role" value="buyer" class="mr-2 w-5 h-5">
                             <label class="text-black mr-10">Buyer</label>
             

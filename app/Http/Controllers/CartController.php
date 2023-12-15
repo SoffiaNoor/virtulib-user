@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Products;
+// use App\Models\Products;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $products = Products::all();
-        return view('buyer.cart', compact('products'));
+        $cart = Cart::all();
+        return view('buyer.cart', compact('cart'));
     }
 }
