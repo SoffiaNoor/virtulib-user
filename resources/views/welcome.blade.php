@@ -266,7 +266,7 @@
 
                         <div class="relative lg:w-full mx-5">
                             <input type="text" placeholder="Search..."
-                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500" />
+                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-white" />
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
