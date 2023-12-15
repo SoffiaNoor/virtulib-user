@@ -61,10 +61,10 @@
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">
-                                <a href="/mahasiswa" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
+                                <a href="/produk" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
                                         aria-hidden="true"></i>
                                 </a>
-                                <a href="/mahasiswa" class="btn-inner--text text-white ms-2">Kembali</a>
+                                <a href="/produk" class="btn-inner--text text-white ms-2">Kembali</a>
                             </button>
                             <button class="btn btn-icon btn-3 btn-success" type="submit">
                                 <a class="btn-inner--icon text-white"><i class="fa fa-save" aria-hidden="true"></i>

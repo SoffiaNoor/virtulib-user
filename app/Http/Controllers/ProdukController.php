@@ -23,29 +23,27 @@ class ProdukController extends Controller
         return view("seller.produk.create");
     }
 
-    public function show(string $NRP)
+    public function show(string $_id)
     {
-        $mahasiswa = Mahasiswa::where('NRP', $NRP)->first();
-        $dosen = Dosen::all();
-        return view("mahasiswa.view", compact('mahasiswa', 'dosen'));
-    }
-    public function edit(Mahasiswa $mahasiswa)
-    {
-        $dosenWali = Dosen::all();
-        return view("mahasiswa.update", compact('mahasiswa', 'dosenWali'));
+        $products = Products::where('_id', $_id)->first();
+        return view("seller.produk.show", compact('products'));
     }
 
-    public function destroy($NRP)
+    public function edit(string $_id)
     {
-        $mahasiswa = Mahasiswa::find($NRP);
+        $products = Products::where('_id', $_id)->first();
+        return view("seller.produk.edit", compact('products'));
+    }
 
-        if (!$mahasiswa) {
-            return redirect()->route('mahasiswa.index')->with('error', 'Mahasiswa tidak ditemukan!');
+    public function destroy($_id)
+    {
+        $products = Products::where('_id', $_id)->first();
+        if (!$products) {
+            return redirect()->route('produk.index')->with('error', 'Produk tidak ditemukan!');
         }
 
-        $mahasiswa->delete();
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil dihapus!');
+        $products->delete();
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus!');
     }
 
     public function store(Request $request)
@@ -68,23 +66,24 @@ class ProdukController extends Controller
             }
         }
 
-    public function update(Request $request, Mahasiswa $mahasiswa)
-    {
-        $this->validate($request, [
-            'NamaMhs' => 'required|string',
-            'Alamat' => 'required|string',
-            'IDDosen' => 'required|max:5|string',
-            'IPK' => 'required|numeric|max:4|min:0',
-            'JenisKelamin' => 'required|string',
-        ], [
-            'IPK.max' => 'IPK harus kurang dari atau sama dengan :max.',
-            'IPK.min' => 'IPK harus lebih dari atau sama dengan :min.',
-        ]);
-
-        $mahasiswa->update($request->all());
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui!');
-
+    
+    public function update(Request $request, $_id){
+        try {
+            $data = [
+                'name' => $request->input('name'),
+                'seller' => $request->input('seller'),
+                'gambar' => $request->input('gambar'),
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'stock' => $request->input('stock')
+            ];
+    
+            Products::where('_id', $_id)->update($data);
+    
+            return redirect()->route('produk.index')->with('success', 'Mahasiswa berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('produk.create')->with('error', 'Gagal input Mahasiswa. Pastikan data yang Anda masukkan benar.');
+        }
     }
 
 }
