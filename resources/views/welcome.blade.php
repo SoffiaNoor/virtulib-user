@@ -188,10 +188,10 @@
         <img src="{{ asset('assets/images/logo.png') }}" alt="Nefa Logo" class="w-8 xl:w-16">
     </div>
     <div id="__layout">
-        <div class="min-h-screen font-sans antialiased relative">
+        <div class="font-sans antialiased relative">
             <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
                 <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
-                    <div class="flex flex-wrap justify-between items-center py-2 mx-auto max-w-screen-xl">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
 
                         <div class="flex items-center lg:order-2">
                             <a href="#" class="mx-2">
@@ -240,7 +240,7 @@
                         </div>
                         <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
                             id="mobile-menu-2">
-                            <ul class="flex flex-col mt-4 ml-6 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                            <ul class="flex flex-col mt-4 ml-2 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                                 <li>
                                     <a href="#"
                                         class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Seller
@@ -254,8 +254,7 @@
                         </div>
                     </div>
 
-                    <div
-                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
                         <a href="/" class="flex items-center mx-3">
                             <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
                                 alt="Virtulib Logo" />
