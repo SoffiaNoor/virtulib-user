@@ -7,9 +7,10 @@ use App\Models\Sales;
 
 class PenjualanController extends Controller
 {
-    public function index(){
-        $sales = Sales::all();
-        return view("seller.penjualan.index",compact('sales'));
+    public function index()
+    {
+        $sales = Sales::paginate(5);
+        return view("seller.penjualan.index", compact('sales'));
     }
 
     public function create()
@@ -22,4 +23,26 @@ class PenjualanController extends Controller
         $sales = Sales::find($_id);
         return view("seller.penjualan.detail", compact('sales'));
     }
+    public function searchProduk(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $sales = Sales::where('customer', 'like', "%$keyword%")
+            ->orWhere('productname', 'like', "%$keyword%")
+            ->paginate(5);
+
+        return view("seller.penjualan.index", compact('sales'));
+    }
+    public function searchCustomer(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $sales = Sales::where('customer', 'like', "%$keyword%")
+            ->orWhere('productname', 'like', "%$keyword%")
+            ->paginate(5);
+
+        return view("seller.penjualan.index", compact('sales'));
+    }
+
+
+
+
 }
