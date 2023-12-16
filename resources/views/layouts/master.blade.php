@@ -188,7 +188,7 @@
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
             data-scroll="false">
             <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
+                {{-- <nav aria-label="breadcrumb">
                     @if(request()->path() !== '/')
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">EduLink</a></li>
@@ -212,7 +212,40 @@
                     </ol>
                     <h6 class="font-weight-bolder text-white mb-0">{{ ucfirst($cleanedSegment) }}</h6>
                     @endif
+                </nav> --}}
+                <nav aria-label="breadcrumb">
+                    @if(request()->path() !== '/')
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">EduLink</a></li>
+                        @php
+                            $urlSegments = explode('/', request()->path());
+                            $breadcrumbPath = '';
+                        @endphp
+                
+                        @foreach($urlSegments as $key => $segment)
+                            @php
+                                $cleanedSegment = str_replace('_', ' ', $segment);
+                                $breadcrumbPath .= "/$segment";
+                                $displaySegment = ucfirst($cleanedSegment);
+                                // Check if it's the last segment and modify the display text
+                                if ($key === count($urlSegments) - 1) {
+                                    if ($segment === 'detail') {
+                                        $displaySegment = 'Detail Sales'; // Customize display text for 'detail' segment
+                                    }
+                                }
+                            @endphp
+                
+                            <li class="breadcrumb-item text-sm {{ $loop->last ? 'text-white active' : '' }}">
+                                <a href="{{ $breadcrumbPath }}" class="text-white">
+                                    {{ $displaySegment }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ol>
+                    <h6 class="font-weight-bolder text-white mb-0">{{ $displaySegment }}</h6>
+                    @endif
                 </nav>
+                
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         {{-- <div class="input-group">

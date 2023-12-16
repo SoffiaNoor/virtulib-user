@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
     //draf
     Route::get('/pesanan', [RiwayatController::class, 'pesanan']);
     Route::get('/pengiriman', [RiwayatController::class, 'pengiriman']);
