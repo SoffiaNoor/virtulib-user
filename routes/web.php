@@ -41,6 +41,8 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/penjualan/{_id}', [PenjualanController::class, 'show'])->name('penjualan.detail');
+    // Route::put('/penjualan/update/{_id}', [PenjualanController::class, 'edit'])->name('penjualan.update');
 });
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {
