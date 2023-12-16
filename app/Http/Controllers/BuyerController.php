@@ -27,4 +27,9 @@ class BuyerController extends Controller
 
         return view('buyer.detail', compact('products'));
     }
+    public function showProfile(){
+        $products = Products::all();
+
+        return view('buyer.profil', compact('products'));
+    }
 }

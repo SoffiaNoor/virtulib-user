@@ -58,6 +58,7 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     
     Route::get('/penjualan/searchProduk', [PenjualanController::class, 'searchProduk'])->name('penjualan.searchProduk');
     Route::get('/penjualan/searchCustomer', [PenjualanController::class, 'searchCustomer'])->name('penjualan.searchCustomer');
+    Route::get('/profil', [BuyerController::class, 'showProfile']);
 
     // Route::put('/penjualan/update/{_id}', [PenjualanController::class, 'edit'])->name('penjualan.update');
 });
