@@ -23,6 +23,7 @@ class User extends Model implements AuthenticatableContract
      * @var array<int, string>
      */
     protected $fillable = [
+        '_id',
         'name', 'email', 'password', 'role',
     ];
 
@@ -49,5 +50,10 @@ class User extends Model implements AuthenticatableContract
     public function hasRole($role)
     {
         return $this->role === $role;
+    }
+
+    public function buyer()
+    {
+        return $this->hasOne(Buyer::class, 'user_id');
     }
 }

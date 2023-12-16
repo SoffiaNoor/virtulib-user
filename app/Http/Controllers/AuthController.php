@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Buyer;
+use Illuminate\Support\Str;
 
 
 class AuthController extends Controller
@@ -29,29 +31,34 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-{
-    try {
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ];
+    {
+        try {
+            $data = [
+                '_id' => (string) Str::uuid(), // convert UUID to string
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => $request->input('role'),
+            ];
 
-        // Tambahkan penanganan peran di sini
-        $role = $request->input('role'); // Ambil nilai peran dari formulir
-        $data['role'] = $role; // Tambahkan peran ke data
+            $uu_id = $data['_id'];
+            $nameid = $data['name'];
 
-        User::create($data);
+            $user = User::create($data);
 
-        return redirect()->route('login')->with('success', 'Account created successfully.');
+            if ($data['role'] === 'buyer') {
+                Buyer::create([
+                    'user_id' => $uu_id,
+                    'name' => $user->name,
+                ]);
+            }
 
-    } catch (\Exception $e) {
+            return redirect()->route('login')->with('success', 'Account created successfully.');
 
-        return redirect()->route('register')->with('error', 'Failed to create account. Account already exists.');
-
+        } catch (\Exception $e) {
+            return redirect()->route('register')->with('error', 'Failed to create account. Account already exists.');
+        }
     }
-}
-
     public function logout()
     {
         Auth::logout();
