@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\HomeController;
@@ -14,11 +15,15 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BuyerController;
 
-
+//draf
 Route::get('/detail', [BuyerController::class, 'index']);
-Route::get('/test', [TestController::class, 'index']);
+// Route::get('/test', [ProdukController::class,'test']);
+Route::post('/test', [ProdukController::class,'test']);
 Route::get('/product/{id}', [BuyerController::class, 'detail'])->name('detail');
 Route::get('/', [BuyerController::class, 'welcome']);
+
+Route::get('/move-products', [ProdukController::class,'test']);
+Route::post('/move-products/{productId}', [ProdukController::class, 'moveProduct'])->name('move-products');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -41,6 +46,13 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    //draf
+    Route::get('/pesanan', [RiwayatController::class, 'pesanan']);
+    Route::get('/pengiriman', [RiwayatController::class, 'pengiriman']);
+    Route::get('/selesai', [RiwayatController::class, 'selesai']);
+    Route::post('/pesanan/{productId}', [RiwayatController::class, 'moveProductPesanan'])->name('move-products-pesanan');
+    Route::post('/pengiriman/{productId}', [RiwayatController::class, 'moveProductPengiriman'])->name('move-products-pengiriman');
+    Route::post('/selesai/{productId}', [RiwayatController::class, 'moveProductSelesai'])->name('move-products-selesai');
 });
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {

@@ -121,19 +121,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/pengiriman"
-                        style="{{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Pengiriman</span>
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesanan/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/pesanan"
+                        style="{{ preg_match('/pesanan/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">Produk Pesanan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesan_kursus/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/pesan_kursus"
-                        style="{{ preg_match('/pesan_kursus/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/pengiriman"
+                        style="{{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Lainnya</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Produk Pengiriman</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/selesai/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/selesai"
+                        style="{{ preg_match('/selesai/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">Produk Selesai</span>
                     </a>
                 </li>
                 {{-- <li class="nav-item">
@@ -144,7 +152,7 @@
                         <span class="nav-link-text ms-1 font-weight-bold">Pesan Konsul</span>
                     </a>
                 </li> --}}
-                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder " style='color=black'>User Configuration
+                {{-- <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder " style='color=black'>User Configuration
                 </h6>
                 <li class="nav-item">
                     <a class="nav-link mx-3 my-1 text-white {{ preg_match('/user/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
@@ -153,7 +161,7 @@
                         <i class="fa fa-save" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">List User</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="sidenav-footer mx-3 ">
