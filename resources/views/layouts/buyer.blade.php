@@ -209,12 +209,22 @@
                                         <li><a href="/dashboard"
                                                 class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
                                         </li>
+                                        @if(auth()->user()->role === 'buyer')
+                                        <li>
+                                            <form method="POST" action="{{ route('logout_buyer') }}">
+                                                @csrf
+                                                <button class="block" type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                        @elseif(auth()->user()->role === 'seller')
                                         <li>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <button class="block" type="submit">Logout</button>
                                             </form>
                                         </li>
+                                        @else
+                                        @endif
                                     </ul>
                                 </details>
                             @else

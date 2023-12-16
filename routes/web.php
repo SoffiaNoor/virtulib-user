@@ -60,7 +60,7 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
 });
 
 Route::get('/404', function () {
