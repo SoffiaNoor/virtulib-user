@@ -179,7 +179,7 @@
         <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
         <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo" class="w-24 xl:w-28">
     </div>
-    <div class="h-screen md:flex justify-center">
+    <div class="md:flex justify-center">
         <div class="bg-[#F9F3CC] w-1/3 my-20 rounded-2xl shadow-xl px-10">
             <form role="form mx-5" method="POST" action="{{ route('login') }}" class="w-full max-w-lg  mx-auto my-20">
                 @csrf
