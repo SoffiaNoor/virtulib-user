@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Buyer;
+use App\Models\Seller;
 use Illuminate\Support\Str;
 
 
@@ -34,7 +35,7 @@ class AuthController extends Controller
     {
         try {
             $data = [
-                '_id' => (string) Str::uuid(), // convert UUID to string
+                '_id' => (string) Str::uuid(), 
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
@@ -51,7 +52,14 @@ class AuthController extends Controller
                     'user_id' => $uu_id,
                     'name' => $user->name,
                 ]);
+            } else {
+                Seller::create([
+                    'user_id' => $uu_id,
+                    'nama' => $user->name,
+                ]
+                );
             }
+
 
             return redirect()->route('login')->with('success', 'Account created successfully.');
 
