@@ -11,13 +11,13 @@
     <meta property="og:url" content="">
     <meta name="keywords" content="">
     <script type="text/javascript" async="" src=""></script>
-    <link rel='icon' type="image/x-icon" href='{{asset(' assets/images/logo2.ico')}}'>
+    <link rel='icon' type="image/x-icon" href='{{ asset(' assets/images/logo2.ico') }}'>
     <title>Edulink</title>
 
     <!--CSS-->
     @vite('resources/css/app.css')
 
-    
+
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
     <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
 
@@ -191,15 +191,15 @@
                         class="flex flex-col max-w-screen-xl px-8 mx-auto lg:items-center lg:justify-between lg:flex-row py-4">
                         <div class="flex flex-col lg:flex-row items-center space-x-4 xl:space-x-8">
                             <div class="w-full flex flex-row items-center justify-between py-6">
-                                <div><a href="{{url('/')}}"><img src="{{ asset('assets/images/edulink2.png') }}"
+                                <div><a href="{{ url('/') }}"><img src="{{ asset('assets/images/edulink2.png') }}"
                                             alt="Nefa Logo" class="w-24 xl:w-28"></a>
                                 </div>
                                 <div class="lg:hidden">
                                     <button
                                         class="navbar-burger rounded-lg focus:outline-none focus:shadow-outline"><span
-                                            aria-hidden="true" role="img" class="material-design-icon segment-icon"><svg
-                                                fill="white" width="24" height="24" viewBox="0 0 24 24"
-                                                class="material-design-icon__svg">
+                                            aria-hidden="true" role="img"
+                                            class="material-design-icon segment-icon"><svg fill="white" width="24"
+                                                height="24" viewBox="0 0 24 24" class="material-design-icon__svg">
                                                 <path d="M21,8H3V6H21M9,13H21V11H9M9,18H21V16H9">
                                                     <!---->
                                                 </path>
@@ -212,53 +212,54 @@
                         <div class="space-x-3 hidden lg:flex">
                             <ul
                                 class="w-full font-['Fredoka'] h-auto flex flex-col flex-grow lg:items-center pb-4 lg:pb-0 lg:justify-end lg:flex-row origin-top duration-300 xl:space-x-2 space-y-3 lg:space-y-0 hidden lg:flex">
-                                <li class="w-25"><a href="{{url('/kursus')}}"
+                                <li class="w-25"><a href="{{ url('/kursus') }}"
                                         class="md:px-2 py-2 font-bold text-xl bg-transparent rounded-lg text-white hover:text-[#FFE200] duration-500 focus:outline-none focus:shadow-outline">
                                         E-Course </a></li>
-                                <li class="w-25"><a href="{{url('/konsultasi')}}"
+                                <li class="w-25"><a href="{{ url('/konsultasi') }}"
                                         class="md:px-2 py-2 font-bold text-xl bg-transparent rounded-lg text-white hover:text-[#FFE200] duration-500 focus:outline-none focus:shadow-outline">
                                         Konsultasi </a></li>
-                                <li class="w-25"><a href="{{url('/pelayanan')}}"
+                                <li class="w-25"><a href="{{ url('/pelayanan') }}"
                                         class="md:px-2 py-2 font-bold text-xl bg-transparent rounded-lg text-white hover:text-[#FFE200] duration-500 focus:outline-none focus:shadow-outline">
                                         Pelayanan </a></li>
-                                @if(auth()->check())
-                                <li class="w-25"><a href="{{url('/pesan')}}"
-                                        class="md:px-2 py-2 font-bold text-xl bg-transparent rounded-lg text-white hover:text-[#FFE200] duration-500 focus:outline-none focus:shadow-outline">
-                                        Pesan </a></li>
+                                @if (auth()->check())
+                                    <li class="w-25"><a href="{{ url('/pesan') }}"
+                                            class="md:px-2 py-2 font-bold text-xl bg-transparent rounded-lg text-white hover:text-[#FFE200] duration-500 focus:outline-none focus:shadow-outline">
+                                            Pesan </a></li>
                                 @else
                                 @endif
-                                @if(auth()->check())
-                                <li class="relative group">
-                                    <div id="userDropdown"
-                                        class="flex items-center px-6 py-2 shadow-xl bg-gradient-to-r from-fuchsia-600 to-violet-800 rounded-full cursor-pointer">
-                                        <span class="mr-4 text-white font-bold text-xl">{{ auth()->user()->name
-                                            }}</span>
-                                        <img src="assets/images/profile-user.png" alt="Profile Photo"
-                                            class="w-8 h-8 rounded-full">
-                                    </div>
-                                    <ul id="dropdownMenu"
-                                        class="absolute hidden font-bold w-full text-md mt-2 bg-gradient-to-r from-fuchsia-600 to-violet-800 text-white rounded-md shadow-lg z-10">
-                                        <li><a href="{{ url('/admin') }}" class="block px-4 py-2">Dashboard</a></li>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <li><button class="block px-4 py-2" type="submit">Logout</button></li>
-                                        </form>
-                                    </ul>
+                                @if (auth()->check())
+                                    <li class="relative group">
+                                        <div id="userDropdown"
+                                            class="flex items-center px-6 py-2 shadow-xl bg-gradient-to-r from-fuchsia-600 to-violet-800 rounded-full cursor-pointer">
+                                            <span
+                                                class="mr-4 text-white font-bold text-xl">{{ auth()->user()->name }}</span>
+                                            <img src="assets/images/profile-user.png" alt="Profile Photo"
+                                                class="w-8 h-8 rounded-full">
+                                        </div>
+                                        <ul id="dropdownMenu"
+                                            class="absolute hidden font-bold w-full text-md mt-2 bg-gradient-to-r from-fuchsia-600 to-violet-800 text-white rounded-md shadow-lg z-10">
+                                            <li><a href="{{ url('/admin') }}" class="block px-4 py-2">Dashboard</a>
+                                            </li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <li><button class="block px-4 py-2" type="submit">Logout</button></li>
+                                            </form>
+                                        </ul>
 
-                                    <script>
-                                        document.getElementById('userDropdown').addEventListener('click', function () {
-                                            var dropdown = document.getElementById('dropdownMenu');
-                                            dropdown.classList.toggle('hidden');
-                                        });
-                                    </script>
-                                </li>
+                                        <script>
+                                            document.getElementById('userDropdown').addEventListener('click', function() {
+                                                var dropdown = document.getElementById('dropdownMenu');
+                                                dropdown.classList.toggle('hidden');
+                                            });
+                                        </script>
+                                    </li>
                                 @else
-                                <li class="w-25">
-                                    <a class="lg:text-xl duration-300 font-extrabold text-center rounded-full shadow-md transition max-w-full px-6 py-4 bg-gradient-to-r from-fuchsia-600 to-violet-800 text-white"
-                                        href="{{ url('/login') }}">
-                                        Login
-                                    </a>
-                                </li>
+                                    <li class="w-25">
+                                        <a class="lg:text-xl duration-300 font-extrabold text-center rounded-full shadow-md transition max-w-full px-6 py-4 bg-gradient-to-r from-fuchsia-600 to-violet-800 text-white"
+                                            href="{{ url('/login') }}">
+                                            Login
+                                        </a>
+                                    </li>
                                 @endif
                             </ul>
                         </div>
@@ -269,12 +270,13 @@
                     <nav
                         class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-[#FFE200] overflow-y-auto">
                         <div class="flex items-center mb-8">
-                            <a href="{{url('/')}}" class="mr-auto text-3xl font-bold leading-none"><img
+                            <a href="{{ url('/') }}" class="mr-auto text-3xl font-bold leading-none"><img
                                     src="{{ asset('assets/img/favicon.png') }}" alt="Nefa Logo"
                                     class="w-24 xl:w-28"></a>
                             <button class="navbar-close">
                                 <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black">
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="black">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
@@ -284,36 +286,34 @@
                             <ul>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/')}}">Home</a>
+                                        href="{{ url('/') }}">Home</a>
                                 </li>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/portofolio')}}">Portofolio</a>
+                                        href="{{ url('/portofolio') }}">Portofolio</a>
                                 </li>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/about_us')}}">Tentang Kami</a>
+                                        href="{{ url('/about_us') }}">Tentang Kami</a>
                                 </li>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/testimoni')}}">Testimoni</a>
+                                        href="{{ url('/testimoni') }}">Testimoni</a>
                                 </li>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/kontak')}}">Kontak</a>
+                                        href="{{ url('/kontak') }}">Kontak</a>
                                 </li>
                                 <li class="mb-1">
                                     <a class="block p-4 text-sm font-bold text-black hover:bg-black hover:text-white hover:shadow-md rounded duration-300"
-                                        href="{{url('/berita')}}">Berita</a>
+                                        href="{{ url('/berita') }}">Berita</a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
 
-                <div class="flex flex-col">
-                    @yield('content')
-                </div>
+                @yield('content')
 
                 <div class="fixed bottom-20 left-10 z-10">
                     <button id="to-top-button" onclick="goToTop()" title="Go To Top"
@@ -321,7 +321,7 @@
                 </div>
 
                 <div class="fixed bottom-10 right-10 z-10">
-                    <a title="Chat Whatsapp" href="{{url('/login')}}" target="_blank"
+                    <a title="Chat Whatsapp" href="{{ url('/login') }}" target="_blank"
                         class="block rounded-full transition-all transform hover:scale-110 hover:rotate-12">
                         <img class="object-cover object-center lg:w-full lg:h-24 w-full h-24"
                             src="{{ asset('assets/images/order.png') }}" alt="Saya mau pesan">
@@ -345,7 +345,8 @@
                                             <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
                                         </li>
                                         <li>
-                                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind
+                                                CSS</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -358,7 +359,8 @@
                                                 class="hover:underline ">Github</a>
                                         </li>
                                         <li>
-                                            <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
+                                            <a href="https://discord.gg/4eeurUVvTy"
+                                                class="hover:underline">Discord</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -378,9 +380,11 @@
                         </div>
                         <hr class="my-6 h-2 border-none rounded-full bg-transparent sm:mx-auto lg:my-8" />
                         <div class="sm:flex sm:items-center sm:justify-between">
-                            <span class="text-sm font-medium text-white sm:text-center">Copyright <script>
+                            <span class="text-sm font-medium text-white sm:text-center">Copyright
+                                <script>
                                     document.write(new Date().getFullYear());
-                                </script><a href="http://127.0.0.1:8000/" class="hover:underline"> EduLink</a>. All
+                                </script><a href="http://127.0.0.1:8000/" class="hover:underline">
+                                    EduLink</a>. All
                                 Rights
                                 Reserved.
                             </span>
@@ -445,111 +449,114 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-    // Burger menus
-    document.addEventListener('DOMContentLoaded', function() {
-        // open
-        const burger = document.querySelectorAll('.navbar-burger');
-        const menu = document.querySelectorAll('.navbar-menu');
-    
-        if (burger.length && menu.length) {
-            for (var i = 0; i < burger.length; i++) {
-                burger[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    
-        // close
-        const close = document.querySelectorAll('.navbar-close');
-        const backdrop = document.querySelectorAll('.navbar-backdrop');
-    
-        if (close.length) {
-            for (var i = 0; i < close.length; i++) {
-                close[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    
-        if (backdrop.length) {
-            for (var i = 0; i < backdrop.length; i++) {
-                backdrop[i].addEventListener('click', function() {
-                    for (var j = 0; j < menu.length; j++) {
-                        menu[j].classList.toggle('hidden');
-                    }
-                });
-            }
-        }
-    });
-    $(document).ready(function() {
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > 0) {
-        $('#navbar').addClass('scrolled');
-      } else {
-        $('#navbar').removeClass('scrolled');
-      }
-    });
-  });
-  window.addEventListener('load', function () {
-  const loader = document.getElementById('loader');
-  const content = document.getElementById('content');
+        // Burger menus
+        document.addEventListener('DOMContentLoaded', function() {
+            // open
+            const burger = document.querySelectorAll('.navbar-burger');
+            const menu = document.querySelectorAll('.navbar-menu');
 
-  // Hide the loader and show the content when the page is fully loaded
-  loader.style.display = 'none';
-  content.style.display = 'block';
-});
+            if (burger.length && menu.length) {
+                for (var i = 0; i < burger.length; i++) {
+                    burger[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+
+            // close
+            const close = document.querySelectorAll('.navbar-close');
+            const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+            if (close.length) {
+                for (var i = 0; i < close.length; i++) {
+                    close[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+
+            if (backdrop.length) {
+                for (var i = 0; i < backdrop.length; i++) {
+                    backdrop[i].addEventListener('click', function() {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+        });
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 0) {
+                    $('#navbar').addClass('scrolled');
+                } else {
+                    $('#navbar').removeClass('scrolled');
+                }
+            });
+        });
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            const content = document.getElementById('content');
+
+            // Hide the loader and show the content when the page is fully loaded
+            loader.style.display = 'none';
+            content.style.display = 'block';
+        });
     </script>
 
     <script>
         const filterButtons = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const filterValue = button.dataset.filter;
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filterValue = button.dataset.filter;
 
-      // Rearrange the grid layout based on the filter
-      portfolioItems.forEach(item => {
-        if (filterValue === 'all' || item.classList.contains(filterValue)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-      // Get the current URL pathname (e.g., "/about_us")
-      var currentPath = window.location.pathname;
-  
-  // Select all menu items and loop through them
-  var menuItems = document.querySelectorAll('.menu li a');
-  menuItems.forEach(function(item) {
-    // Check if the link's href matches the current URL
-    if (item.getAttribute('href') === currentPath) {
-      item.classList.add('active'); // Add the 'active' class to the matching link
-    }
-  });
+                // Rearrange the grid layout based on the filter
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        // Get the current URL pathname (e.g., "/about_us")
+        var currentPath = window.location.pathname;
+
+        // Select all menu items and loop through them
+        var menuItems = document.querySelectorAll('.menu li a');
+        menuItems.forEach(function(item) {
+            // Check if the link's href matches the current URL
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add('active'); // Add the 'active' class to the matching link
+            }
+        });
     </script>
     <script>
         var toTopButton = document.getElementById("to-top-button");
-    
-            // When the user scrolls down 200px from the top of the document, show the button
-            window.onscroll = function () {
-                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                    toTopButton.classList.remove("hidden");
-                } else {
-                    toTopButton.classList.add("hidden");
-                }
+
+        // When the user scrolls down 200px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove("hidden");
+            } else {
+                toTopButton.classList.add("hidden");
             }
-    
-            // When the user clicks on the button, scroll to the top of the document
-            function goToTop() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function goToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 
 </body>

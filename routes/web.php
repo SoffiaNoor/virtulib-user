@@ -55,6 +55,11 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/pengiriman/{productId}', [RiwayatController::class, 'moveProductPengiriman'])->name('move-products-pengiriman');
     Route::post('/selesai/{productId}', [RiwayatController::class, 'moveProductSelesai'])->name('move-products-selesai');
     Route::get('/penjualan/{_id}', [PenjualanController::class, 'show'])->name('penjualan.detail');
+    
+    Route::get('/penjualan/searchProduk', [PenjualanController::class, 'searchProduk'])->name('penjualan.searchProduk');
+    Route::get('/penjualan/searchCustomer', [PenjualanController::class, 'searchCustomer'])->name('penjualan.searchCustomer');
+    Route::get('/profil', [BuyerController::class, 'showProfile']);
+
     // Route::put('/penjualan/update/{_id}', [PenjualanController::class, 'edit'])->name('penjualan.update');
 });
 
