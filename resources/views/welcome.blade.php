@@ -224,7 +224,7 @@
                                         <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
                                     </summary>
                                     <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                        <li><a href="/dashboard"
+                                        <li><a href="/admin"
                                                 class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
                                         </li>
                                         @if (auth()->user()->role === 'buyer')

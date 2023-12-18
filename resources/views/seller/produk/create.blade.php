@@ -34,7 +34,7 @@
                         <div class="col-md-6" style="align-self:end!important;">
                             <div class="form-group">
                                 <label>Gambar Produk</label>
-                                <input type="text" class="form-control" id="gambar" name="gambar" required>
+                                <input type="text" class="form-control" id="gambar" name="gambar" >
                             </div>
                         </div> 
                         <div class="col-md-6"style="align-self:end!important;">
