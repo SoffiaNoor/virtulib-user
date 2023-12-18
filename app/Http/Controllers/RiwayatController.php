@@ -30,71 +30,53 @@ class RiwayatController extends Controller
 
     public function moveProductPesanan(Request $request, $productId)
     {
-        // Get the product based on the provided ID
         $product = Produk_Pesan::find($productId);
 
         if (!$product) {
-            // Handle the case where the product is not found
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        // Create a new record in the MovedProducts collection
         Produk_Dikirim::create([
             'name' => $product->name,
             'price' => $product->price,
-            // Add other fields as needed
         ]);
 
-        // Remove the product from the Products collection
         $product->delete();
 
-        // Redirect back to the original page with a success message
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
     public function moveProductPengiriman(Request $request, $productId)
     {
-        // Get the product based on the provided ID
         $product = Produk_Dikirim::find($productId);
 
         if (!$product) {
-            // Handle the case where the product is not found
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        // Create a new record in the MovedProducts collection
         Produk_Selesai::create([
             'name' => $product->name,
             'price' => $product->price,
-            // Add other fields as needed
         ]);
 
-        // Remove the product from the Products collection
         $product->delete();
 
-        // Redirect back to the original page with a success message
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
     public function moveProductSelesai(Request $request, $productId)
     {
-        // Get the product based on the provided ID
         $product = Produk_Selesai::find($productId);
 
         if (!$product) {
-            // Handle the case where the product is not found
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        // Create a new record in the MovedProducts collection
         Penjualan::create([
             'name' => $product->name,
             'price' => $product->price,
-            // Add other fields as needed
         ]);
 
-        // Remove the product from the Products collection
         $product->delete();
 
-        // Redirect back to the original page with a success message
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
 }

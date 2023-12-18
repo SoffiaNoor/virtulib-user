@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\View;
@@ -11,19 +10,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PengirimanController;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BuyerController;
 
-//draf
-Route::get('/detail', [BuyerController::class, 'index']);
-// Route::get('/test', [ProdukController::class,'test']);
-Route::post('/test', [ProdukController::class,'test']);
-Route::get('/product/{id}', [BuyerController::class, 'detail'])->name('detail');
-Route::get('/', [BuyerController::class, 'welcome']);
 
-Route::get('/move-products', [ProdukController::class,'test']);
-Route::post('/move-products/{productId}', [ProdukController::class, 'moveProduct'])->name('move-products');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,6 +21,13 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
 });
+
+Route::get('/detail', [BuyerController::class, 'index']);
+Route::post('/test', [ProdukController::class,'test']);
+Route::get('/product/{id}', [BuyerController::class, 'detail'])->name('detail');
+Route::get('/', [BuyerController::class, 'welcome']);
+Route::get('/move-products', [ProdukController::class,'test']);
+Route::post('/move-products/{productId}', [ProdukController::class, 'moveProduct'])->name('move-products');
 
 View::composer('layouts.master', function ($view) {
     $loggedInUser = Auth::user();
@@ -46,8 +43,6 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    //draf
     Route::get('/pesanan', [RiwayatController::class, 'pesanan']);
     Route::get('/pengiriman', [RiwayatController::class, 'pengiriman']);
     Route::get('/selesai', [RiwayatController::class, 'selesai']);
@@ -55,12 +50,9 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/pengiriman/{productId}', [RiwayatController::class, 'moveProductPengiriman'])->name('move-products-pengiriman');
     Route::post('/selesai/{productId}', [RiwayatController::class, 'moveProductSelesai'])->name('move-products-selesai');
     Route::get('/penjualan/{_id}', [PenjualanController::class, 'show'])->name('penjualan.detail');
-    
     Route::get('/penjualan/searchProduk', [PenjualanController::class, 'searchProduk'])->name('penjualan.searchProduk');
     Route::get('/penjualan/searchCustomer', [PenjualanController::class, 'searchCustomer'])->name('penjualan.searchCustomer');
     Route::get('/profil', [BuyerController::class, 'showProfile']);
-
-    // Route::put('/penjualan/update/{_id}', [PenjualanController::class, 'edit'])->name('penjualan.update');
 });
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {
