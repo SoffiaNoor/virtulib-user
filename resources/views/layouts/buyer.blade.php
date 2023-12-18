@@ -191,38 +191,56 @@
         <div class="font-sans antialiased relative">
             <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
                 <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
+                    <div
+                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
+                        <a href="/" class="flex items-center mx-3">
+                            <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
+                                alt="Virtulib Logo" />
+                            <span
+                                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
+                        </a>
 
+                        <div class="relative lg:w-full mx-5">
+                            <input type="text" placeholder="Search..."
+                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <a href="/cart" class="mx-3">
+                            <i class="fas fa-shopping-cart fa-lg mr-2"></i>
+                        </a>
                         <div class="flex items-center lg:order-2">
-                            <a href="#" class="mx-2">
-                                <i class="fa fa-bell fa-lg mr-2"></i>
-                            </a>
-                            <a href="#"
-                                class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
                             @if (Auth::check())
                                 <details class="dropdown mx-3">
                                     <summary
-                                        class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                        class="flex px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
                                         <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
                                     </summary>
                                     <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                                         <li><a href="/dashboard"
                                                 class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
                                         </li>
-                                        @if(auth()->user()->role === 'buyer')
-                                        <li>
-                                            <form method="POST" action="{{ route('logout_buyer') }}">
-                                                @csrf
-                                                <button class="block" type="submit">Logout</button>
-                                            </form>
-                                        </li>
+                                        @if (auth()->user()->role === 'buyer')
+                                            <li>
+                                                <form method="POST" action="{{ route('logout_buyer') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
                                         @elseif(auth()->user()->role === 'seller')
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <button class="block" type="submit">Logout</button>
-                                            </form>
-                                        </li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
                                         @else
                                         @endif
                                     </ul>
@@ -249,47 +267,6 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-                            id="mobile-menu-2">
-                            <ul class="flex flex-col mt-4 ml-2 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                                <li>
-                                    <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Seller
-                                        Center</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Download</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
-                        <a href="/" class="flex items-center mx-3">
-                            <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
-                                alt="Virtulib Logo" />
-                            <span
-                                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
-                        </a>
-
-                        <div class="relative lg:w-full mx-5">
-                            <input type="text" placeholder="Search..."
-                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <circle cx="10" cy="10" r="7" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                        </div>
-                        <a href="https://flowbite.com" class="mx-3">
-                            <i class="fas fa-shopping-cart fa-lg mr-2"></i>
-                        </a>
                     </div>
                 </nav>
             </header>
@@ -303,7 +280,8 @@
                     <div class="md:flex md:justify-between">
                         <div class="mb-6 md:mb-0">
                             <a href="/" class="flex items-center">
-                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
+                                    alt="FlowBite Logo" />
                                 <span
                                     class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Virtulib</span>
                             </a>
@@ -349,8 +327,8 @@
                     </div>
                     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                     <div class="sm:flex sm:items-center sm:justify-between">
-                        <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a
-                                href="/" class="hover:underline">Virtulib™</a>. All Rights Reserved.
+                        <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a href="/"
+                                class="hover:underline">Virtulib™</a>. All Rights Reserved.
                         </span>
                         <div class="flex mt-4 sm:justify-center sm:mt-0">
                             <a href="#" class="text-black hover:text-black dark:hover:text-white">
@@ -409,7 +387,7 @@
                 class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-[#3c628b] to-[#4f79a7] text-white text-3xl font-bold">&uarr;</button>
         </div>
 
-        
+
     </div>
     </div>
     </div>

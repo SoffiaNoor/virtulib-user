@@ -194,84 +194,10 @@
                 <nav class="border-gray-200 lg:px-6 pb-2.5 px-5 lg:mx-24 mx-11 pt-2">
                     <div
                         class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
-
-                        <div class="flex items-center lg:order-2">
-                            <a href="#" class="mx-2">
-                                <i class="fa fa-bell fa-lg mr-2"></i>
-                            </a>
-                            <a href="#"
-                                class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Bantuan</a>
-                            @if (Auth::check())
-                            <details class="dropdown mx-3">
-                                <summary
-                                    class="px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
-                                    <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
-                                </summary>
-                                <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                    <li><a href="/dashboard"
-                                            class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
-                                    </li>
-                                    @if(auth()->user()->role === 'buyer')
-                                    <li>
-                                        <form method="POST" action="{{ route('logout_buyer') }}">
-                                            @csrf
-                                            <button class="block" type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                    @elseif(auth()->user()->role === 'seller')
-                                    <li>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <button class="block" type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                    @else
-                                    @endif
-                                </ul>
-                            </details>
-                            @else
-                            <a href="/login"
-                                class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
-                            @endif
-                            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200
-                                aria-controls=" mobile-menu-2" aria-expanded="false">
-                                <span class="sr-only">Open main menu</span>
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-                            id="mobile-menu-2">
-                            <ul class="flex flex-col mt-4 ml-2 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                                <li>
-                                    <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Seller
-                                        Center</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-[#8EACCD] block px-3 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">Download</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
                         <a href="/" class="flex items-center mx-3">
                             <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
                                 alt="Virtulib Logo" />
-                            <span class="self-center text-xl font-semibold whitespace-nowrap ">VirtuLib</span>
+                            <span class="self-center text-xl font-semibold whitespace-nowrap mr-3">VirtuLib</span>
                         </a>
 
                         <div class="relative lg:w-full mx-5">
@@ -287,9 +213,60 @@
                                 </svg>
                             </div>
                         </div>
-                        <a href="https://flowbite.com" class="mx-3">
+                        <a href="/cart" class="mx-3">
                             <i class="fas fa-shopping-cart fa-lg mr-2"></i>
                         </a>
+                        <div class="flex items-center lg:order-2">
+                            @if (Auth::check())
+                                <details class="dropdown mx-3">
+                                    <summary
+                                        class="flex items-center px-auto bg-[#8EACCD] block px-10 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
+                                    </summary>
+                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                        <li><a href="/dashboard"
+                                                class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
+                                        </li>
+                                        @if (auth()->user()->role === 'buyer')
+                                            <li>
+                                                <form method="POST" action="{{ route('logout_buyer') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
+                                        @elseif(auth()->user()->role === 'seller')
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
+                                        @else
+                                        @endif
+                                    </ul>
+                                </details>
+                            @else
+                                <a href="/login"
+                                    class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            @endif
+                            <button data-collapse-toggle="mobile-menu-2" type="button"
+                                class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                                aria-controls="mobile-menu-2" aria-expanded="false">
+                                <span class="sr-only">Open main menu</span>
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </nav>
             </header>
@@ -359,71 +336,82 @@
 
         <section class="px-5 lg:mx-24 mx-11">
             <div class="container mx-auto">
-                <div class="flex flex-wrap -mx-4">
-                    @foreach ($products as $item)
-                    <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                        <a href="{{ route('detail', $item->id) }}"
-                            class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
-                            <div class="relative pb-48 overflow-hidden">
-                                @if (isset($item->gambar) && !empty($item->gambar))
-                                <img class="absolute inset-0 h-full w-full object-cover"
-                                    src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
-                                @else
-                                <img class="absolute inset-0 h-full w-full object-cover"
-                                    src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
-                                @endif
-                            </div>
-                            <div class="p-4">
-                                <span
-                                    class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{
-                                    $item->seller }}</span>
-                                <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
-                                <p class="text-sm">{{ $item->description }}</p>
-                                <div class="mt-3 flex items-center">
-                                    <span class="font-bold text-xl">Rp. </span>&nbsp;<span class="font-bold text-xl">{{
-                                        $item->price }}</span>
-                                </div>
-                            </div>
-                            <div class="p-4 border-t border-b text-xs text-gray-700">
-                                <span class="flex items-center mb-1">
-                                    <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
-                                    {{ $item->stock }}
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
-                                    @if($item->stock > 0)
-                                    <div class="text-center text-white bg-green-500 rounded-full px-3 py-2 m-2">Tersedia
+                @if (count($products) > 0)
+                    <div class="flex flex-wrap -mx-4">
+                        @foreach ($products as $item)
+                            <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                                <a href="{{ route('detail', $item->id) }}"
+                                    class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
+                                    <div class="relative pb-48 overflow-hidden">
+                                        @if (isset($item->gambar) && !empty($item->gambar))
+                                            <img class="absolute inset-0 h-full w-full object-cover"
+                                                src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
+                                        @else
+                                            <img class="absolute inset-0 h-full w-full object-cover"
+                                                src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
+                                        @endif
                                     </div>
-                                    @else
-                                    <div class="text-center text-white bg-red-500 rounded-full px-3 py-2 m-2">Tidak
-                                        Tersedia</div>
-                                    @endif
-                                </span>
-                            </div>
-                            <div class="p-4 flex items-center text-sm text-gray-600">
-                                @php
-                                $rating = $item->rating;
-                                $roundedRating = round($rating);
-                                @endphp
-
-                                @for ($i = 1; $i <= 5; $i++) <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
-                                    <path
-                                        d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                                    </path>
-                                    </svg>
-                                    @endfor
-                                    <div class="grid grid-cols-2 w-full">
-                                        <div class="ml-2">{{ $item->rating }} / 5 </div>
-                                        <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
+                                    <div class="p-4">
+                                        <span
+                                            class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{ $item->seller }}</span>
+                                        <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
+                                        <p class="text-sm">{{ $item->description }}</p>
+                                        <div class="mt-3 flex items-center">
+                                            <span class="font-bold text-xl">Rp. </span>&nbsp;<span
+                                                class="font-bold text-xl">{{ $item->price }}</span>
                                         </div>
                                     </div>
-                            </div>
+                                    <div class="p-4 border-t border-b text-xs text-gray-700">
+                                        <span class="flex items-center mb-1">
+                                            <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
+                                            {{ $item->stock }}
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
+                                            @if ($item->stock > 0)
+                                                <div
+                                                    class="text-center text-white bg-green-500 rounded-full px-3 py-2 m-2">
+                                                    Tersedia
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="text-center text-white bg-red-500 rounded-full px-3 py-2 m-2">
+                                                    Tidak
+                                                    Tersedia</div>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="p-4 flex items-center text-sm text-gray-600">
+                                        @php
+                                            $rating = $item->rating;
+                                            $roundedRating = round($rating);
+                                        @endphp
 
-                        </a>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
+                                                <path
+                                                    d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
+                                                </path>
+                                            </svg>
+                                        @endfor
+                                        <div class="grid grid-cols-2 w-full">
+                                            <div class="ml-2">{{ $item->rating }} / 5 </div>
+                                            <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
+                @else
+                    <div class="text-center mt-8 bg-white rounded-2xl shadow-lg w-full py-4">
+                        <p class="text-2xl font-bold">Produk Kosong</p>
+                        <p class="text-gray-600">Maaf, tidak ada produk yang tersedia saat ini.</p>
+                    </div>
+                @endif
             </div>
         </section>
 
@@ -433,34 +421,19 @@
                     <div class="mb-6 md:mb-0">
                         <a href="/" class="flex items-center">
                             <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap ">Virtulib</span>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap">Virtulib</span>
                         </a>
                     </div>
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
+                        <div></div>
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-black uppercase ">Customer Services
+                            <h2 class="mb-6 text-sm font-semibold text-black uppercase "><a href="">Contact
+                                    Us</a>
                             </h2>
                             <ul class="text-black  font-medium">
                                 <li class="mb-4">
-                                    <a href="/" class="hover:underline">Virtulib</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="https://tailwindcss.com/" class="hover:underline">Payment Method</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="https://tailwindcss.com/" class="hover:underline">VirtuLib Warranty</a>
-                                </li>
-                                <li class="mb-4">
-                                    <a href="https://tailwindcss.com/" class="hover:underline">Contact Us</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 class="mb-6 text-sm font-semibold text-black uppercase ">Follow us
-                            </h2>
-                            <ul class="text-black  font-medium">
-                                <li class="mb-4">
-                                    <a href="https://www.instagram.com/nayadkr/" class="hover:underline">Instagram </a>
+                                    <a href="https://www.instagram.com/nayadkr/" class="hover:underline">Instagram
+                                    </a>
                                 </li>
                                 <li class="mb-4">
                                     <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Twitter</a>
