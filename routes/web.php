@@ -64,6 +64,8 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/testdoang', [BuyerController::class, 'showForm'])->name('buyertest.form');
+    Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
 });
 
