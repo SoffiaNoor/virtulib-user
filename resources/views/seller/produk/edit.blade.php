@@ -18,73 +18,58 @@
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="p-3">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="namamurid">Nama Murid</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="namasekolah">Asal Sekolah</label>
-                                        <input type="text" class="form-control" id="namasekolah" name="namasekolah"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="gender">Gender</label>
-                                        <input type="text" class="form-control" id="gender" name="gender"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="tanggallahir">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="tanggallahir" name="tanggallahir"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="kelas">Kelas </label>
-                                        <input type="text" class="form-control" id="kelas" name="kelas"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="fotomurid">Foto </label>
-                                        <input type="text" class="form-control" id="fotomurid" name="fotomurid"
-                                            value="{{ $products->name }}" >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="idbidang">Bidang</label>
-                                    <input type="text" class="form-control" id="idbidang" name="idbidang"
-                                        value="{{ $products->name }}" >
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 pt-2">
-                                    <button class="btn btn-icon btn-3 btn-secondary" type="button">
-                                        <a href="/produk" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a href="/produk" class="btn-inner--text text-white ms-2">Kembali</a>
-                                    </button>
-                                    <button class="btn btn-icon btn-3 btn-success" type="submit">
-                                        <a class="btn-inner--icon text-white"><i class="fa fa-pencil"
-                                                aria-hidden="true"></i>
-                                        </a>
-                                        <a class="btn-inner--text text-white ms-2">Update</a>
-                                    </button>
+                        <div class="row">
+                            <div class="col-md-6"style="align-self:end!important;">
+                                <div class="form-group">
+                                    <label>Nama Produk</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6" style="align-self:end!important;">
+                                <div class="form-group">
+                                    <label>Gambar Produk</label>
+                                    <input type="file" class="form-control" id="image" name="image" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6"style="align-self:end!important;">
+                                <div class="form-group">
+                                    <label>Deskripsi Produk</label>
+                                    <input type="text" class="form-control" id="description" name="description" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="align-self:end!important;">
+                                <div class="form-group">
+                                    <label>Harga</label>
+                                    <input type="number" class="form-control" id="price" name="price" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6"style="align-self:end!important;">
+                                <div class="form-group">
+                                    <label>Stok</label>
+                                    <input type="number" class="form-control" id="stock" name="stock" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 pt-2">
+                                <button class="btn btn-icon btn-3 btn-secondary" type="button">
+                                    <a href="/produk" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
+                                            aria-hidden="true"></i>
+                                    </a>
+                                    <a href="/produk" class="btn-inner--text text-white ms-2">Kembali</a>
+                                </button>
+                                <button class="btn btn-icon btn-3 btn-success" type="submit">
+                                    <a class="btn-inner--icon text-white"><i class="fa fa-save" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="btn-inner--text text-white ms-2">Simpan</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\Mahasiswa;
-// use App\Models\Dosen;
+
 use App\Models\Products;
-use Illuminate\Support\Facades\DB;
-use App\Models\MovedProducts;
 use App\Models\Produk_Pesan;
 use App\Models\Produk_Dikirim;
-use App\Models\Produk_Selesai;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProdukController extends Controller
 {
     public function index()
     {
-
+        
         $products = Products::paginate(5);
         return view("seller.produk.index", compact('products'));
     }
@@ -73,22 +71,47 @@ class ProdukController extends Controller
 
     public function destroy($_id)
     {
-        $products = Products::where('_id', $_id)->first();
+        $products = Products::find($_id);
+
         if (!$products) {
             return redirect()->route('produk.index')->with('error', 'Produk tidak ditemukan!');
         }
+        $image = $products->image;
+        $destinationPath = public_path('uploads/produk/');
+        $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+        
+        $filePath = $destinationPath . $profileImage;
+        
+        if (file_exists($filePath)) {
+            unlink($filePath);
+            echo "File berhasil dihapus.";
+        } else {
+            echo "File tidak ditemukan.";
+        }
+        
 
         $products->delete();
+
         return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus!');
     }
 
     public function store(Request $request)
     {
         try {
+            $input = $request->all();
+
+            if ($image = $request->file('image')) {
+                $destinationPath = 'uploads/produk/';
+                $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }
+
             $data = [
+                '_id' => (string) Str::uuid(), 
+                'seller_id' => Auth::user()->_id,
                 'name' => $request->input('name'),
-                'seller' => $request->input('seller'),
-                'gambar' => $request->input('gambar'),
+                'image' => $profileImage,
                 'description' => $request->input('description'),
                 'price' => $request->input('price'),
                 'stock' => $request->input('stock')
@@ -103,13 +126,30 @@ class ProdukController extends Controller
     }
 
 
-    public function update(Request $request, $_id)
+    public function update(Request $request, $_id, Products $products)
     {
         try {
+            
+            $input = $request->all();
+            // var_dump($input);die;
+
+            if ($image = $request->file('image')) {
+            $previousImage = $products->image;
+            if ($previousImage && file_exists(public_path('uploads/produk/' . $previousImage))) {
+                unlink(public_path('uploads/produk/' . $previousImage));
+            }
+    
+            $destinationPath = 'uploads/produk';
+            $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = $profileImage;
+        } else {
+            unset($input['image']);
+        }
+
             $data = [
                 'name' => $request->input('name'),
-                'seller' => $request->input('seller'),
-                'gambar' => $request->input('gambar'),
+                'image' => $profileImage,
                 'description' => $request->input('description'),
                 'price' => $request->input('price'),
                 'stock' => $request->input('stock')
