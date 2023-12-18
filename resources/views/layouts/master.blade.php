@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel='icon' type="image/x-icon" href='{{asset(' assets/images/logo2.ico')}}'>
+    <link rel='icon' type="image/x-icon" href='{{ asset(' /assets/images/logo.png"') }}'>
     <title>Edulink</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -82,15 +82,15 @@
         <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="swing-animation" alt="Loading..." />
     </div> --}}
     <div class="min-height-300 position-absolute w-100"></div>
-    <span class="mask bg-gradient-warning opacity-10"
-        style="background:#6d8eb3;background-size: cover;"></span>
+    <span class="mask bg-gradient-warning opacity-10" style="background:#6d8eb3;background-size: cover;"></span>
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
         id="sidenav-main" style="background-color:#F9F3CC                           ">
         <div class="sidenav-header" style="background-color:#4b6d93">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="/">
-                <img src="/assets/images/edulink2.png" class="navbar-brand-img h-100" alt="main_logo">
+                <img src=" /assets/images/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="self-center font-bold whitespace-nowrap " style="font-size=20px font-weight=bolder">VirtuLib</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -105,41 +105,41 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/produk/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/produk/', Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/produk"
-                        style="{{ preg_match('/produk/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        style="{{ preg_match('/produk/', Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Produk</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/penjualan/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/penjualan/', Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/penjualan"
-                        style="{{ preg_match('/penjualan/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        style="{{ preg_match('/penjualan/', Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Penjualan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesanan/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesanan/', Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/pesanan"
-                        style="{{ preg_match('/pesanan/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        style="{{ preg_match('/pesanan/', Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Produk Pesanan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pengiriman/', Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/pengiriman"
-                        style="{{ preg_match('/pengiriman/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        style="{{ preg_match('/pengiriman/', Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Produk Pengiriman</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/selesai/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/selesai/', Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/selesai"
-                        style="{{ preg_match('/selesai/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
+                        style="{{ preg_match('/selesai/', Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Produk Selesai</span>
                     </a>
@@ -175,8 +175,8 @@
                     </div>
                 </div>
             </div>
-            <a href="/register" target="_blank" class="btn btn-dark btn-sm w-100 mb-3"
-                style="background:#7523d6;background-size: cover;">Daftar Akun</a>
+            {{-- <a href="/register" target="_blank" class="btn btn-dark btn-sm w-100 mb-3"
+                style="background:#7523d6;background-size: cover;">Daftar Akun</a> --}}
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button class="btn btn-danger btn-sm mb-0 w-100" type="submit">Log Out</button>
@@ -189,7 +189,7 @@
             data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 {{-- <nav aria-label="breadcrumb">
-                    @if(request()->path() !== '/')
+                    @if (request()->path() !== '/')
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">EduLink</a></li>
                         @php
@@ -197,7 +197,7 @@
                         $breadcrumbPath = '';
                         @endphp
 
-                        @foreach($urlSegments as $segment)
+                        @foreach ($urlSegments as $segment)
                         @php
                         $cleanedSegment = str_replace('_', ' ', $segment);
                         $breadcrumbPath .= "/$segment";
@@ -214,38 +214,38 @@
                     @endif
                 </nav> --}}
                 <nav aria-label="breadcrumb">
-                    @if(request()->path() !== '/')
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">EduLink</a></li>
-                        @php
-                            $urlSegments = explode('/', request()->path());
-                            $breadcrumbPath = '';
-                        @endphp
-                
-                        @foreach($urlSegments as $key => $segment)
+                    @if (request()->path() !== '/')
+                        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">EduLink</a></li>
                             @php
-                                $cleanedSegment = str_replace('_', ' ', $segment);
-                                $breadcrumbPath .= "/$segment";
-                                $displaySegment = ucfirst($cleanedSegment);
-                                // Check if it's the last segment and modify the display text
-                                if ($key === count($urlSegments) - 1) {
-                                    if ($segment === 'detail') {
-                                        $displaySegment = 'Detail Sales'; // Customize display text for 'detail' segment
-                                    }
-                                }
+                                $urlSegments = explode('/', request()->path());
+                                $breadcrumbPath = '';
                             @endphp
-                
-                            <li class="breadcrumb-item text-sm {{ $loop->last ? 'text-white active' : '' }}">
-                                <a href="{{ $breadcrumbPath }}" class="text-white">
-                                    {{ $displaySegment }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ol>
-                    <h6 class="font-weight-bolder text-white mb-0">{{ $displaySegment }}</h6>
+
+                            @foreach ($urlSegments as $key => $segment)
+                                @php
+                                    $cleanedSegment = str_replace('_', ' ', $segment);
+                                    $breadcrumbPath .= "/$segment";
+                                    $displaySegment = ucfirst($cleanedSegment);
+                                    // Check if it's the last segment and modify the display text
+if ($key === count($urlSegments) - 1) {
+    if ($segment === 'detail') {
+        $displaySegment = 'Detail Sales'; // Customize display text for 'detail' segment
+                                        }
+                                    }
+                                @endphp
+
+                                <li class="breadcrumb-item text-sm {{ $loop->last ? 'text-white active' : '' }}">
+                                    <a href="{{ $breadcrumbPath }}" class="text-white">
+                                        {{ $displaySegment }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ol>
+                        <h6 class="font-weight-bolder text-white mb-0">{{ $displaySegment }}</h6>
                     @endif
                 </nav>
-                
+
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         {{-- <div class="input-group">
@@ -284,7 +284,8 @@
                     <div class="col-lg-12 mb-lg-0 mb-4">
                         <div class="copyright text-center text-xs text-muted text-lg-end"
                             style="color:white!important;opacity:100%!important">
-                            © <script>
+                            ©
+                            <script>
                                 document.write(new Date().getFullYear())
                             </script>,
                             made with <i class="far fa-grin"></i> by
@@ -311,12 +312,12 @@
     <script src="http://localhost:8000/assets/js/plugins/chartjs.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
     </script>
     {{-- <script>
         window.addEventListener('load', function () {
@@ -326,29 +327,28 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
         integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
         data-cf-beacon='{"rayId":"81f9fc41bb863e60","version":"2023.10.0","token":"1b7cbb72744b40c580f8633c6b62637e"}'
         crossorigin="anonymous"></script>
 
     <script>
         const searchInput = document.getElementById("searchInput");
-            const tableRows = document.querySelectorAll("table tbody tr");
-        
-            searchInput.addEventListener("input", function () {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-        
-                tableRows.forEach(row => {
-                    const rowData = row.textContent.toLowerCase();
-        
-                    if (rowData.includes(searchTerm)) {
-                        row.style.display = "table-row";
-                    } else {
-                        row.style.display = "none";
-                    }
-                });
+        const tableRows = document.querySelectorAll("table tbody tr");
+
+        searchInput.addEventListener("input", function() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            tableRows.forEach(row => {
+                const rowData = row.textContent.toLowerCase();
+
+                if (rowData.includes(searchTerm)) {
+                    row.style.display = "table-row";
+                } else {
+                    row.style.display = "none";
+                }
             });
+        });
     </script>
 </body>
 
