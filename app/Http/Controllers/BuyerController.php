@@ -31,33 +31,4 @@ class BuyerController extends Controller
         return view('buyer.detail', compact('products'));
     }
 
-    public function showForm()
-    {
-        $loggedInUser = Auth::user();
-        $buyerData = $loggedInUser->buyer;
-
-        var_dump($buyerData);die;
-
-        return view('buyer.test', compact('loggedInUser', 'muridData'));
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'namasekolah' => 'required|string',
-            'gender' => 'required|string',
-            'tanggallahir' => 'required|date',
-        ]);
-
-        $user = Auth::user();
-
-        $murid = $user->murid ?? new Buyer();
-        $murid->namasekolah = $request->input('namasekolah');
-        $murid->gender = $request->input('gender');
-        $murid->tanggallahir = $request->input('tanggallahir');
-
-        $user->buyer()->save($murid);
-
-        return redirect()->route('home')->with('success', 'Murid data saved successfully!');
-    }
 }
