@@ -49,11 +49,13 @@ class AuthController extends Controller
 
             if ($data['role'] === 'buyer') {
                 Buyer::create([
+                    '_id' => (string) Str::uuid(), 
                     'user_id' => $uu_id,
                     'name' => $user->name,
                 ]);
             } else {
                 Seller::create([
+                    '_id' => (string) Str::uuid(), 
                     'user_id' => $uu_id,
                     'nama' => $user->name,
                 ]
