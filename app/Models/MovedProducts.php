@@ -3,18 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use MongoDB\Laravel\Eloquent\Model;
 
 class MovedProducts extends Model
 {
     use HasFactory;
 
-    protected  $connection = 'mongodb';
+    protected $connection = 'mongodb';
+    protected $collection = 'moved_products';
 
-    // equivalent to $table for MySQL
-    protected  $collection = 'moved_products';
-
-    // defines the schema for top-level properties (optional).
-    protected  $fillable = ['name', 'seller', 'gambar', "description", "price", "stock"];
+    protected $fillable = ['name', 'seller', 'gambar', "description", "price", "stock"];
 }
