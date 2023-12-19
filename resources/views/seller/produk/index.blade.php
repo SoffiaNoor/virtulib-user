@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-    <section class="w-full min-h-screen py-24 " style="background-size: cover;">
+    <section class="w-full min-h-screen py-24 bg-#857f72" style="background-size: cover; background-color: #695c47">
         <div class=container>
 
             <div class="row">
@@ -15,7 +15,7 @@
                         <div class="card-body pt-2">
                             <div class="row">
                                 <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                    style="background:#587697;color:white!important;text-align:center">Produk
+                                    style="background:#ad7c35;color:white!important;font-family: 'Poppins';text-align:center">Produk
                                     Saya</span>
                             </div>
                             <div class="row my-2">
@@ -23,7 +23,7 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;text-align:center">Nama Produk</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama Produk</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -42,26 +42,7 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;text-align:center">Variasi produk</span>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-text text-body"><i class="fas fa-search"
-                                                        aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" id="searchInput"
-                                                    placeholder="Type here...">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row my-2">
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;text-align:center">Stok</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Stok</span>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="input-group">
@@ -109,7 +90,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase font-weight-bold"
-                                                style="color:#587697!important;text-align:center;font-size:2rem">Produk
+                                                style="color:black!important;font-family: 'Poppins';text-align:center;font-size:2rem">Produk
                                                 Saya</span>
                                         </div>
                                         <div class="col-sm-6">

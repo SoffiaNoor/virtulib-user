@@ -14,7 +14,7 @@
                         <div class="card-body pt-2">
                             <div class="row">
                                 <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                    style="background:#587697;color:white!important;text-align:center">Penjualan
+                                    style="background:#ad7c35;color:white!important;font-family: 'Poppins';text-align:center">Penjualan
                                     Saya</span>
                             </div>
                             <div class="row my-2">
@@ -22,16 +22,8 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;text-align:center">Nama Produk</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama Produk</span>
                                         </div>
-                                        {{-- <div class="col-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-text text-body"><i class="fas fa-search"
-                                                        aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" id="searchInput"
-                                                    placeholder="Type here...">
-                                            </div>
-                                        </div> --}}
                                         <div class="col-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-text text-body"><i class="fas fa-search"
@@ -50,7 +42,7 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;text-align:center">Nama Customer</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama Customer</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -85,7 +77,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase font-weight-bold"
-                                                style="color:#587697!important;text-align:center;font-size:2rem">Sales
+                                                style="color:black!important;font-family: 'Poppins';text-align:center;font-size:2rem">Sales
                                             </span>
                                         </div>
                                     </div>
