@@ -75,4 +75,5 @@
 @endsection
 
 @section('jquery')
+
 @endsection
