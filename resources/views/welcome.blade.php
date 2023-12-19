@@ -324,11 +324,11 @@
                     @foreach ($products as $item)
                     <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
                         <a href="{{ route('detail', $item->id) }}"
-                            class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
+                            class="c-card block bg-[#fffbeb] shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
                             <div class="relative pb-48 overflow-hidden">
-                                @if (isset($item->gambar) && !empty($item->gambar))
+                                @if (isset($item->image) && !empty($item->image))
                                 <img class="absolute inset-0 h-full w-full object-cover"
-                                    src="{{ asset($item->gambar) }}" alt="{{ $item->name }}">
+                                    src="uploads/produk/{{$item->image}}" alt="{{ $item->name }}">
                                 @else
                                 <img class="absolute inset-0 h-full w-full object-cover"
                                     src="{{ asset('assets/img/none.png') }}" alt="No Picture">
@@ -337,7 +337,7 @@
                             <div class="p-4">
                                 <span
                                     class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{
-                                    $item->seller }}</span>
+                                    $item->seller_id }}</span>
                                 <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
                                 <p class="text-sm">{{ $item->description }}</p>
                                 <div class="mt-3 flex items-center">

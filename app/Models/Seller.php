@@ -15,10 +15,10 @@ class Seller extends Model
 
     protected $collection = 'seller';
 
+    protected $primaryKey = '_id';
     protected $fillable = ['_id', 'user_id', 'nama', 'nama_toko', 'alamat', 'nomor_telepon'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

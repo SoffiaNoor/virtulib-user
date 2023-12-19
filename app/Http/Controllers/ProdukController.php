@@ -107,9 +107,11 @@ class ProdukController extends Controller
                 $input['image'] = "$profileImage";
             }
 
+            $seller_id = Auth::user()->_id;
+
             $data = [
                 '_id' => (string) Str::uuid(), 
-                'seller_id' => Auth::user()->_id,
+                'seller_id' => $seller_id,
                 'name' => $request->input('name'),
                 'image' => $profileImage,
                 'description' => $request->input('description'),

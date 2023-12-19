@@ -56,11 +56,12 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:buyer'])->group(function () {
-    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/cart', [CartController::class, 'index'])->name('buyer.cart');
     Route::get('/testdoang', [BuyerController::class, 'showForm'])->name('buyertest.form');
     Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
     Route::get('/profile' , [BuyerController::class, 'profile']);
+    Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
 });
 
 Route::get('/404', function () {
