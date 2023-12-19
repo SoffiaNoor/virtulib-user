@@ -25,4 +25,5 @@ class CartController extends Controller
 
         return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
     }
+
 }

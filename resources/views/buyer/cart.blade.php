@@ -3,6 +3,7 @@
 <div class="text-center">
     <div class="font-bold text-3xl my-5">Your Cart</div>
 </div>
+@if ($cart !== null && count($cart) > 0)
 @foreach ($cart as $item)
 <section class="text-center p-10 mt-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="bg-transparent">
@@ -35,7 +36,8 @@
                 </div>
             </div>
             <div class="mx-auto text-red total"></div>
-            <div class="grid grid-rows-2"><button id="orderNowBtn_{{ $loop->index }}" class="btn btn-warning font-bold rounded-full py-1 px-10 shadow-xl" disabled>Order Now</button>
+            <div class="grid grid-rows-2"><button id="orderNowBtn_{{ $loop->index }}"
+                    class="btn btn-warning font-bold rounded-full py-1 px-10 shadow-xl" disabled>Order Now</button>
                 <form method="POST" action="{{ route('destroy.cart', $item->_id) }}" enctype="multipart/form-data">
                     @csrf
                     <button class="btn btn-error font-bold rounded-full py-1 px-10 shadow-xl ">Delete
@@ -45,21 +47,28 @@
         </div>
     </div>
 </section>
-
-<div id="summarySection" class="fixed bottom-0 left-0 right-0 bg-[#fffbeb] p-4 text-center hidden">
-    <h2 class="text-lg font-semibold">Checked Products Summary</h2>
-    <h2 id="totalCheckedHeading" class="text-lg font-semibold">Total Product: 0</h2>
-
+<div id="summarySection"
+    class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-[#ca8a04] to-[#a16207] p-4 text-center hidden z-50">
+    <h2 class="text-lg font-semibold text-white">Checked Products Summary</h2>
     <ul id="checkedProductsList" class="list-disc pl-4"></ul>
 </div>
 @endforeach
+@else
+<section class="text-center p-10 mt-5 w-full bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl drop-shadow-md">
+    <div class="bg-transparent">
+        <div class="text-center">
+            <div class="font-bold text-white text-3xl my-5">You haven't added any products to your cart.</div>
+        </div>
+    </div>
+</section>
+@endif
 
 
 @endsection
 
 @section('jquery')
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     // Ambil semua elemen yang dibutuhkan
     const counters = document.querySelectorAll('.counter');
     const plusBtns = document.querySelectorAll('.plusBtn');
@@ -118,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const orderNowButtons = document.querySelectorAll('[id^="orderNowBtn_"]');
     const summarySection = document.getElementById('summarySection');
     const checkedProductsList = document.getElementById('checkedProductsList');
-    const totalCheckedHeading = document.getElementById('totalCheckedHeading');
 
     checkboxes.forEach((checkbox, index) => {
         checkbox.addEventListener('change', function () {
@@ -131,9 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateSummarySection() {
         const checkedCheckboxes = document.querySelectorAll('[type="checkbox"]:checked');
-        const totalChecked = checkedCheckboxes.length;
 
-        if (totalChecked > 1) {
+        if (checkedCheckboxes.length > 1) {
             summarySection.classList.remove('hidden');
             checkedProductsList.innerHTML = '';
 
@@ -148,9 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             summarySection.classList.add('hidden');
         }
-
-        // Update the Total Product heading
-        totalCheckedHeading.textContent = `Total Product: ${totalChecked}`;
     }
 });
 </script>
