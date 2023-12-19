@@ -22,7 +22,7 @@
                     <div class="p-5">Pesanan ID:</div>
                     <div class="grid grid-cols-4 gap-3 self-center justify-center items-center p-3 m-3" style="place-items: center;">
                         <div class="w-auto h-auto object-cover">
-                            <img src="http://127.0.0.1:8000/uploads/buyer/buyer-20231219093449.png" alt="">
+                            <img src="http://127.0.0.1:8000/assets/img/none.png" class="rounded-xl" alt="">
             
                             {{-- @if (isset($item->product->image) && !empty($item->product->image))
                             <img class="w-40 h-40 object-cover rounded-xl shadow-2xl" src="uploads/produk/{{$item->product->image}}"
@@ -45,7 +45,7 @@
                     <div class="p-5">Pesanan ID:</div>
                     <div class="grid grid-cols-4 gap-3 self-center justify-center items-center p-3 m-3" style="place-items: center;">
                         <div class="w-auto h-auto object-cover">
-                            <img src="http://127.0.0.1:8000/uploads/buyer/buyer-20231219093449.png" alt="">
+                            <img src="http://127.0.0.1:8000/assets/img/none.png" alt="">
             
                             {{-- @if (isset($item->product->image) && !empty($item->product->image))
                             <img class="w-40 h-40 object-cover rounded-xl shadow-2xl" src="uploads/produk/{{$item->product->image}}"

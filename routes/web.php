@@ -64,7 +64,6 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::post('/profile/update-photo/{id}', [BuyerController::class, 'updatePhotoProfile'])->name('updatePhotoProfile');
     Route::post('/profile/delete-photo/{id}', [BuyerController::class, 'deletePhotoProfile'])->name('deletePhotoProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
-    Route::post('/cart/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
     Route::post('/delete_product/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
     Route::get('/order', [BuyerController::class, 'showOrder']);
     Route::post('/cart/{productId}', [OrderController::class, 'tolongdong'])->name('tolongdong');
