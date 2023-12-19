@@ -23,10 +23,10 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/detail', [BuyerController::class, 'index']);
-Route::post('/test', [ProdukController::class,'test']);
+Route::post('/test', [ProdukController::class, 'test']);
 Route::get('/product/{id}', [BuyerController::class, 'detail'])->name('detail');
 Route::get('/', [BuyerController::class, 'welcome']);
-Route::get('/move-products', [ProdukController::class,'test']);
+Route::get('/move-products', [ProdukController::class, 'test']);
 Route::post('/move-products/{productId}', [ProdukController::class, 'moveProduct'])->name('move-products');
 
 View::composer('layouts.master', function ($view) {
@@ -60,11 +60,13 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/testdoang', [BuyerController::class, 'showForm'])->name('buyertest.form');
     Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
-    Route::get('/profile' , [BuyerController::class, 'showProfile'])->name('profile');
+    Route::get('/profile', [BuyerController::class, 'showProfile'])->name('profile');
     Route::post('/profile/update/{id}', [BuyerController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/profile/update-photo/{id}', [BuyerController::class, 'updatePhotoProfile'])->name('updatePhotoProfile');
+    Route::post('/profile/delete-photo/{id}', [BuyerController::class, 'deletePhotoProfile'])->name('deletePhotoProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
     Route::post('/cart/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
+    Route::get('/order', [BuyerController::class, 'showOrder']);
 });
 
 Route::get('/404', function () {
