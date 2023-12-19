@@ -47,6 +47,7 @@ class BuyerController extends Controller
             $order = $existingCart;
         } else {
             $order = new Cart();
+            $order->_id = (string) Str::uuid();
             $order->product_id = $product->id;
             $order->user_id = Auth::id();
             $order->quantity = 1;

@@ -12,8 +12,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BuyerController;
-
-
+use App\Http\Controllers\OrderController;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -64,7 +63,8 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::post('/profile/update/{id}', [BuyerController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/profile/update-photo/{id}', [BuyerController::class, 'updatePhotoProfile'])->name('updatePhotoProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
-    Route::post('/cart/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
+    Route::post('/delete_product/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
+    Route::post('/cart/{productId}', [OrderController::class, 'tolongdong'])->name('tolongdong');
 });
 
 Route::get('/404', function () {
