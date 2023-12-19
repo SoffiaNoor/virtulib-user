@@ -96,8 +96,6 @@
                                             </th>
                                             <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Total
                                                 Price</th>
-                                            <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Delivery
-                                            </th>
                                             <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Action
                                             </th>
                                             <th></th>
@@ -139,13 +137,6 @@
                                                         <div class="d-flex align-items-center">
                                                             <span class="ms-3 text-xs">
                                                                 {{ $item->total_price }}
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="ms-3 text-xs">
-                                                                {{ $item->delivery }}
                                                             </span>
                                                         </div>
                                                     </td>

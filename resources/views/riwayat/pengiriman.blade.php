@@ -123,7 +123,7 @@
                                             <td class="text-uppercase text-default text-xs font-weight-bolder">
                                                 <div class="d-flex align-items-center">
                                                     <span class="ms-3 text-xs">
-                                                        {{-- {{ $item->product->user->name }} --}}
+                                                        {{ $item->user->name }}
                                                     </span>
                                                 </div>
                                             </td>
