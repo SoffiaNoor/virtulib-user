@@ -16,12 +16,12 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Saldo
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Saldo
                                         Rekening</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared Coworking
                                     </a> --}}
-                                    <p class="card-description mb-4 mt-4" style="align-self: center">
+                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
                                         Rp 10.000.000
                                     </p>
                                     {{-- <div class="author align-items-center">
@@ -46,11 +46,11 @@
 
                                 <div class="card-body pt-2">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Terjual/hari</span>
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Terjual/hari</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared
                                     </a> --}}
-                                    <p class="card-description mb-4 mt-4" style="align-self: center">
+                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
                                     {{-- <div class="author align-items-center">
@@ -75,11 +75,11 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Dikemas</span>
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Dikemas</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared
                                     </a> --}}
-                                    <p class="card-description mb-4 mt-4">
+                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
                                     {{-- <div class="author align-items-center">
@@ -104,11 +104,11 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Pengiriman</span>
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Pengiriman</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared
                                     </a> --}}
-                                    <p class="card-description my-4">
+                                    <p class="card-description my-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
                                     {{-- <div class="author align-items-center">
@@ -139,12 +139,12 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Produk Terjual per Bulan</span>
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Produk Terjual per Bulan</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared
                                     </a> --}}
                                     
-                                    <p class="card-description mb-4">
+                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
                                     {{-- <div class="author align-items-center">
@@ -169,22 +169,12 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Performa VirtuLib</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    <p class="card-description mb-4">
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Performa VirtuLib</span>
+                                    
+                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+                                   
                                 </div>
                             </div>
                         </div>
@@ -204,10 +194,8 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Daftar Stok</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Daftar Stok</span>
+                                    
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                             <tr>
@@ -220,21 +208,8 @@
                                                 {{-- <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Action</th> --}}
                                                 <th></th>
                                             </tr>
-                                        </thead>
-                                        
+                                        </thead>                 
                                     </table>
-                                    {{-- <p class="card-description mb-4">
-                                        CONTENT
-                                    </p> --}}
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -248,11 +223,11 @@
 
                                 <div class="card-body pt-2" style="align-self:center">
                                     <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#587697;background-size: cover;color:white!important;text-align:center">Performa Produk</span>
+                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Performa Produk</span>
                                     {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
                                         Shared
                                     </a> --}}
-                                    <p class="card-description mb-4">
+                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
                                         CONTENT
                                     </p>
                                     {{-- <div class="author align-items-center">
