@@ -292,6 +292,7 @@
                 @if (count($products) > 0)
                     <div class="flex flex-wrap -mx-4">
                         @foreach ($products as $item)
+                        @if ($item->stock > 0)
                             <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
                                 <a href="{{ route('detail', $item->id) }}"
                                     class="c-card block bg-[#fffbeb] shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
@@ -357,6 +358,7 @@
 
                                 </a>
                             </div>
+                            @endif
                         @endforeach
                     </div>
                 @else

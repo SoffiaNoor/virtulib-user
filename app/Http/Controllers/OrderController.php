@@ -26,6 +26,11 @@ class OrderController extends Controller
         $order->status = 0;
         $order->save();
 
+        // Update the Product stock
+        $product = $cartItem->product;
+        $product->stock -= $totalQuantity; // Subtract the ordered quantity from the stock
+        $product->save();
+
         $cartItem->delete();
 
         return redirect()->back()->with('success', 'Item moved to checked cart successfully.');
