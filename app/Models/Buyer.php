@@ -15,7 +15,7 @@ class Buyer extends Model
 
     protected $collection = 'buyer';
 
-    protected $fillable = ['_id', 'user_id', 'name', 'alamat', 'nomor_telepon'];
+    protected $fillable = ['_id', 'user_id', 'name', 'full_name', 'address', 'phone_number', 'birthdate'];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

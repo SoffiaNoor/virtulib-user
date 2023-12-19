@@ -45,11 +45,31 @@ class BuyerController extends Controller
         return redirect()->route('buyer.cart', ['_id' => $order->_id]);
     }
 
-    public function profile()
+    public function showProfile()
     {
         $login = Auth::user()->_id;
-        $profil = Buyer::find($login);
-        return view('buyer.profil', compact('profil'));
+        $profil = Buyer::where('user_id', $login)->first();
+        
+        return view('buyer.profil', compact('profil', 'login'));
+    }
+    public function updateProfile(Request $request, $id)
+    {
+
+        try {
+            $data = [
+                'full_name' => $request->input('name'),
+                'address' => $request->input('address'),
+                'phone_number' => $request->input('phone_number'),
+                'gender' => $request->input('gender'),
+                'birthdate' => $request->input('birthdate'),
+            ];
+
+            Buyer::where('user_id', $id)->update($data);
+
+            return redirect()->route('profile')->with('success', 'Profil berhasil diubah!');
+        } catch (\Exception $e) {
+            return redirect()->route('profile')->with('error', 'Gagal mengubah profil. Pastikan data yang Anda masukkan benar.');
+        }
     }
 
 }

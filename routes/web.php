@@ -60,7 +60,8 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/testdoang', [BuyerController::class, 'showForm'])->name('buyertest.form');
     Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
-    Route::get('/profile' , [BuyerController::class, 'profile']);
+    Route::get('/profile' , [BuyerController::class, 'showProfile'])->name('profile');
+    Route::post('/profile/{id}', [BuyerController::class, 'updateProfile'])->name('profile.updateProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
 });
 
