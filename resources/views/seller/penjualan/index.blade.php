@@ -173,14 +173,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body text-sm">
-                                                                    Apakah anda yakin menghapus Mata Pelajaran <span
+                                                                    Apakah anda yakin menghapus Data Penjualan <span
                                                                         class="font-weight-bolder">{{ $item->name }}</span>?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Tidak</button>
                                                                     <form
-                                                                        action="{{ route('produk.destroy', $item->_id) }}"
+                                                                        action="{{ route('penjualan.destroy', $item->_id) }}"
                                                                         method="POST" style="display: inline;">
                                                                         @csrf
                                                                         @method('DELETE')
