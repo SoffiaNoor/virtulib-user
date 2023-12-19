@@ -17,14 +17,13 @@
 
 
         <div class="bg-gradient-to-r from-[#e5e7eb] to-[#e7e5e4] rounded-2xl shadow-xl col-span-2 p-4">
+            @foreach($order as $item)
             <div class="p-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md my-2">
                 <div class="bg-transparent">
-                    <div class="p-5">Pesanan ID:</div>
-                    <div class="grid grid-cols-4 gap-3 self-center justify-center items-center p-3 m-3" style="place-items: center;">
-                        <div class="w-auto h-auto object-cover">
-                            <img src="http://127.0.0.1:8000/assets/img/none.png" class="rounded-xl" alt="">
-            
-                            {{-- @if (isset($item->product->image) && !empty($item->product->image))
+                    <div class="p-5">Pesanan ID: {{$item->_id}}</div>
+                    <div class="grid grid-cols-5 gap-3 self-center justify-center items-center p-3 m-3" style="place-items: center;">
+                        <div class="w-auto h-auto object-cover">          
+                            @if (isset($item->product->image) && !empty($item->product->image))
                             <img class="w-40 h-40 object-cover rounded-xl shadow-2xl" src="uploads/produk/{{$item->product->image}}"
                                 alt="{{ $item->product->name }}">
                             @else
@@ -32,37 +31,16 @@
                                 <img class="w-40 h-40 object-cover rounded-xl shadow-2xl"
                                     src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
                             </div>
-                            @endif --}}
+                            @endif
                         </div>
-                        <div class="font-bold">nama produk</div>
-                        <div>jumlah</div>
-                        <div>total</div>
+                        <div class="font-bold">{{ $item->product->name }}</div>
+                        <div>{{$item->total_quantity}}</div>
+                        <div>{{$item->total_price}}</div>
+                        <div>Status</div>
                     </div>
                 </div>
             </div>
-            <div class="p-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md my-2">
-                <div class="bg-transparent">
-                    <div class="p-5">Pesanan ID:</div>
-                    <div class="grid grid-cols-4 gap-3 self-center justify-center items-center p-3 m-3" style="place-items: center;">
-                        <div class="w-auto h-auto object-cover">
-                            <img src="http://127.0.0.1:8000/assets/img/none.png" alt="">
-            
-                            {{-- @if (isset($item->product->image) && !empty($item->product->image))
-                            <img class="w-40 h-40 object-cover rounded-xl shadow-2xl" src="uploads/produk/{{$item->product->image}}"
-                                alt="{{ $item->product->name }}">
-                            @else
-                            <div>
-                                <img class="w-40 h-40 object-cover rounded-xl shadow-2xl"
-                                    src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
-                            </div>
-                            @endif --}}
-                        </div>
-                        <div class="font-bold">nama produk</div>
-                        <div>jumlah</div>
-                        <div>total</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     </div>

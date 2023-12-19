@@ -7,12 +7,13 @@ use App\Models\Produk_Pesan;
 use App\Models\Produk_Dikirim;
 use App\Models\Produk_Selesai;
 use App\Models\Penjualan;
+use App\Models\Order;
 
 class RiwayatController extends Controller
 {
     public function pesanan()
     {
-        $products = Produk_Pesan::all();
+        $products = Order::all();
         return view("riwayat.pesanan", compact('products'));
     }
 
@@ -30,7 +31,7 @@ class RiwayatController extends Controller
 
     public function moveProductPesanan(Request $request, $productId)
     {
-        $product = Produk_Pesan::find($productId);
+        $product = Order::find($productId);
 
         if (!$product) {
             return redirect()->back()->with('error', 'Product not found.');

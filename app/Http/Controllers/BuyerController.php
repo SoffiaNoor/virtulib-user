@@ -8,6 +8,7 @@ use App\Models\Buyer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Cart;
+use App\Models\Order;
 
 class BuyerController extends Controller
 {
@@ -138,7 +139,9 @@ class BuyerController extends Controller
 
     public function showOrder()
     {
-        return view('buyer.order');
+        $login = Auth::user()->_id;
+        $order = Order::where('user_id', $login)->get();
+        return view('buyer.order', compact('order'));
     }
 
 }
