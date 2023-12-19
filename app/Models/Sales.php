@@ -11,4 +11,10 @@ class Sales extends Model
     protected $connection = 'mongodb';
     protected $collection = 'sales';
     protected $fillable = ['product_id', 'total_purchase', 'price', 'total_price'];
+
+    public function product()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
 }
+

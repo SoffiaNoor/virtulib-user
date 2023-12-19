@@ -14,16 +14,14 @@
                         <div class="card-body pt-2">
                             <div class="row">
                                 <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                    style="background:#ad7c35;color:white!important;font-family: 'Poppins';text-align:center">Penjualan
-                                    Saya</span>
+                                    style="background:#ad7c35;color:white!important;font-family: 'Poppins';text-align:center">My Sales</span>
                             </div>
                             <div class="row my-2">
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama
-                                                Produk</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Product Name</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -43,8 +41,7 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama
-                                                Customer</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Customer Name</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -87,7 +84,7 @@
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-default text-xs font-weight-bolder">Customer</th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                             <th class="text-uppercase text-default text-xs font-weight-bolder">Product Name
                                             </th>
                                             <th class="text-uppercase text-default text-xs font-weight-bolder">Total
@@ -103,33 +100,33 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($sales as $item)
-                                            @if ($item->status === 0)
+                                            {{-- @if ($item->status === 0) --}}
                                                 <tr>
                                                     <td class="text-uppercase text-default text-xs font-weight-bolder">
                                                         <div class="d-flex align-items-center">
                                                             <span class="ms-3 text-xs">
-                                                                {{ $item->customer }}
+                                                                {{ $loop->iteration }} 
                                                             </span>
                                                         </div>
                                                     </td>
                                                     <td class="text-uppercase text-default text-xs font-weight-bolder">
                                                         <div class="d-flex align-items-center">
                                                             <span class="ms-3 text-xs">
-                                                                {{ $item->productname }}
+                                                                {{ $item->product->name }}
                                                             </span>
                                                         </div>
                                                     </td>
                                                     <td class="text-uppercase text-default text-xs font-weight-bolder">
                                                         <div class="d-flex align-items-center">
                                                             <span class="ms-3 text-xs">
-                                                                {{ $item->totalpurchase }}
+                                                                {{ $item->total_purchase }}
                                                             </span>
                                                         </div>
                                                     </td>
                                                     <td class="text-uppercase text-default text-xs font-weight-bolder">
                                                         <div class="d-flex align-items-center">
                                                             <span class="ms-3 text-xs">
-                                                                {{ $item->price }}
+                                                                {{ $item->product->price }}
                                                             </span>
                                                         </div>
                                                     </td>
@@ -139,7 +136,7 @@
                                                                 {{ $item->total_price }}
                                                             </span>
                                                         </div>
-                                                    </td>
+                                                    </td>                                                 
                                                     <td
                                                         class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                         <a href="{{ route('penjualan.detail', $item->_id) }}"
@@ -185,7 +182,7 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            @endif
+                                            {{-- @endif --}}
                                         @endforeach
                                     </tbody>
                                 </table>
