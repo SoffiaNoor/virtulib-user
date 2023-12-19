@@ -17,6 +17,7 @@
     <!-- Animasi -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <style>
     .fixed-bottom-footer {
@@ -78,9 +79,6 @@
 </style>
 
 <body class="g-sidenav-show" style="background-color:#695c47">
-    {{-- <div class="loader-container">
-        <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="swing-animation" alt="Loading..." />
-    </div> --}}
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="bg-664c24" style="background:#peru;background-size: cover;"></span>
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
@@ -89,7 +87,6 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="/" style="background-color: #ad7c35">
-                {{-- <img src=" /assets/images/logo.png" class="navbar-brand-img h-100" alt="main_logo"> --}}
                 <span class="self-center font-bold text-white whitespace-nowrap " style="font-size: x-large; font-family: sans-serif; font-weight:bolder; text-align: center">VIRTULIB</span>
             </a>
         </div>
@@ -101,7 +98,7 @@
                         href="/seller"
                         style="{{ preg_match('/seller/', Route::current()->uri) == 1 ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Dashboard</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -109,7 +106,7 @@
                         href="/produk"
                         style="{{ preg_match('/produk/', Route::current()->uri) == true ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Produk</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Produk</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,7 +114,7 @@
                         href="/penjualan"
                         style="{{ preg_match('/penjualan/', Route::current()->uri) == true ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Penjualan</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Penjualan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -125,7 +122,7 @@
                         href="/pesanan"
                         style="{{ preg_match('/pesanan/', Route::current()->uri) == true ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Produk Pesanan</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Produk Pesanan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -133,7 +130,7 @@
                         href="/pengiriman"
                         style="{{ preg_match('/pengiriman/', Route::current()->uri) == true ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Produk Pengiriman</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Produk Pengiriman</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -141,27 +138,9 @@
                         href="/selesai"
                         style="{{ preg_match('/selesai/', Route::current()->uri) == true ? 'background:#ad7c35;background-size: cover;color:black!important' : 'color:black!important' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold" style="font-family: 'Poppins'">Produk Selesai</span>
+                        <span class="nav-link-text ms-1 font-weight-semibold" style="font-family: 'Poppins'">Produk Selesai</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/pesan_konsul/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/pesan_konsul"
-                        style="{{ preg_match('/pesan_konsul/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Pesan Konsul</span>
-                    </a>
-                </li> --}}
-                {{-- <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder " style='color=black'>User Configuration
-                </h6>
-                <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-white {{ preg_match('/user/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/user"
-                        style="{{ preg_match('/user/',Route::current()->uri) == true ? 'background:#587697;background-size: cover;color:black!important' : 'color:black!important' }}">
-                        <i class="fa fa-save" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">List User</span>
-                    </a>
-                </li> --}}
             </ul>
         </div>
         <div class="sidenav-footer mx-3 ">
@@ -175,8 +154,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <a href="/register" target="_blank" class="btn btn-dark btn-sm w-100 mb-3"
-                style="background:#7523d6;background-size: cover;">Daftar Akun</a> --}}
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button class="btn btn-danger btn-sm mb-0 w-100" type="submit">Log Out</button>

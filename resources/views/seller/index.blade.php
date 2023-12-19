@@ -1,254 +1,113 @@
 @extends('layouts/master')
 @section('content')
-    <section class="w-full min-h-screen py-24 "
-        style="background-size: cover;">
-        <div class=container>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-2 mt-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Saldo
-                                        Rekening</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared Coworking
-                                    </a> --}}
-                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
-                                        Rp 10.000.000
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on 28 February</small>
-                                            </div>
-                                        </div> 
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="card mt-2 mb-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Terjual/hari</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="card mt-2 mb-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Dikemas</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    <p class="card-description mb-4 mt-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="card mt-2 mb-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Pengiriman</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    <p class="card-description my-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="container-fluid px-3 pt-1">
+    <div class="row">
+        <div class="col-sm-4 mt-2" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">
+            <div class="info-horizontal bg-gradient-warning border-radius-xl p-3">
+                <div class="icon">
+                    <i class="fa fa-book text-2xl text-white mt-1"></i>
                 </div>
-            </div>
-            <div class="row">
-                <div class="row-sm-12">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-2 mt-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Produk Terjual per Bulan</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    
-                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-2 mt-2">
-                                <div class="card-header p-0 mx-3 mt-3  position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Performa VirtuLib</span>
-                                    
-                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="row-sm-12">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-2 mt-2">
-                                <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Daftar Stok</span>
-                                    
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Produk</th>
-                                                <th class="text-uppercase text-default text-xs font-weight-bolder">Kode produk</th>
-                                                <th class="text-uppercase text-default text-xs font-weight-bolder">Sisa Stok</th>
-                                                {{-- <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Harga</th> --}}
-                                                {{-- <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Total Belanja</th> --}}
-                                                {{-- <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Pengiriman</th> --}}
-                                                {{-- <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Action</th> --}}
-                                                <th></th>
-                                            </tr>
-                                        </thead>                 
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-2 mt-2">
-                                <div class="card-header p-0 mx-3 mt-3  position-relative z-index-1">
-                                    <a href="javascript:;" class="d-block">
-                                        {{-- <img src="./assets/img/kit/pro/anastasia.jpg" class="img-fluid border-radius-lg"> --}}
-                                    </a>
-                                </div>
-
-                                <div class="card-body pt-2" style="align-self:center">
-                                    <span class="mx-1 px-2 py-1 my-2 text-uppercase text-xs font-weight-bold"
-                                        style="background:#ad7c35;background-size: cover;color:white!important;font-family: 'Poppins';text-align:center">Performa Produk</span>
-                                    {{-- <a href="javascript:;" class="card-title h5 d-block text-darker">
-                                        Shared
-                                    </a> --}}
-                                    <p class="card-description mb-4" style="align-self: center;font-family: 'Poppins'">
-                                        CONTENT
-                                    </p>
-                                    {{-- <div class="author align-items-center">
-                                        <img src="./assets/img/kit/pro/team-2.jpg" alt="..." class="avatar shadow">
-                                        <div class="name ps-3">
-                                            <span>Mathew Glock</span>
-                                            <div class="stats">
-                                                <small>Posted on </small>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="description ps-5">
+                    <h6 class="text-white font-weight-bolder">Total Buyer</h6>
+                    <h2 class="text-white"
+                        style="background: linear-gradient(to right, #ffffffc9, #f1f8ff);-webkit-text-fill-color: transparent;-webkit-background-clip: text;">
+                        {{ \App\Models\Buyer::count() }}
+                    </h2>
+                    <hr class="m-0" style="background-color:#ffffff;height:10px;border-radius:40px;width:50%">
+                    <a href="/murid" class="text-light icon-move-right font-weight-bolder" style="font-style:italic">
+                        See More...
+                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="col-sm-4 mt-2" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">
+            <div class="info-horizontal bg-gradient-warning border-radius-xl p-3">
+                <div class="icon">
+                    <i class="fa fa-book text-2xl text-white mt-1"></i>
+                </div>
+                <div class="description ps-5">
+                    <h6 class="text-white font-weight-bolder">Total Product</h6>
+                    <h2 class="text-white"
+                        style="background: linear-gradient(to right, #ffffffc9, #f1f8ff);-webkit-text-fill-color: transparent;-webkit-background-clip: text;">
+                        {{ \App\Models\Products::count() }}
+                    </h2>
+                    <hr class="m-0" style="background-color:#ffffff;height:10px;border-radius:40px;width:50%">
+                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder" style="font-style:italic">
+                        See More...
+                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 mt-2" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">
+            <div class="info-horizontal bg-gradient-warning border-radius-xl p-3">
+                <div class="icon">
+                    <i class="fa fa-book text-2xl text-white mt-1"></i>
+                </div>
+                <div class="description ps-5">
+                    <h6 class="text-white font-weight-bolder">Total Order</h6>
+                    <h2 class="text-white"
+                        style="background: linear-gradient(to right, #ffffffc9, #f1f8ff);-webkit-text-fill-color: transparent;-webkit-background-clip: text;">
+                        {{ \App\Models\Order::count() }}
+                    </h2>
+                    <hr class="m-0" style="background-color:#ffffff;height:10px;border-radius:40px;width:50%">
+                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder" style="font-style:italic">
+                        See More...
+                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">
+        <div class="col-lg-5">
+            <div class="card card-carousel overflow-hidden h-full p-0">
+                <div class="py-2 px-4" style="background-color:white!important;color:white">
+                    <h6 class="text-black font-weight-bolder">Total Purchase Products</h6>
+                    <canvas id="topSalesChart" width="50" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="card card-carousel overflow-hidden h-full p-0">
+                <div class="py-2 px-4" style="background-color:#ad7c35!important;color:white">
+                    <h6 class="text-white font-weight-bolder">Diagram Pemesanan Mata Pelajaran</h6>
+                    <canvas id="subjectSalesChart" width="100" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('jquery')
-    <script></script>
+<script>
+    const chartData = @json($chartData);
+    const labels = Object.keys(chartData);
+    const data = Object.values(chartData);
+
+    const ctx = document.getElementById('topSalesChart').getContext('2d');
+    const topSalesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Purchase',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 @endsection

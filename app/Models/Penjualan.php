@@ -9,7 +9,7 @@ class Penjualan extends Model
 {
     use HasFactory;
 
-    protected  $connection = 'mongodb';
-    protected  $collection = 'penjualan';
-    protected  $fillable = ['pengiriman', 'jumlah_barang', 'total_harga', "id_produk", 'name', 'seller', 'gambar', "description", "price", "stock"];
+    protected $connection = 'mongodb';
+    protected $collection = 'penjualan';
+    protected $fillable = ['customer', 'productname', 'totalpurchase', "price", 'totalprice', 'delivery'];
 }
