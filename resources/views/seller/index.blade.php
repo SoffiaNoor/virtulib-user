@@ -85,14 +85,14 @@
 @section('jquery')
 <script>
     const chartData = @json($chartData);
-    const labels = Object.keys(chartData);
+    const productNames = Object.keys(chartData);
     const data = Object.values(chartData);
 
     const ctx = document.getElementById('topSalesChart').getContext('2d');
     const topSalesChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: productNames,
             datasets: [{
                 label: 'Total Purchase',
                 data: data,
