@@ -14,7 +14,7 @@
 </div>
 @endif
 @if ($cart !== null && count($cart) > 0)
-@foreach ($cart as $item)
+@foreach ($cart as $index => $item)
 <section class="text-center p-10 mt-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="bg-transparent">
         <form class="flex flex-cols-7 gap-3 self-center justify-center items-center" method="POST" id="form1"
@@ -35,7 +35,8 @@
             <div class="mx-auto font-bold">{{ $item->product->name }}</div>
             <div class="mx-auto text-red price"><span>{{ $item->product->price }}</div>
             <div class="relative flex items-center max-w-[8rem] mx-10">
-                <button type="button" id="decrement-button" data-input-counter-decrement="total_quantity"
+                <button type="button" id="decrement-button-{{ $index }}"
+                    data-input-counter-decrement="total_quantity-{{ $index }}"
                     class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
@@ -43,11 +44,12 @@
                             d="M1 1h16" />
                     </svg>
                 </button>
-                <input type="number" id="total_quantity" name="total_quantity" value="{{$item->quantity}}" data-input-counter
-                    aria-describedby="helper-text-explanation"
+                <input type="number" id="total_quantity-{{ $index }}" name="total_quantity"
+                    value="{{ $item->quantity }}" data-input-counter aria-describedby="helper-text-explanation"
                     class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="999" required>
-                <button type="button" id="increment-button" data-input-counter-increment="total_quantity"
+                <button type="button" id="increment-button-{{ $index }}"
+                    data-input-counter-increment="total_quantity-{{ $index }}"
                     class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
@@ -55,6 +57,32 @@
                             d="M9 1v16M1 9h16" />
                     </svg>
                 </button>
+                <script>
+                    // Function to initialize the counter for each set of buttons
+                    function initializeCounter(index) {
+                        const decrementButton = document.getElementById(`decrement-button-${index}`);
+                        const incrementButton = document.getElementById(`increment-button-${index}`);
+                        const inputCounter = document.getElementById(`total_quantity-${index}`);
+                
+                        // Add your event listeners or logic for incrementing and decrementing
+                        decrementButton.addEventListener('click', () => {
+                            // Decrement logic
+                            if (inputCounter.value > 0) {
+                                inputCounter.value = parseInt(inputCounter.value, 10) - 1;
+                            }
+                        });
+                
+                        incrementButton.addEventListener('click', () => {
+                            // Increment logic
+                            inputCounter.value = parseInt(inputCounter.value, 10) + 1;
+                        });
+                    }
+                
+                    // Initialize counters for each set of buttons
+                    @foreach ($cart as $index => $item)
+                        initializeCounter({{ $index }});
+                    @endforeach
+                </script>
             </div>
             <div class="grid grid-rows-2">
                 <button id="orderNowBtn_{{ $loop->index }}" type="submit"
