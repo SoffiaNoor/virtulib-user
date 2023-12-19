@@ -1,12 +1,8 @@
 [
   {
-    "customer": "sasa",
-    "productname": "nivea",
-    "totalpurchase": 2,
-    "price": 35000,
-    "total_price": 70000,
-    "delivery": "JNE"
-    
+    "delivery":"J&T",
+    "deliverytime": 2,
+    "deliveryprice": 17000    
   }
 ]
 

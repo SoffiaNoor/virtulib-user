@@ -14,7 +14,7 @@
                         <div class="card-body pt-2">
                             <div class="row">
                                 <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                    style="background:#587697;color:white!important;text-align:center">Penjualan
+                                    style="background:#ad7c35;color:white!important;text-align:center">Penjualan
                                     Saya</span>
                             </div>
                             <div class="row my-2">
@@ -75,7 +75,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase font-weight-bold"
-                                                style="color:#587697!important;text-align:center;font-size:2rem">Sales
+                                                style="color:black!important;text-align:center;font-size:2rem">Sales
                                             </span>
                                         </div>
                                     </div>
