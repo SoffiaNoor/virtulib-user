@@ -160,37 +160,35 @@
                                                             data-bs-target="#deleteModal{{ $item->_id }}">
                                                             <i class="fa fa-trash text-sm"></i>
                                                         </a>
-
-                                                        <div class="modal fade" id="deleteModal{{ $item->_id }}"
-                                                            tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title font-weight-bolder"
-                                                                            id="deleteModalLabel">
-                                                                            Delete Confirmation
-                                                                        </h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close">
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body text-sm">
-                                                                        Apakah anda yakin menghapus Mata Pelajaran <span
-                                                                            class="font-weight-bolder">{{ $item->name }}</span>?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Tidak</button>
-                                                                        <form
-                                                                            action="{{ route('produk.destroy', $item->_id) }}"
-                                                                            method="POST" style="display: inline;">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit"
-                                                                                class="btn btn-danger">Hapus</button>
-                                                                        </form>
-                                                                    </div>
+                                                    <div class="modal fade" id="deleteModal{{ $item->_id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title font-weight-bolder"
+                                                                        id="deleteModalLabel">
+                                                                        Delete Confirmation
+                                                                    </h5>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close">
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body text-sm">
+                                                                    Apakah anda yakin menghapus Data Penjualan <span
+                                                                        class="font-weight-bolder">{{ $item->name }}</span>?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Tidak</button>
+                                                                    <form
+                                                                        action="{{ route('penjualan.destroy', $item->_id) }}"
+                                                                        method="POST" style="display: inline;">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Hapus</button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

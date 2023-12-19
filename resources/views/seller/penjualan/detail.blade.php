@@ -55,17 +55,17 @@
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">
-                                <a href="/sales" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
+                                <a href="/penjualan" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
                                         aria-hidden="true"></i></a>
-                                <a href="/sales" class="btn-inner--text text-white ms-2">Kembali</a>
+                                <a href="/penjualan" class="btn-inner--text text-white ms-2">Kembali</a>
                             </button>
-                            <button class="btn btn-icon btn-3 btn-primary" type="button">
+                            {{-- <button class="btn btn-icon btn-3 btn-primary" type="button">
                                 <a href="{{route('penjualan.update',$sales->_id)}}"
                                     class="btn-inner--icon text-white"><i class="fa fa-pencil"
                                         aria-hidden="true"></i></a>
                                 <a href="{{route('penjualan.update',$sales->_id)}}"
                                     class="btn-inner--text text-white ms-2">Edit</a>
-                            </button>
+                            </button> --}}
                             {{-- <button class="btn btn-icon btn-3 btn-danger" type="button" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal">
                                 <a class="btn-inner--icon text-white"><i class="fa fa-trash" aria-hidden="true"></i></a>

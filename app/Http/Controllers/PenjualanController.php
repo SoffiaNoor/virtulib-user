@@ -41,6 +41,17 @@ class PenjualanController extends Controller
 
         return view("seller.penjualan.index", compact('sales'));
     }
+    public function destroy($_id)
+    {
+        $sales = Sales::find($_id);
+
+        if (!$sales) {
+            return redirect()->route('penjualan.index')->with('error', 'Data Penjualan tidak ditemukan!');
+        }
+        
+        $sales->delete();
+        return redirect()->route('penjualan.index')->with('success', 'Data Penjualan berhasil dihapus!');
+    }
 
 
 
