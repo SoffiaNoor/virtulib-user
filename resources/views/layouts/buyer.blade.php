@@ -253,7 +253,7 @@
                 </nav>
             </header>
 
-            <div class="px-5 lg:mx-40 mx-11 mt-40">
+            <div class="px-5 lg:mx-40 mx-11 mt-40 min-h-screen">
                 @yield('content')
             </div>
 

@@ -35,13 +35,25 @@ class BuyerController extends Controller
     {
         $product = Products::find($id);
 
-        $order = new Cart();
-        $order->product_id = $product->id;
-        $order->user_id = auth()->user()->id;
-        $order->quantity = 1;
-        $order->total_price = $product->price; 
+        $existingCart = Cart::where('user_id', Auth::id())
+            ->where('product_id', $product->id)
+            ->first();
 
-        $order->save();
+        if ($existingCart) {
+            $existingCart->quantity += 1;
+            $existingCart->total_price = $existingCart->quantity * $product->price;
+            $existingCart->save();
+
+            $order = $existingCart;
+        } else {
+            $order = new Cart();
+            $order->product_id = $product->id;
+            $order->user_id = Auth::id();
+            $order->quantity = 1;
+            $order->total_price = $product->price;
+            $order->save();
+        }
+
         return redirect()->route('buyer.cart', ['_id' => $order->_id]);
     }
 
@@ -49,7 +61,7 @@ class BuyerController extends Controller
     {
         $login = Auth::user()->_id;
         $profil = Buyer::where('user_id', $login)->first();
-        
+
         return view('buyer.profil', compact('profil', 'login'));
     }
     public function updateProfile(Request $request, $id)

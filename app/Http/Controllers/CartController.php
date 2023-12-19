@@ -18,11 +18,11 @@ class CartController extends Controller
         $product_cart = Cart::find($id);
 
         if (!$product_cart) {
-            return redirect()->route('mentor.index')->with('error', 'Product Not Found!');
+            return redirect()->route('buyer.cart')->with('error', 'Product Not Found!');
         }
 
         $product_cart->delete();
 
-        return redirect()->route('mentor.index')->with('success', 'Products already Deleted!');
+        return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
     }
 }

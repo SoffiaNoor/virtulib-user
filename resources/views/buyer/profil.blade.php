@@ -82,23 +82,28 @@
                         <label for="gender"
                             class="form-label relative text-black/50 focus-within:text-[#333] block mb-2">Gender</label>
                         <div class="flex items-center">
-                            <input class="form-radio text-[#333] focus:outline-none focus:text-black w-5 h-5" type="radio"
+                            <input class="form-radio text-[#333] accent-orange-500 focus:outline-none focus:text-black w-5 h-5" type="radio"
                                 name="gender" id="male" value="male"
                                 {{ $profil->gender === 'male' ? 'checked' : '' }}>
                             <span class="ml-2">Male</span>
 
-                            <input class="form-radio text-[#333] focus:outline-none focus:text-black ml-10 w-5 h-5"
+                            <input class="form-radio text-[#333] accent-orange-500 focus:outline-none focus:text-black ml-10 w-5 h-5"
                                 type="radio" name="gender" id="female" value="female"
                                 {{ $profil->gender === 'female' ? 'checked' : '' }}>
                             <span class="ml-2">Female</span>
                         </div>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-4 mt-2">
                         <label for="birthdate"
                             class="form-label relative text-black/50 focus-within:text-[#333] block mb-2">Birthday</label>
-                        <input class="form-input text-[#333] focus:outline-none focus:text-black w-80 h-10" type="date"
-                            name="birthdate" id="birthdate" value="{{ $profil->birtdate }}">
+                        <input class="form-input my-5
+                        block w-full rounded-lg leading-none focus:outline-none placeholder-black/50 
+                        [ transition-colors duration-200 ] 
+                        [ py-3 pr-3 md:py-4 md:pr-4 lg:py-4 lg:pr-4 pl-12 ] 
+                        [ bg-black/20 focus:bg-black/25 ] 
+                        [ text-[#333] focus:text-black ]" type="date"
+                            name="birthdate" id="birthdate" value="{{ $profil->birthdate }}">
                     </div>
 
 

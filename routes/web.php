@@ -63,6 +63,7 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/profile' , [BuyerController::class, 'showProfile'])->name('profile');
     Route::post('/profile/{id}', [BuyerController::class, 'updateProfile'])->name('profile.updateProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
+    Route::post('/cart/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
 });
 
 Route::get('/404', function () {
