@@ -68,6 +68,7 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/order', [BuyerController::class, 'showOrder']);
     Route::post('/cart/{productId}', [OrderController::class, 'tolongdong'])->name('tolongdong');
     Route::get('/topup', [BuyerController::class, 'showTopup']);
+    Route::post('/buytoCart/{id}', [BuyerController::class, 'buytoCart'])->name('buytoCart');
 });
 
 Route::get('/404', function () {

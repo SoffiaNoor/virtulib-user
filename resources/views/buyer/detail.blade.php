@@ -4,8 +4,8 @@
     <div class="grid grid-cols-2 gap-10">
         <div class="relative pb-48 overflow-hidden rounded-2xl">
             @if (isset($products->image) && !empty($products->image))
-            <img class="absolute inset-0 h-full w-full object-cover rounded-xl" src="http://127.0.0.1:8000/uploads/produk/{{$products->image}}"
-                alt="">
+            <img class="absolute inset-0 h-full w-full object-cover rounded-xl"
+                src="http://127.0.0.1:8000/uploads/produk/{{$products->image}}" alt="">
             @else
             <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('assets/img/none.png') }}"
                 alt="No Picture">
@@ -52,7 +52,8 @@
 
             <div class="flex flex-cols-2 my-3 gap-4">
                 <div>
-                    <form method="POST" action="{{ route('buy.now', ['id' => $products->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('buy.now', ['id' => $products->id]) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <button
                             class="btn text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-full hover:bg-gradient-to-r hover:from-[#d97706] hover:to-[#f59e0b] duration-700 hover:shadow-2xl  transition-all ease-in-out">Beli
@@ -60,13 +61,16 @@
                     </form>
                 </div>
                 <div>
-                    <button
-                        class="btn text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-full hover:bg-gradient-to-r hover:from-[#d97706] hover:to-[#f59e0b] duration-700 hover:shadow-2xl  transition-all ease-in-out"
-                        onclick="my_modal_4.showModal()">Masukkan Keranjang</button>
+                    <form method="POST" action="{{ route('buytoCart', ['id' => $products->id]) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <button
+                            class="btn text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-full hover:bg-gradient-to-r hover:from-[#d97706] hover:to-[#f59e0b] duration-700 hover:shadow-2xl  transition-all ease-in-out"
+                            onclick="my_modal_4.showModal()">Masukkan Keranjang</button>
+                    </form>
                     <dialog id="my_modal_4" class="modal modal-bottom sm:modal-middle">
                         <div class="modal-box">
                             <h3 class="font-bold text-lg">Produk telah ditambahkan di keranjang belanja</h3>
-                            <p class="py-4">Press ESC key or click the button below to close</p>
                             <div class="modal-action">
                                 <form method="dialog">
                                     <button class="btn">Close</button>
@@ -81,279 +85,74 @@
 
 <section class="text-center p-10 mt-10 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="text-center">
-        <div class="font-bold text-3xl my-5">Produk Toko Blabla Lainnya</div>
+        <div class="font-bold text-3xl my-5">{{$products->seller->name}} Mart</div>
     </div>
     <div class="grid grid-cols-5">
+        @foreach($products_recommendation as $pr)
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-full p-2">
-            <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+            <a href="{{ route('detail', $pr->id) }}"
+                class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                 <div class="relative pb-48 overflow-hidden">
+                    @if (isset($pr->image) && !empty($pr->image))
                     <img class="absolute inset-0 h-full w-full object-cover"
-                        src="{{ asset('assets/images/Buku1.png') }}" alt="">
+                        src="http://127.0.0.1:8000/uploads/produk/{{$pr->image}}" alt="{{ $pr->name }}">
+                    @else
+                    <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('assets/img/none.png') }}"
+                        alt="No Picture">
+                    @endif
                 </div>
                 <div class="p-4">
                     <span
-                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
-                    <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
-                    <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                        Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{$pr->seller->name}}</span>
+                    <h2 class="mt-2 mb-2  font-bold">{{$pr->name}}</h2>
+                    <p class="text-sm">{{$pr->description}}</p>
                     <div class="mt-3 flex items-center">
-                        <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                            class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
+                        <span class="text-sm font-semibold">Rp.</span>&nbsp;<span
+                            class="font-bold text-xl">{{$pr->price}}</span>&nbsp;<span
+                            class="text-sm font-semibold">,-</span>
                     </div>
                 </div>
                 <div class="p-4 border-t border-b text-xs text-gray-700">
                     <span class="flex items-center mb-1">
-                        <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
+                        <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
+                        {{ $pr->stock }}
                     </span>
                     <span class="flex items-center">
-                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                        Karte
+                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
+                        @if ($pr->stock > 0)
+                        <div
+                            class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
+                            Available
+                        </div>
+                        @else
+                        <div
+                            class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
+                            Not Available</div>
+                        @endif
                     </span>
                 </div>
-                <div class="p-4 flex items-center text-sm text-gray-600"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-yellow-500">
+                <div class="p-4 flex items-center text-sm text-gray-600">
+                    @php
+                    $rating = $pr->rating;
+                    $roundedRating = round($rating);
+                    @endphp
+
+                    @for ($i = 1; $i <= 5; $i++) <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
                         <path
                             d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
                         </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-gray-400">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><span class="ml-2">34 Bewertungen</span></div>
+                        </svg>
+                        @endfor
+                        <div class="grid grid-cols-2 w-full">
+                            <div class="ml-2">{{ $pr->rating }} / 5 </div>
+                            <div class="text-right" style="float:right">{{ $pr->terjual }} Terjual
+                            </div>
+                        </div>
+                </div>
             </a>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-full p-2">
-            <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                <div class="relative pb-48 overflow-hidden">
-                    <img class="absolute inset-0 h-full w-full object-cover"
-                        src="{{ asset('assets/images/Buku1.png') }}" alt="">
-                </div>
-                <div class="p-4">
-                    <span
-                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
-                    <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
-                    <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                        Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <div class="mt-3 flex items-center">
-                        <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                            class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
-                    </div>
-                </div>
-                <div class="p-4 border-t border-b text-xs text-gray-700">
-                    <span class="flex items-center mb-1">
-                        <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
-                    </span>
-                    <span class="flex items-center">
-                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                        Karte
-                    </span>
-                </div>
-                <div class="p-4 flex items-center text-sm text-gray-600"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-gray-400">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><span class="ml-2">34 Bewertungen</span></div>
-            </a>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-full p-2">
-            <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                <div class="relative pb-48 overflow-hidden">
-                    <img class="absolute inset-0 h-full w-full object-cover"
-                        src="{{ asset('assets/images/Buku1.png') }}" alt="">
-                </div>
-                <div class="p-4">
-                    <span
-                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
-                    <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
-                    <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                        Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <div class="mt-3 flex items-center">
-                        <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                            class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
-                    </div>
-                </div>
-                <div class="p-4 border-t border-b text-xs text-gray-700">
-                    <span class="flex items-center mb-1">
-                        <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
-                    </span>
-                    <span class="flex items-center">
-                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                        Karte
-                    </span>
-                </div>
-                <div class="p-4 flex items-center text-sm text-gray-600"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-gray-400">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><span class="ml-2">34 Bewertungen</span></div>
-            </a>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-full p-2">
-            <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                <div class="relative pb-48 overflow-hidden">
-                    <img class="absolute inset-0 h-full w-full object-cover"
-                        src="{{ asset('assets/images/Buku1.png') }}" alt="">
-                </div>
-                <div class="p-4">
-                    <span
-                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
-                    <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
-                    <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                        Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <div class="mt-3 flex items-center">
-                        <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                            class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
-                    </div>
-                </div>
-                <div class="p-4 border-t border-b text-xs text-gray-700">
-                    <span class="flex items-center mb-1">
-                        <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
-                    </span>
-                    <span class="flex items-center">
-                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                        Karte
-                    </span>
-                </div>
-                <div class="p-4 flex items-center text-sm text-gray-600"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-gray-400">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><span class="ml-2">34 Bewertungen</span></div>
-            </a>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/2 xl:w-full p-2">
-            <a href="" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                <div class="relative pb-48 overflow-hidden">
-                    <img class="absolute inset-0 h-full w-full object-cover"
-                        src="{{ asset('assets/images/Buku1.png') }}" alt="">
-                </div>
-                <div class="p-4">
-                    <span
-                        class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">Highlight</span>
-                    <h2 class="mt-2 mb-2  font-bold">Purus Ullamcorper Inceptos Nibh</h2>
-                    <p class="text-sm">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                        Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <div class="mt-3 flex items-center">
-                        <span class="text-sm font-semibold">ab</span>&nbsp;<span
-                            class="font-bold text-xl">45,00</span>&nbsp;<span class="text-sm font-semibold">€</span>
-                    </div>
-                </div>
-                <div class="p-4 border-t border-b text-xs text-gray-700">
-                    <span class="flex items-center mb-1">
-                        <i class="far fa-clock fa-fw mr-2 text-black"></i> 3 Tage
-                    </span>
-                    <span class="flex items-center">
-                        <i class="far fa-address-card fa-fw text-black mr-2"></i> Ermäßigung mit
-                        Karte
-                    </span>
-                </div>
-                <div class="p-4 flex items-center text-sm text-gray-600"><svg viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-yellow-500">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 fill-current text-gray-400">
-                        <path
-                            d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                        </path>
-                    </svg><span class="ml-2">34 Bewertungen</span></div>
-            </a>
-        </div>
+        @endforeach
     </div>
 </section>
 @endsection

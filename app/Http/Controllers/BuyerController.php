@@ -28,8 +28,11 @@ class BuyerController extends Controller
     public function detail($id)
     {
         $products = Products::find($id);
+        $products_id = $products->seller_id;
+        // var_dump($products_id);die;
+        $products_recommendation = Products::where('seller_id', $products_id)->get();
 
-        return view('buyer.detail', compact('products'));
+        return view('buyer.detail', compact('products','products_recommendation'));
     }
 
     public function buyNow(Request $request, $id)
@@ -56,6 +59,32 @@ class BuyerController extends Controller
         }
 
         return redirect()->route('buyer.cart', ['_id' => $order->_id]);
+    }
+
+    public function buytoCart(Request $request, $id)
+    {
+        $product = Products::find($id);
+
+        $existingCart = Cart::where('user_id', Auth::id())
+            ->where('product_id', $product->id)
+            ->first();
+
+        if ($existingCart) {
+            $existingCart->quantity += 1;
+            $existingCart->total_price = $existingCart->quantity * $product->price;
+            $existingCart->save();
+
+            $order = $existingCart;
+        } else {
+            $order = new Cart();
+            $order->product_id = $product->id;
+            $order->user_id = Auth::id();
+            $order->quantity = 1;
+            $order->total_price = $product->price;
+            $order->save();
+        }
+
+        return redirect()->route('detail', ['id' => $product->id]);
     }
 
     public function showProfile()
