@@ -179,7 +179,7 @@
                                 class="self-center text-xl text-white font-bold whitespace-nowrap mr-3">VIRTULIB</span>
                         </a>
                         <div class="relative lg:w-full mx-5">
-                            <input type="text" placeholder="Search..."
+                            <input type="text" id="searchInput" placeholder="Search products..."
                                 class="w-full pl-3 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-white" />
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                 <svg class="w-6 h-6 text-[#5e4218]" viewBox="0 0 24 24" fill="none"
@@ -196,41 +196,43 @@
                         </a>
                         <div class="flex items-center lg:order-2">
                             @if (Auth::check())
-                            <details class="dropdown mx-3">
-                                <summary
-                                    class="flex items-center px-auto bg-[#5e4218] block px-10 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
-                                    <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
-                                </summary>
-                                <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                    @if (auth()->user()->role === 'buyer')
-                                    <li><a href="/profile" class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
-                                            Profile</a>
-                                    </li>
-                                    <li>
-                                        <form method="POST" action="{{ route('logout_buyer') }}">
-                                            @csrf
-                                            <button class="block" type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                    @elseif(auth()->user()->role === 'seller')
-                                    <li><a href="/seller" class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
-                                            Profile</a>
-                                    </li>
-                                    <li>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <button class="block" type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                    @else
-                                    @endif
-                                </ul>
-                            </details>
+                                <details class="dropdown mx-3">
+                                    <summary
+                                        class="flex items-center px-auto bg-[#5e4218] block px-10 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
+                                    </summary>
+                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                        @if (auth()->user()->role === 'buyer')
+                                            <li><a href="/profile"
+                                                    class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
+                                                    Profile</a>
+                                            </li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout_buyer') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
+                                        @elseif(auth()->user()->role === 'seller')
+                                            <li><a href="/seller"
+                                                    class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
+                                                    Profile</a>
+                                            </li>
+                                            <li>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <button class="block" type="submit">Logout</button>
+                                                </form>
+                                            </li>
+                                        @else
+                                        @endif
+                                    </ul>
+                                </details>
                             @else
-                            <a href="/login"
-                                class="bg-[#5e4218] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Masuk</a>
-                            <a href="/register"
-                                class="bg-[#eda02c] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Daftar</a>
+                                <a href="/login"
+                                    class="bg-[#5e4218] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Masuk</a>
+                                <a href="/register"
+                                    class="bg-[#eda02c] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Daftar</a>
                             @endif
                             <button data-collapse-toggle="mobile-menu-2" type="button"
                                 class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -259,8 +261,8 @@
                     <div class="flex-auto w-96 rounded-lg self-center">
                         <div class="self-center rounded-lg">
                             <div class="rounded-lg">
-                                    <img src="{{ asset('assets/images/Caraousel1.png') }}" alt=""
-                                        class="object-cover w-full h-96 rounded-lg" style="padding:0.7rem!important" />
+                                <img src="{{ asset('assets/images/Caraousel1.png') }}" alt=""
+                                    class="object-cover w-full h-96 rounded-lg" style="padding:0.7rem!important" />
                             </div>
 
                         </div>
@@ -288,80 +290,80 @@
         <section class="px-10 lg:mx-24 mx-11">
             <div class="container mx-auto">
                 @if (count($products) > 0)
-                <div class="flex flex-wrap -mx-4">
-                    @foreach ($products as $item)
-                    <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-                        <a href="{{ route('detail', $item->id) }}"
-                            class="c-card block bg-[#fffbeb] shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
-                            <div class="relative pb-48 overflow-hidden">
-                                @if (isset($item->image) && !empty($item->image))
-                                <img class="absolute inset-0 h-full w-full object-cover"
-                                    src="uploads/produk/{{$item->image}}" alt="{{ $item->name }}">
-                                @else
-                                <img class="absolute inset-0 h-full w-full object-cover"
-                                    src="{{ asset('assets/img/none.png') }}" alt="No Picture">
-                                @endif
-                            </div>
-                            <div class="p-4">
-                                <span
-                                    class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{
-                                    $item->seller->name }}</span>
-                                <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
-                                <p class="text-sm">{{ $item->description }}</p>
-                                <div class="mt-3 flex items-center">
-                                    <span class="font-bold text-xl">Rp. </span>&nbsp;<span class="font-bold text-xl">{{
-                                        $item->price }}</span>
-                                </div>
-                            </div>
-                            <div class="p-4 border-t border-b text-xs text-gray-700">
-                                <span class="flex items-center mb-1">
-                                    <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
-                                    {{ $item->stock }}
-                                </span>
-                                <span class="flex items-center">
-                                    <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
-                                    @if ($item->stock > 0)
-                                    <div
-                                        class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
-                                        Tersedia
+                    <div class="flex flex-wrap -mx-4">
+                        @foreach ($products as $item)
+                            <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
+                                <a href="{{ route('detail', $item->id) }}"
+                                    class="c-card block bg-[#fffbeb] shadow-md hover:shadow-xl rounded-lg overflow-hidden h-full">
+                                    <div class="relative pb-48 overflow-hidden">
+                                        @if (isset($item->image) && !empty($item->image))
+                                            <img class="absolute inset-0 h-full w-full object-cover"
+                                                src="uploads/produk/{{ $item->image }}" alt="{{ $item->name }}">
+                                        @else
+                                            <img class="absolute inset-0 h-full w-full object-cover"
+                                                src="{{ asset('assets/img/none.png') }}" alt="No Picture">
+                                        @endif
                                     </div>
-                                    @else
-                                    <div
-                                        class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
-                                        Tidak
-                                        Tersedia</div>
-                                    @endif
-                                </span>
-                            </div>
-                            <div class="p-4 flex items-center text-sm text-gray-600">
-                                @php
-                                $rating = $item->rating;
-                                $roundedRating = round($rating);
-                                @endphp
-
-                                @for ($i = 1; $i <= 5; $i++) <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                    class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
-                                    <path
-                                        d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
-                                    </path>
-                                    </svg>
-                                    @endfor
-                                    <div class="grid grid-cols-2 w-full">
-                                        <div class="ml-2">{{ $item->rating }} / 5 </div>
-                                        <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
+                                    <div class="p-4">
+                                        <span
+                                            class="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{{ $item->seller->name }}</span>
+                                        <h2 class="mt-2 mb-2  font-bold">{{ $item->name }}</h2>
+                                        <p class="text-sm">{{ $item->description }}</p>
+                                        <div class="mt-3 flex items-center">
+                                            <span class="font-bold text-xl">Rp. </span>&nbsp;<span
+                                                class="font-bold text-xl">{{ $item->price }}</span>
                                         </div>
                                     </div>
-                            </div>
+                                    <div class="p-4 border-t border-b text-xs text-gray-700">
+                                        <span class="flex items-center mb-1">
+                                            <i class="fas fa-archive text-lg mr-2 text-black"></i>Stock :
+                                            {{ $item->stock }}
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="far fa-address-card fa-fw text-black mr-2"></i> Status :
+                                            @if ($item->stock > 0)
+                                                <div
+                                                    class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
+                                                    Tersedia
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="text-center text-white bg-gradient-to-r from-[#ca8a04] to-[#a16207] shadow-lg rounded-full px-3 py-2 m-2">
+                                                    Tidak
+                                                    Tersedia</div>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div class="p-4 flex items-center text-sm text-gray-600">
+                                        @php
+                                            $rating = $item->rating;
+                                            $roundedRating = round($rating);
+                                        @endphp
 
-                        </a>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 fill-current @if ($i <= $roundedRating) text-yellow-500 @else text-gray-400 @endif">
+                                                <path
+                                                    d="M8.128 19.825a1.586 1.586 0 0 1-1.643-.117 1.543 1.543 0 0 1-.53-.662 1.515 1.515 0 0 1-.096-.837l.736-4.247-3.13-3a1.514 1.514 0 0 1-.39-1.569c.09-.271.254-.513.475-.698.22-.185.49-.306.776-.35L8.66 7.73l1.925-3.862c.128-.26.328-.48.577-.633a1.584 1.584 0 0 1 1.662 0c.25.153.45.373.577.633l1.925 3.847 4.334.615c.29.042.562.162.785.348.224.186.39.43.48.704a1.514 1.514 0 0 1-.404 1.58l-3.13 3 .736 4.247c.047.282.014.572-.096.837-.111.265-.294.494-.53.662a1.582 1.582 0 0 1-1.643.117l-3.865-2-3.865 2z">
+                                                </path>
+                                            </svg>
+                                        @endfor
+                                        <div class="grid grid-cols-2 w-full">
+                                            <div class="ml-2">{{ $item->rating }} / 5 </div>
+                                            <div class="text-right" style="float:right">{{ $item->terjual }} Terjual
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
                 @else
-                <div class="text-center mt-8 bg-white rounded-2xl shadow-lg w-full py-4">
-                    <p class="text-2xl font-bold">Produk Kosong</p>
-                    <p class="text-gray-600">Maaf, tidak ada produk yang tersedia saat ini.</p>
-                </div>
+                    <div class="text-center mt-8 bg-white rounded-2xl shadow-lg w-full py-4">
+                        <p class="text-2xl font-bold">Produk Kosong</p>
+                        <p class="text-gray-600">Maaf, tidak ada produk yang tersedia saat ini.</p>
+                    </div>
                 @endif
             </div>
         </section>
@@ -397,7 +399,8 @@
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
                 <div class="sm:flex sm:items-center sm:justify-between">
-                    <span class="text-sm sm:text-center ">© 2023 <a href="/" class="hover:underline">Virtulib™</a>. All
+                    <span class="text-sm sm:text-center ">© 2023 <a href="/"
+                            class="hover:underline">Virtulib™</a>. All
                         Rights Reserved.
                     </span>
                     <div class="flex mt-4 sm:justify-center sm:mt-0">
@@ -448,13 +451,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const header = document.getElementById("sticky-header");
             const placeholder = document.getElementById("header-placeholder");
-    
-            window.addEventListener("scroll", function () {
+
+            window.addEventListener("scroll", function() {
                 if (window.scrollY > 0) {
-                    header.classList.add("h-20"); 
+                    header.classList.add("h-20");
                     placeholder.style.height = "200px";
                 } else {
                     header.classList.remove("h-20");
@@ -580,6 +583,28 @@
                 behavior: 'smooth'
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const products = document.querySelectorAll('.c-card');
+
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+
+                products.forEach((product) => {
+                    const productName = product.querySelector('h2').innerText.toLowerCase();
+                    const productDescription = product.querySelector('p').innerText.toLowerCase();
+
+                    if (productName.includes(searchTerm) || productDescription.includes(
+                        searchTerm)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
