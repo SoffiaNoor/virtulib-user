@@ -20,18 +20,19 @@ class RiwayatController extends Controller
     public function pengiriman()
     {
         $products = Order::where('status', 1)->get();
-    return view("riwayat.pesanan", compact('products'));
+    return view("riwayat.pengiriman", compact('products'));
     }
 
     public function selesai()
     {
         $products = Order::where('status', 2)->get();
-        return view("riwayat.pesanan", compact('products'));
+        return view("riwayat.selesai", compact('products'));
     }
 
     public function moveProductPesanan(Request $request, $orderId)
     {
         $order = Order::find($orderId);
+        
 
         if (!$order) {
             return redirect()->back()->with('error', 'Product not found.');
