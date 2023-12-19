@@ -13,19 +13,19 @@ class RiwayatController extends Controller
 {
     public function pesanan()
     {
-        $products = Order::where('status', 0)->get();
+        $products = Order::where('status', 0)->paginate(2);
         return view("riwayat.pesanan", compact('products'));
     }
 
     public function pengiriman()
     {
-        $products = Order::where('status', 1)->get();
+        $products = Order::where('status', 1)->paginate(2);
     return view("riwayat.pengiriman", compact('products'));
     }
 
     public function selesai()
     {
-        $products = Order::where('status', 2)->get();
+        $products = Order::where('status', 2)->paginate(2);
         return view("riwayat.selesai", compact('products'));
     }
 
