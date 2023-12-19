@@ -4,7 +4,7 @@
 
 
 <div class="grid grid-cols-3 gap-4" style="font-family:Poppins">
-    <div class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl shadow-xl p-4 h-1/3">
+    <div class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl shadow-xl p-4 h-64">
         <div>
             <ul>
                 <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="/profile"
@@ -23,7 +23,7 @@
     <div class="bg-gradient-to-r from-[#e5e7eb] to-[#e7e5e4] rounded-2xl shadow-xl col-span-2 p-4">
         @if (count($order) > 0)
         @foreach ($order as $item)
-        <div class="p-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md my-2">
+        <div class="p-5 w-full bg-[#fffbeb] rounded-2xl z-10 drop-shadow-md my-2">
             <div class="bg-transparent">
                 <div class="p-5">Order ID: {{ $item->_id }}</div>
                 <div class="grid grid-cols-5 gap-3 self-center justify-center items-center p-3 m-3"
@@ -44,11 +44,28 @@
                     <div>{{ $item->total_price }}</div>
                     <div>
                         @if ($item->status == 0)
-                        <div class="bg-red-500 px-6 py-2 rounded-full shadow-xl text-white">Packed</div>
+                        <div class="bg-red-500 px-10 py-2 rounded-full shadow-xl text-white">Packed</div>
                         @elseif ($item->status == 1)
-                        <div class="bg-blue-500 px-6 py-2 rounded-full shadow-xl text-white">Sent</div>
+                        <div
+                            class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] px-10 py-2 rounded-full shadow-xl text-white">
+                            Sent</div>
+                        <details class="dropdown">
+                            <summary class="bg-blue-500 px-10 py-2 rounded-full shadow-xl text-white mt-2">Actions
+                            </summary>
+                            <ul class="p-2 shadow menu dropdown-content z-50 bg-base-100 rounded-box w-52">
+                                <li>
+                                    <form class="p-3" method="POST"
+                                        action="{{ route('ubahprodukstatus', $item->_id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <button type="submit">Product Already Received</button>
+                                    </form>
+                                </li>
+                                <li><a>Report Product</a></li>
+                            </ul>
+                        </details>
                         @elseif ($item->status == 2)
-                        <div class="bg-green-500 px-6 py-2  rounded-full shadow-xl text-white">Done</div>
+                        <div class="bg-green-500 px-10 py-2  rounded-full shadow-xl text-white">Done</div>
                         @endif
                     </div>
                 </div>

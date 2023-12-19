@@ -32,7 +32,7 @@ class BuyerController extends Controller
         // var_dump($products_id);die;
         $products_recommendation = Products::where('seller_id', $products_id)->get();
 
-        return view('buyer.detail', compact('products','products_recommendation'));
+        return view('buyer.detail', compact('products', 'products_recommendation'));
     }
 
     public function buyNow(Request $request, $id)
@@ -178,7 +178,37 @@ class BuyerController extends Controller
         $login = Auth::user()->_id;
         $order = Order::where('user_id', $login)->get();
         $buyer = Buyer::where('user_id', $login)->first();
-        return view('buyer.topup', compact('order','buyer'));
+        return view('buyer.topup', compact('order', 'buyer', 'login'));
+    }
+
+    public function updateBalance(Request $request, $id)
+    {
+        try {
+            $currentBalance = Buyer::where('user_id', $id)->value('balance');
+
+            $newBalance = $currentBalance + $request->input('balance');
+            Buyer::where('user_id', $id)->update(['balance' => $newBalance]);
+
+            return redirect()->route('profile')->with('success', 'Successfully Update Balance!');
+        } catch (\Exception $e) {
+            return redirect()->route('profile')->with('error', 'There is some technical error with the server');
+        }
+    }
+
+    public function moveProductPengiriman(Request $request, $orderId)
+    {
+        $order = Order::find($orderId);
+
+        if (!$order) {
+            return redirect()->route('profile')->with('error', 'Error');
+        }
+
+        $data = [
+            'status' => 2,
+        ];
+
+        $order->update($data);
+        return redirect()->route('profile')->with('success', 'Thank you For Your Confirmation!');
     }
 
 }

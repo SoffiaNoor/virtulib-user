@@ -28,16 +28,4 @@ class CartController extends Controller
 
         return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
     }
-
-    // public function saveCheckedCart(Request $request, $productId)
-    // {
-    //     $userId = auth()->user()->id;
-
-    //     Order::create([
-    //         'user_id' => $userId,
-    //         'product_id' => $productId,
-    //     ]);
-
-    //     return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
-    // }
 }

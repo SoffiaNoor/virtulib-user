@@ -1,7 +1,7 @@
 @extends('layouts/buyer')
 @section('content')
     <div class="grid grid-cols-3 gap-4" style="font-family:Poppins">
-        <div class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl shadow-xl p-4 h-1/3">
+        <div class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl shadow-xl p-4 h-64">
             <div>
                 <ul>
                     <li class="mb-2 bg-[#5e4218] py-2 px-10 shadow-xl rounded-full"><a href="/profile"
