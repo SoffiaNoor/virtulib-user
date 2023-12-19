@@ -1,7 +1,6 @@
 @extends('layouts/master')
 @section('content')
-    <section class="w-full min-h-screen py-24 "
-        style="background-size: cover;">
+    <section class="w-full min-h-screen py-24 " style="background-size: cover;">
         <div class=container>
             <div class="row">
                 <div class="col-sm-12">
@@ -56,7 +55,7 @@
 
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -78,80 +77,87 @@
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase font-weight-bold"
                                                 style="color:#587697!important;text-align:center;font-size:2rem">Sales
                                             </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder">Id</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder">Name</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder">Pembeli</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Status</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Harga</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Action</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products as $item)
-                                            <tr>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->_id }}          
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->name }}          
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->gambar }}          
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->price }}          
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->price }}          
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            <form class="p-3" method="POST" action="{{ route('move-products-pesanan', $item->_id) }}"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <button class="btn btn-info" type="submit">Kirim</button>
-                                                            </form>     
-                                                        </span>
-                                                    </div>
-                                                </td>    
-                                            </tr>
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder">Id</th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder">Name</th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder">Pembeli</th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Status
+                                            </th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Harga
+                                            </th>
+                                            <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Action
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products as $item)
+                                  
+                                                <tr>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->_id }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->name }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->gambar }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->price }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->price }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                <form class="p-3" method="POST"
+                                                                    action="{{ route('move-products-pesanan', $item->_id) }}"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <button class="btn btn-info"
+                                                                        type="submit">Kirim</button>
+                                                                </form>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                  
                                         @endforeach
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 @endsection
 

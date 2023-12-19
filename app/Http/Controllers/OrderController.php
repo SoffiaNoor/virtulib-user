@@ -23,6 +23,7 @@ class OrderController extends Controller
         $order->user_id = Auth::id();
         $order->total_quantity = $totalQuantity;
         $order->total_price = $totalPrice;
+        $order->status = 0;
         $order->save();
 
         $cartItem->delete();

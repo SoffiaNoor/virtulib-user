@@ -13,54 +13,50 @@ class RiwayatController extends Controller
 {
     public function pesanan()
     {
-        $products = Order::all();
+        $products = Order::where('status', 0)->get();
         return view("riwayat.pesanan", compact('products'));
     }
 
     public function pengiriman()
     {
-        $products = Produk_Dikirim::all();
-        return view("riwayat.pengiriman", compact('products'));
+        $products = Order::where('status', 1)->get();
+    return view("riwayat.pesanan", compact('products'));
     }
 
     public function selesai()
     {
-        $products = Produk_Selesai::all();
-        return view("riwayat.selesai", compact('products'));
+        $products = Order::where('status', 2)->get();
+        return view("riwayat.pesanan", compact('products'));
     }
 
-    public function moveProductPesanan(Request $request, $productId)
+    public function moveProductPesanan(Request $request, $orderId)
     {
-        $product = Order::find($productId);
+        $order = Order::find($orderId);
 
-        if (!$product) {
+        if (!$order) {
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        Produk_Dikirim::create([
-            'name' => $product->name,
-            'price' => $product->price,
-        ]);
+        $data = [
+            'status' => 1,
+        ];
 
-        $product->delete();
-
+        $order->update($data);
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
-    public function moveProductPengiriman(Request $request, $productId)
+    public function moveProductPengiriman(Request $request, $orderId)
     {
-        $product = Produk_Dikirim::find($productId);
+        $order = Order::find($orderId);
 
-        if (!$product) {
+        if (!$order) {
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        Produk_Selesai::create([
-            'name' => $product->name,
-            'price' => $product->price,
-        ]);
+        $data = [
+            'status' => 2,
+        ];
 
-        $product->delete();
-
+        $order->update($data);
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
     public function moveProductSelesai(Request $request, $productId)

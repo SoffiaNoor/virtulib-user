@@ -22,7 +22,8 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama Produk</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama
+                                                Produk</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -42,7 +43,8 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             <span class="mx-1 my-2 px-2 py-1 text-uppercase text-xs font-weight-bold"
-                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama Customer</span>
+                                                style="color:black!important;font-family: 'Poppins';text-align:center">Nama
+                                                Customer</span>
                                         </div>
                                         <div class="col-sm-10">
                                             <div class="input-group">
@@ -103,96 +105,98 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($sales as $item)
-                                            <tr>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->customer }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->productname }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->totalpurchase }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->price }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->total_price }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="ms-3 text-xs">
-                                                            {{ $item->delivery }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td
-                                                    class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                    <a href="{{ route('penjualan.detail', $item->_id) }}"
-                                                        class="text-gray-400 hover:text-amber-400  mr-2">
-                                                        <i class="fa fa-eye text-sm"></i>
-                                                    </a>
-                                                    <a href="#" class="text-gray-400 hover:text-amber-400"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $item->_id }}">
-                                                        <i class="fa fa-trash text-sm"></i>
-                                                    </a>
+                                            @if ($item->status === 0)
+                                                <tr>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->customer }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->productname }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->totalpurchase }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->price }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->total_price }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="ms-3 text-xs">
+                                                                {{ $item->delivery }}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td
+                                                        class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                        <a href="{{ route('penjualan.detail', $item->_id) }}"
+                                                            class="text-gray-400 hover:text-amber-400  mr-2">
+                                                            <i class="fa fa-eye text-sm"></i>
+                                                        </a>
+                                                        <a href="#" class="text-gray-400 hover:text-amber-400"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteModal{{ $item->_id }}">
+                                                            <i class="fa fa-trash text-sm"></i>
+                                                        </a>
 
-                                                    <div class="modal fade" id="deleteModal{{ $item->_id }}"
-                                                        tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title font-weight-bolder"
-                                                                        id="deleteModalLabel">
-                                                                        Delete Confirmation
-                                                                    </h5>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close">
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body text-sm">
-                                                                    Apakah anda yakin menghapus Mata Pelajaran <span
-                                                                        class="font-weight-bolder">{{ $item->name }}</span>?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Tidak</button>
-                                                                    <form
-                                                                        action="{{ route('produk.destroy', $item->_id) }}"
-                                                                        method="POST" style="display: inline;">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Hapus</button>
-                                                                    </form>
+                                                        <div class="modal fade" id="deleteModal{{ $item->_id }}"
+                                                            tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title font-weight-bolder"
+                                                                            id="deleteModalLabel">
+                                                                            Delete Confirmation
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal" aria-label="Close">
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body text-sm">
+                                                                        Apakah anda yakin menghapus Mata Pelajaran <span
+                                                                            class="font-weight-bolder">{{ $item->name }}</span>?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Tidak</button>
+                                                                        <form
+                                                                            action="{{ route('produk.destroy', $item->_id) }}"
+                                                                            method="POST" style="display: inline;">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Hapus</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -297,7 +301,7 @@
                 })
                 .catch(error => console.error('Error:', error));
 
-           
+
         }
 
         function searchSales(route) {
@@ -347,7 +351,7 @@
                 })
                 .catch(error => console.error('Error:', error));
 
-            
+
         }
     </script>
 @endsection
