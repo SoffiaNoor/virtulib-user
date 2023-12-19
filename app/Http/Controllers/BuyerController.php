@@ -104,4 +104,41 @@ class BuyerController extends Controller
         }
     }
 
+    public function deletePhotoProfile($id)
+    {
+
+        $buyer = Buyer::where('user_id', $id)->first();
+
+        if (!$buyer) {
+            return redirect()->route('profile')->with('error', 'Profil tidak ditemukan!');
+        }
+
+        $image = $buyer->image;
+
+        if ($image) {
+            $destinationPath = public_path('uploads/buyer/');
+            $filePath = $destinationPath . $image;
+
+            try {
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                    $data = [
+                        'image' => null
+                    ];
+                    Buyer::where('user_id', $id)->update($data);
+                    return redirect()->route('profile')->with('success', 'Gambar profile berhasil dihapus!');
+                } else {
+                    return redirect()->route('profile')->with('error', 'Gambar profile tidak ditemukan.');
+                }
+            } catch (\Exception $e) {
+                return redirect()->route('profile')->with('error', 'Gagal menghapus gambar profile.');
+            }
+        }
+    }
+
+    public function showOrder()
+    {
+        return view('buyer.order');
+    }
+
 }

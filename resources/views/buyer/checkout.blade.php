@@ -1,81 +1,58 @@
 @extends('layouts/buyer')
 @section('content')
 <div class="text-center">
-    <div class="font-bold text-3xl my-5">Your Cart</div>
+    <div class="font-bold text-3xl my-5">Checkout</div>
 </div>
-@if (session('success'))
-<div class="alert alert-success mb-3" style="color:white;font-weight:bold" role="alert">
-    {{ session('success') }}
-</div>
-@endif
-@if (session('error'))
-<div class="alert alert-warning mb-3" style="color:white;font-weight:bold" role="alert">
-    {{ session('error') }}
-</div>
-@endif
-@if ($cart !== null && count($cart) > 0)
-@foreach ($cart as $item)
 <section class="text-center p-10 mt-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="bg-transparent">
-        <div class="flex flex-cols-7 gap-3 self-center justify-center items-center">
-            <div><input type="checkbox" id="checkbox_{{ $loop->index }}" class="accent-amber-500"></div>
-            <div class="mx-auto">
-                @if (isset($item->product->image) && !empty($item->product->image))
-                <img class="w-40 h-40 object-cover rounded-xl shadow-2xl" src="uploads/produk/{{$item->product->image}}"
-                    alt="{{ $item->product->name }}">
-                @else
-                <div>
-                    <img class="w-40 h-40 object-cover rounded-xl shadow-2xl"
-                        src="{{ asset('assets/images/no-picture.png') }}" alt="No Picture">
+        <div class="leading-loose">
+            <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+                <p class="text-gray-800 font-medium">Customer information</p>
+                <div class="">
+                    <label class="block text-sm text-gray-00" for="cus_name">Name</label>
+                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name"
+                        type="text" required="" placeholder="Your Name" aria-label="Name">
                 </div>
-                @endif
-            </div>
-            <div class="mx-auto font-bold">{{ $item->product->name }}</div>
-            <div class="mx-auto text-red price"><span>{{ $item->product->price }}</div>
-            <div class="flex flex-cols-3">
-                <div
-                    class="minusBtn justify-center p-2 bg-gradient-to-r from-[#ca8a04] to-[#a16207] h-10 w-10 rounded-full items-center text-center">
-                    <i class="mt-1 justify-center text-white fa fa-minus mx-auto"></i>
+                <div class="mt-2">
+                    <label class="block text-sm text-gray-600" for="cus_email">Email</label>
+                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                        type="text" required="" placeholder="Your Email" aria-label="Email">
+                </div>
+                <div class="mt-2">
+                    <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                        type="text" required="" placeholder="Street" aria-label="Email">
+                </div>
+                <div class="mt-2">
+                    <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                        type="text" required="" placeholder="City" aria-label="Email">
+                </div>
+                <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                        type="text" required="" placeholder="Country" aria-label="Email">
+                </div>
+                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email"
+                        type="text" required="" placeholder="Zip" aria-label="Email">
+                </div>
+                <p class="mt-4 text-gray-800 font-medium">Payment information</p>
+                <div class="">
+                    <label class="block text-sm text-gray-600" for="cus_name">Card</label>
+                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name"
+                        type="text" required="" placeholder="Card Number MM/YY CVC" aria-label="Name">
+                </div>
+                <div class="mt-4">
+                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="submit">$3.00</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
-                </div>
-                <div class="mx-3"><span class="counter text-2xl">{{$item->quantity}}</span>
-                </div>
-                <div
-                    class="plusBtn p-2 bg-gradient-to-r from-[#ca8a04] to-[#a16207] h-10 w-10 rounded-full items-center text-center">
-                    <i class="mt-1 text-white fa fa-plus mx-auto"></i>
-                </div>
-            </div>
-            <div class="mx-auto text-red total"></div>
-            <div class="grid grid-rows-2">
-                <form method="POST" id="form1" action="{{ route('tolongdong', $item->_id) }}" enctype="multipart/form-data">
-                    @csrf
-                    <button id="orderNowBtn_{{ $loop->index }}" type="submit"
-                        class="btn btn-warning font-bold rounded-full py-1 px-10 shadow-xl" disabled>Order Now</button>
-                </form>
-                <form method="POST" id="form2" action="{{ route('destroy.cart', $item->_id) }}" enctype="multipart/form-data">
-                    @csrf
-                    <button class="btn btn-error font-bold rounded-full py-1 px-10 shadow-xl ">Delete
-                        Product</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<div id="summarySection"
-    class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-[#ca8a04] to-[#a16207] p-4 text-center hidden z-50">
-    <h2 class="text-lg font-semibold text-white">Checked Products Summary</h2>
-    <ul id="checkedProductsList" class="list-disc pl-4"></ul>
-</div>
-@endforeach
-@else
-<section class="text-center p-10 mt-5 w-full bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl drop-shadow-md">
-    <div class="bg-transparent">
-        <div class="text-center">
-            <div class="font-bold text-white text-3xl my-5">There's No Product You've Added on Cart</div>
-        </div>
-    </div>
-</section>
-@endif
 
 
 @endsection
@@ -171,6 +148,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
 </script>
 @endsection

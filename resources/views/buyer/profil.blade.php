@@ -4,9 +4,9 @@
         <div class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-2xl shadow-xl p-4 h-1/3">
             <div>
                 <ul>
-                    <li class="mb-2 bg-[#5e4218] py-2 px-10 shadow-xl rounded-full"><a href="#"
+                    <li class="mb-2 bg-[#5e4218] py-2 px-10 shadow-xl rounded-full"><a href="/profile"
                             class="text-white font-bold">My Account</a></li>
-                    <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="#" class="text-white font-bold">My
+                    <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="/order" class="text-white font-bold">My
                             Order</a></li>
                 </ul>
             </div>
@@ -17,42 +17,45 @@
                 <hr style="background-color:#5e4218;height:10px;border-radius:40px;width:75%">
             </div>
             <div class="px-10 container-fluid py-2">
-                <form class="p-3" method="POST" action="{{ route('updatePhotoProfile', ['id' => $login]) }}"
-                    enctype="multipart/form-data">
-                    @csrf
                     <div class="row">
                         <div class="grid grid-cols-2">
                             <div>
                                 @if (isset($profil->image) && !empty($profil->image))
-                                    <img class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
+                                    <img id="profileImage" class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
                                         src="http://127.0.0.1:8000/uploads/buyer/{{$profil->image}}" alt="Bordered avatar">
                                 @else
-                                    <img class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
+                                    <img id="profileImage" class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
                                         src="assets/img/book_login.jpg" alt="Bordered avatar">
                                 @endif
                             </div>
                             <div class="self-center">
-                                <div class="mb-2 bg-[#ca8a04] py-2 px-10 shadow-xl rounded-full text-white">
-                                    <label>Update Photo Profile:</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
-                                </div>
-                                <button type=""
-                                    class="form-input my-2 w-full rounded-lg font-bold text-white focus:outline-none
-                     [ p-3 md:p-4 lg:p-4 ] 
-                     [ transition-colors duration-500 ] 
-                     [ bg-[#ad7c35] hover:bg-[#e1982d] ]">Change
-                                    Profile Photo</button>
-                                <button type=""
-                                    class="form-input my-2 w-full rounded-lg font-bold text-white focus:outline-none
+                                <form class="p-3 m-0" method="POST" action="{{ route('updatePhotoProfile', ['id' => $login]) }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-4 bg-[#ca8a04] py-2 px-10 shadow-xl rounded-full text-white text-center">
+                                        <label for="image" class="cursor-pointer">
+                                            Update Photo Profile
+                                            <input type="file" id="image" name="image" class="hidden" required onchange="showImagePreview(this)">
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="form-input w-full rounded-lg font-bold text-white focus:outline-none [ p-3 md:p-4 lg:p-4 ] [ transition-colors duration-500 ] [ bg-[#ad7c35] hover:bg-[#e1982d] ]">
+                                        Change Profile Photo
+                                    </button>
+                                </form>
+                                <form class="p-3" method="POST" action="{{ route('deletePhotoProfile', ['id' => $login]) }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <button type="submit"
+                                    class="form-input w-full rounded-lg font-bold text-white focus:outline-none
                      [ p-3 md:p-4 lg:p-4 ] 
                      [ transition-colors duration-500 ] 
                      [ bg-[#ad7c35] hover:bg-[#e1982d] ]">Delete
-                                    Profile Photo</button>
-
+                                    Profile Photo</button> 
+                                </form>
+                
                             </div>
                         </div>
                     </div>
-                </form>
+                   
                 <form method="POST" action="{{ route('updateProfile', ['id' => $login]) }}">
                     @csrf
                     @if (session('success'))
@@ -148,4 +151,19 @@
 
 @section('jquery')
     <script></script>
+    <script>
+        function showImagePreview(input) {
+            const fileInput = input;
+            const profileImage = document.getElementById('profileImage');
+    
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection
