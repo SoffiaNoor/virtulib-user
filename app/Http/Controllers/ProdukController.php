@@ -149,7 +149,7 @@ class ProdukController extends Controller
         try {
 
             $input = $request->all();
-            // var_dump($input);die;
+   
 
             if ($image = $request->file('image')) {
                 $previousImage = $products->image;

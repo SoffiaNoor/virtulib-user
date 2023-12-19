@@ -84,4 +84,37 @@ class BuyerController extends Controller
         }
     }
 
+    public function updatePhotoProfile(Request $request, $id, Buyer $buyer)
+    {
+        try {
+
+            $input = $request->all();
+   
+
+            if ($image = $request->file('image')) {
+                $previousImage = $buyer->image;
+                if ($previousImage && file_exists(public_path('uploads/buyer/' . $previousImage))) {
+                    unlink(public_path('uploads/buyer/' . $previousImage));
+                }
+
+                $destinationPath = 'uploads/buyer';
+                $profileImage = "buyer" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = $profileImage;
+            } else {
+                unset($input['image']);
+            }
+
+            $data = [
+                'image' => $profileImage,
+            ];
+
+            Buyer::where('_id', $id)->update($data);
+
+            return redirect()->route('profile')->with('success', 'Success update photo profile!');
+        } catch (\Exception $e) {
+            return redirect()->route('profile')->with('error', 'Failed update photo profile.');
+        }
+    }
+
 }

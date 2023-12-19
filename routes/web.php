@@ -61,7 +61,8 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
     Route::get('/profile' , [BuyerController::class, 'showProfile'])->name('profile');
-    Route::post('/profile/{id}', [BuyerController::class, 'updateProfile'])->name('profile.updateProfile');
+    Route::post('/profile/update/{id}', [BuyerController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/profile/update-photo/{id}', [BuyerController::class, 'updatePhotoProfile'])->name('updatePhotoProfile');
     Route::post('/buy_product/{id}', [BuyerController::class, 'buyNow'])->name('buy.now');
     Route::post('/cart/{id}', [CartController::class, 'destroy'])->name('destroy.cart');
 });
