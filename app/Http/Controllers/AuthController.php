@@ -63,10 +63,10 @@ class AuthController extends Controller
             }
 
 
-            return redirect()->route('login')->with('success', 'Account created successfully.');
+            return redirect()->route('login')->with('success', 'Akun berhasil didaftarkan');
 
         } catch (\Exception $e) {
-            return redirect()->route('register')->with('error', 'Failed to create account. Account already exists.');
+            return redirect()->route('register')->with('error', 'Gagal membuat Akun');
         }
     }
     public function logout()

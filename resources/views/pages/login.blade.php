@@ -1,7 +1,6 @@
 <html>
 
 <head>
-    <!--SEO-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,7 +12,6 @@
     <link rel='icon' type="image/x-icon" href='{{ asset(' assets/images/logo2.ico') }}'>
     <title>Virtulib</title>
 
-    <!--CSS-->
     @vite('resources/css/app.css')
 
 
@@ -24,7 +22,6 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!--Font-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -35,325 +32,93 @@
     <script type="text/javascript" src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/function.js') }}"></script>
-
-    <style>
-        swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        swiper-slide img {
-            display: block;
-            width: 100%;
-            object-fit: cover;
-        }
-
-
-        /* Custom styles for the overlay effect */
-        .overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .group:hover .overlay {
-            opacity: 1;
-        }
-
-        /* width */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #2e1065;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #4c1d95;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4c1d95;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .animate-spin-slow {
-            animation: spin 4s linear infinite;
-            background-image: url("assets/img/favicon.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        @keyframes rock-boat {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            50% {
-                transform: rotate(5deg);
-            }
-        }
-
-        .boat {
-            animation: rock-boat 3s ease-in-out infinite;
-        }
-
-        .portfolio-item {
-            display: block;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .fade-in {
-            opacity: 1;
-        }
-
-        .fade-out {
-            opacity: 0;
-        }
-
-        .scrolled {
-            opacity: 0.8;
-            /* Set the desired opacity value when scrolling */
-        }
-
-        .loader {
-            border-top-color: #7e22ce;
-            -webkit-animation: spinner 1.5s linear infinite;
-            animation: spinner 1.5s linear infinite;
-        }
-
-        @-webkit-keyframes spinner {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spinner {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        #movingImage {
-            position: absolute;
-            transition: transform 0.2s ease-out;
-        }
-    </style>
 </head>
 
-<body class="bg-[#8EACCD]" style="font-family: Poppins">
-    <div id="loader" wire:loading
-        class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gradient-to-r from-indigo-950 to-blue-950 flex flex-col items-center justify-center">
-        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-        <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo" class="w-24 xl:w-28">
+<body class="" style="font-family: Poppins;background-image:url('assets/img/book_login.jpg');background-size:cover">
+    <div class="form-wrapper 
+           min-h-screen
+           [ p-4 md:p-6 lg:p-8 ]
+           [ flex justify-center items-center ]">
+        <form method="POST" action="{{ route('login') }}" class="signup-form
+                 lg:max-w-md
+                 max-w-sm
+                 rounded-2xl
+                 text-[#1A2421]
+                 backdrop-blur-lg
+                 [ p-8 md:p-10 lg:p-10 ]
+                 [ bg-gradient-to-b from-white/60 to-white/30 ]
+                 [ border-[1px] border-solid border-white border-opacity-30 ]
+                 [ shadow-black/30 shadow-2xl ]">
+            @csrf
+            @if (session('success'))
+            <div class="alert alert-success mb-3" style="color:white;font-weight:bold" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-warning mb-3" style="color:white;font-weight:bold" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
+            <h1 class="mb-6 uppercase font-bold [ text-xl md:text-2xl lg:text-2xl ]">VirtuLib</h1>
+            <p class="mb-6 [ text-sm text-[#1A2421]/70 text-opacity-50 ]">Masukkan email dan password yang valid untuk masuk</p>
+
+            <label for="email" class="form-label relative block mb-4 text-black/50 focus-within:text-[#333]">
+
+                <svg class="label-icon 
+                    transition pointer-events-none
+                    [ w-6 h-6 ] 
+                    [ absolute top-1/2 left-3 ] 
+                    [ transform -translate-y-1/2 ]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M12 1.95c-5.52 0-10 4.48-10 10s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57v-1.43c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57v-1.43c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
+                </svg>
+                <input class="form-input 
+                      block w-full rounded-lg leading-none focus:outline-none placeholder-black/50 
+                      [ transition-colors duration-200 ] 
+                      [ py-3 pr-3 md:py-4 md:pr-4 lg:py-4 lg:pr-4 pl-12 ] 
+                      [ bg-black/20 focus:bg-black/25 ] 
+                      [ text-[#333] focus:text-black ]" type="email" name="email" id="email" placeholder="Email">
+            </label>
+
+            <label for="password" class="form-label relative text-black/50 focus-within:text-[#333] block mb-4">
+                <svg class="label-icon 
+                    transition pointer-events-none
+                    [ w-6 h-6 ] 
+                    [ absolute top-1/2 left-3 ] 
+                    [ transform -translate-y-1/2 ]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="currentColor">
+
+                    <g fill="none">
+                        <path d="M0 0h24v24H0V0z" />
+                        <path d="M0 0h24v24H0V0z" opacity=".87" />
+                    </g>
+                    <path
+                        d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+                </svg>
+
+                <input class="block w-full rounded-lg leading-none focus:outline-none placeholder-black/50 
+                      [ transition-colors duration-200 ] 
+                      [ py-3 pr-3 md:py-4 md:pr-4 lg:py-4 lg:pr-4 pl-12 ] 
+                      [ bg-black/20 focus:bg-black/25 ] 
+                      [ text-[#333] focus:text-black ]" type="password" name="password" id="password"
+                    placeholder="Password">
+            </label>
+
+            <button type="submit" class="form-input w-full rounded-lg font-bold text-white focus:outline-none
+                     [ p-3 md:p-4 lg:p-4 ] 
+                     [ transition-colors duration-500 ] 
+                     [ bg-[#ad7c35] hover:bg-[#e1982d] ]">Masuk</button>
+            <div class="form-footer mt-8 text-center">
+                <p class="text-xs">Belum punya akun? <a href="/register" class="font-bold"> Daftar disini</a></p>
+            </div>
+        </form>
     </div>
-    <div class="md:flex justify-center">
-        <div class="bg-[#F9F3CC] w-1/3 my-20 rounded-2xl shadow-xl px-10">
-            <form role="form mx-5" method="POST" action="{{ route('login') }}" class="w-full max-w-lg  mx-auto my-20">
-                @csrf
-                <h2 class="ml-2">Welcome to</h2>
-                <h1 style="padding-top:1rem"
-                    class="ml-2 font-bold pb-3 font-['Poppins'] text-5xl bg-clip-text text-black">
-                    VirtuLib
-                </h1>
-                <h3 class="ml-2 my-2">Sign In</h3>
-                @if (session('success'))
-                <div class="alert alert-success mb-3" style="color:white;font-weight:bold" role="alert">
-                    {{ session('success') }}
-                </div>
-                @endif
-                @if (session('error'))
-                <div class="alert alert-warning mb-3" style="color:white;font-weight:bold" role="alert">
-                    {{ session('error') }}
-                </div>
-                @endif
-                <div class="flex flex-wrap mb-6">
-                    <div class="w-full px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
-                            for="grid-first-name">
-                            Email </label>
-                        <input type="email" name="email"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name">
-                    </div>
-                </div>
-                <div class="flex flex-wrap mb-6">
-                    <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-black text-xs font-bold mb-2"
-                            for="grid-password">
-                            Password
-                        </label>
-                        <input type="password" name="password"
-                            class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-password">
-                    </div>
-                </div>
-                <div class="text-center mx-3 items-center">
-                    <button type="submit"
-                        class="shadow bg-[#8EACCD] w-full mx-auto hover:bg-[#6d90b7] duration-500 hover:text-white focus:shadow-outline focus:outline-none text-black font-bold py-4 rounded-lg">
-                        Sign In
-                    </button>
-                </div>
-                <div class="mx-3 text-black text-center">
-                    <div class="mt-2">Don’t you have account yet?</div>
-                    <div><a href="/register" class="text-blue-700 hover:text-blue-400"> Register for free</a></div>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const movingImage = document.getElementById('movingImage');
-            const container = document.getElementById('app');
-
-            document.addEventListener('mousemove', function(event) {
-                const containerRect = container.getBoundingClientRect();
-                const maxX = containerRect.width - movingImage.clientWidth;
-                const maxY = containerRect.height - movingImage.clientHeight;
-
-                // Calculate the percentage of mouse position within the container
-                const percentX = (event.clientX - containerRect.left) / containerRect.width;
-                const percentY = (event.clientY - containerRect.top) / containerRect.height;
-
-                // Calculate new coordinates within the container boundaries
-                const newX = Math.min(Math.max(percentX * maxX, 0), maxX);
-                const newY = Math.min(Math.max(percentY * maxY, 0), maxY);
-
-                // Update the image position based on mouse coordinates
-                movingImage.style.transform = `translate(${newX}px, ${newY}px)`;
-            });
-        });
-
-
-        AOS.init();
-        // Burger menus
-        document.addEventListener('DOMContentLoaded', function() {
-            // open
-            const burger = document.querySelectorAll('.navbar-burger');
-            const menu = document.querySelectorAll('.navbar-menu');
-
-            if (burger.length && menu.length) {
-                for (var i = 0; i < burger.length; i++) {
-                    burger[i].addEventListener('click', function() {
-                        for (var j = 0; j < menu.length; j++) {
-                            menu[j].classList.toggle('hidden');
-                        }
-                    });
-                }
-            }
-
-            // close
-            const close = document.querySelectorAll('.navbar-close');
-            const backdrop = document.querySelectorAll('.navbar-backdrop');
-
-            if (close.length) {
-                for (var i = 0; i < close.length; i++) {
-                    close[i].addEventListener('click', function() {
-                        for (var j = 0; j < menu.length; j++) {
-                            menu[j].classList.toggle('hidden');
-                        }
-                    });
-                }
-            }
-
-            if (backdrop.length) {
-                for (var i = 0; i < backdrop.length; i++) {
-                    backdrop[i].addEventListener('click', function() {
-                        for (var j = 0; j < menu.length; j++) {
-                            menu[j].classList.toggle('hidden');
-                        }
-                    });
-                }
-            }
-        });
-        $(document).ready(function() {
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 0) {
-                    $('#navbar').addClass('scrolled');
-                } else {
-                    $('#navbar').removeClass('scrolled');
-                }
-            });
-        });
-    </script>
-
-    <script>
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filterValue = button.dataset.filter;
-
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loader');
-            const content = document.getElementById('content');
-
-            loader.style.display = 'none';
-            content.style.display = 'block';
-        });
-    </script>
-    <script>
-        var toTopButton = document.getElementById("to-top-button");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                toTopButton.classList.remove("hidden");
-            } else {
-                toTopButton.classList.add("hidden");
-            }
-        }
-
-        function goToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
 </body>
 
 </html>

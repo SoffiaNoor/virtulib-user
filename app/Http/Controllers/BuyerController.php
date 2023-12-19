@@ -31,4 +31,11 @@ class BuyerController extends Controller
         return view('buyer.detail', compact('products'));
     }
 
+    public function profile()
+    {
+        $login = Auth::user()->_id;
+        $profil = Buyer::find($login);
+        return view('buyer.profil', compact('profil'));
+    }
+
 }

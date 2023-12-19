@@ -35,7 +35,7 @@ View::composer('layouts.master', function ($view) {
 });
 
 Route::middleware(['auth', 'role:seller'])->group(function () {
-    Route::get('/admin', [HomeController::class, 'index']);
+    Route::get('/seller', [HomeController::class, 'index']);
     Route::resource('/pengiriman', PengirimanController::class);
     Route::resource('/penjualan', PenjualanController::class);
     Route::resource('/produk', ProdukController::class);
@@ -60,6 +60,7 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::get('/testdoang', [BuyerController::class, 'showForm'])->name('buyertest.form');
     Route::post('/testdoang', [BuyerController::class, 'store'])->name('buyertest.store');
     Route::post('/logout_buyer', [AuthController::class, 'logout'])->name('logout_buyer');
+    Route::get('/profile' , [BuyerController::class, 'profile']);
 });
 
 Route::get('/404', function () {

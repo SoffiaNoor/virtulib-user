@@ -10,15 +10,17 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta name="keywords" content="">
-    <link rel='icon' type="image/x-icon" href='{{ asset('assets/images/logo2.ico') }}'>
+    {{--
+    <link rel='icon' type="image/x-icon" href='{{ asset(' assets/images/logo.ico') }}'> --}}
 
-    <title>Edulink</title>
+    <title>Virtulib</title>
 
     <!--CSS-->
     @vite('resources/css/app.css')
 
 
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" /> --}}
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -76,27 +78,6 @@
             opacity: 1;
         }
 
-        /* width */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #2e1065;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #4c1d95;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4c1d95;
-        }
-
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
@@ -149,7 +130,7 @@
         }
 
         .loader {
-            border-top-color: #7e22ce;
+            border-top-color: #173350;
             -webkit-animation: spinner 1.5s linear infinite;
             animation: spinner 1.5s linear infinite;
         }
@@ -181,30 +162,26 @@
     </style>
 </head>
 
-<body class="bg-[#8EACCD] text-black ">
+<body class="bg-white" style="font-family:Poppins!important">
     <div id="loader" wire:loading
-        class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gradient-to-r from-indigo-950 to-blue-950 flex flex-col items-center justify-center">
-        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-        <img src="{{ asset('assets/images/edulink2.png') }}" alt="Nefa Logo" class="w-24 xl:w-28">
+        class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-[#1a1a1a] flex flex-col items-center justify-center">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Nefa Logo" class="w-8 xl:w-16">
     </div>
     <div id="__layout">
         <div class="font-sans antialiased relative">
-            <header class="bg-gradient-to-r from-[#F9F3CC] to-[#ddd38e] drop-shadow-md">
-                <nav class="border-gray-200 lg:px-6 pb-2.5 dark:bg-gray-800 px-5 lg:mx-24 mx-11 pt-2">
+            <header id="sticky-header" class="bg-[#ad7c35] drop-shadow-md fixed top-0 w-full z-40 font-[Poppins]">
+                <nav class="flex border-gray-200 lg:px-10 pb-2.5 px-5 lg:mx-24 mx-11 pt-2">
                     <div
                         class="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-full lg:order-2 lg:mt-2 mx-3 py-2">
                         <a href="/" class="flex items-center mx-3">
-                            <img src="{{ asset('assets/images/logo.png') }}" class="mr-3 h-6 sm:h-9"
-                                alt="Virtulib Logo" />
                             <span
-                                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">VirtuLib</span>
+                                class="self-center text-xl text-white font-bold whitespace-nowrap mr-3">VIRTULIB</span>
                         </a>
-
                         <div class="relative lg:w-full mx-5">
                             <input type="text" placeholder="Search..."
-                                class="w-full pl-3 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                                class="w-full pl-3 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-primary-500 dark:bg-white" />
                             <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
+                                <svg class="w-6 h-6 text-[#5e4218]" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M21 19l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
@@ -214,43 +191,48 @@
                             </div>
                         </div>
                         <a href="/cart" class="mx-3">
-                            <i class="fas fa-shopping-cart fa-lg mr-2"></i>
+                            <i class="fas fa-shopping-cart text-white fa-lg mr-2"></i>
                         </a>
                         <div class="flex items-center lg:order-2">
                             @if (Auth::check())
-                                <details class="dropdown mx-3">
-                                    <summary
-                                        class="flex px-auto bg-[#8EACCD] block px-5 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
-                                        <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
-                                    </summary>
-                                    <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                        <li><a href="/admin"
-                                                class="block px-4 w-full text-gray-800 hover:bg-gray-200">My Profile</a>
-                                        </li>
-                                        @if (auth()->user()->role === 'buyer')
-                                            <li>
-                                                <form method="POST" action="{{ route('logout_buyer') }}">
-                                                    @csrf
-                                                    <button class="block" type="submit">Logout</button>
-                                                </form>
-                                            </li>
-                                        @elseif(auth()->user()->role === 'seller')
-                                            <li>
-                                                <form method="POST" action="{{ route('logout') }}">
-                                                    @csrf
-                                                    <button class="block" type="submit">Logout</button>
-                                                </form>
-                                            </li>
-                                        @else
-                                        @endif
-                                    </ul>
-                                </details>
+                            <details class="dropdown mx-3">
+                                <summary
+                                    class="flex items-center px-auto bg-[#5e4218] block px-10 py-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700">
+                                    <i class="fa fa-user mr-3"></i> {{ Auth::user()->name }}
+                                </summary>
+                                <ul class="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                    @if (auth()->user()->role === 'buyer')
+                                    <li><a href="/profile" class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
+                                            Profile</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout_buyer') }}">
+                                            @csrf
+                                            <button class="block" type="submit">Logout</button>
+                                        </form>
+                                    </li>
+                                    @elseif(auth()->user()->role === 'seller')
+                                    <li><a href="/seller" class="block px-4 w-full text-gray-800 hover:bg-gray-200">My
+                                            Profile</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="block" type="submit">Logout</button>
+                                        </form>
+                                    </li>
+                                    @else
+                                    @endif
+                                </ul>
+                            </details>
                             @else
-                                <a href="/login"
-                                    class="bg-[#8EACCD] block px-5 py-2 mx-5 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Login</a>
+                            <a href="/login"
+                                class="bg-[#5e4218] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Masuk</a>
+                            <a href="/register"
+                                class="bg-[#eda02c] block px-10 py-2 mx-2 text-white rounded-full hover:text-white hover:shadow-xl duration-700 font-bold">Daftar</a>
                             @endif
                             <button data-collapse-toggle="mobile-menu-2" type="button"
-                                class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                                 aria-controls="mobile-menu-2" aria-expanded="false">
                                 <span class="sr-only">Open main menu</span>
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
@@ -271,67 +253,46 @@
                 </nav>
             </header>
 
-            <div class="px-5 lg:mx-24 mx-11 mt-10">
+            <div class="px-5 lg:mx-40 mx-11 mt-40">
                 @yield('content')
             </div>
 
-            <footer class="bg-transparent dark:bg-gray-900 lg:mx-24 mx-11 mt-10">
-                <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <footer class="bg-[#1a1a1a] text-white">
+                <div class="mx-auto w-full max-w-screen-xl py-10 mt-10">
                     <div class="md:flex md:justify-between">
                         <div class="mb-6 md:mb-0">
                             <a href="/" class="flex items-center">
-                                <img src="{{ asset('assets/images/logo.png') }}" class="h-8 me-3"
-                                    alt="FlowBite Logo" />
-                                <span
-                                    class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Virtulib</span>
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap">VIRTULIB</span>
                             </a>
                         </div>
-                        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
+                            <div></div>
                             <div>
-                                <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Resources
+                                <h2 class="mb-6 text-sm font-semibold uppercase "><a href="">Contact
+                                        Us</a>
                                 </h2>
-                                <ul class="text-black dark:text-gray-400 font-medium">
+                                <ul class="font-medium">
                                     <li class="mb-4">
-                                        <a href="/" class="hover:underline">Virtulib</a>
+                                        <a href="https://www.instagram.com/nayadkr/" class="hover:underline">Instagram
+                                        </a>
                                     </li>
-                                    <li>
-                                        <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Follow us
-                                </h2>
-                                <ul class="text-black dark:text-gray-400 font-medium">
                                     <li class="mb-4">
-                                        <a href="https://github.com/themesberg/flowbite"
-                                            class="hover:underline ">Github</a>
+                                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Twitter</a>
                                     </li>
-                                    <li>
-                                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h2 class="mb-6 text-sm font-semibold text-black uppercase dark:text-white">Legal</h2>
-                                <ul class="text-black dark:text-gray-400 font-medium">
                                     <li class="mb-4">
-                                        <a href="#" class="hover:underline">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Facebook</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                    <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
                     <div class="sm:flex sm:items-center sm:justify-between">
-                        <span class="text-sm text-black sm:text-center dark:text-gray-400">© 2023 <a href="/"
-                                class="hover:underline">Virtulib™</a>. All Rights Reserved.
+                        <span class="text-sm sm:text-center ">© 2023 <a href="/" class="hover:underline">Virtulib™</a>. All
+                            Rights Reserved.
                         </span>
                         <div class="flex mt-4 sm:justify-center sm:mt-0">
-                            <a href="#" class="text-black hover:text-black dark:hover:text-white">
+                            <a href="#">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 8 19">
                                     <path fill-rule="evenodd"
@@ -340,15 +301,7 @@
                                 </svg>
                                 <span class="sr-only">Facebook page</span>
                             </a>
-                            <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
-                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 21 16">
-                                    <path
-                                        d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
-                                </svg>
-                                <span class="sr-only">Discord community</span>
-                            </a>
-                            <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                            <a href="#" class="ms-5">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="currentColor" viewBox="0 0 20 17">
                                     <path fill-rule="evenodd"
@@ -357,34 +310,24 @@
                                 </svg>
                                 <span class="sr-only">Twitter page</span>
                             </a>
-                            <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
+                            <a href="#" class="ms-5">
                                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
+                                    fill="currentColor" viewBox="0 0 20 17">
                                     <path fill-rule="evenodd"
-                                        d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
                                         clip-rule="evenodd" />
                                 </svg>
-                                <span class="sr-only">GitHub account</span>
-                            </a>
-                            <a href="#" class="text-black hover:text-black dark:hover:text-white ms-5">
-                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="sr-only">Dribbble account</span>
+                                <span class="sr-only">Instagram page</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </footer>
-
         </div>
 
         <div class="fixed bottom-20 left-10 z-10">
             <button id="to-top-button" onclick="goToTop()" title="Go To Top"
-                class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-[#3c628b] to-[#4f79a7] text-white text-3xl font-bold">&uarr;</button>
+                class="hidden fixed z-90 border-0 w-16 h-16 rounded-full drop-shadow-md bg-gradient-to-r from-[#ca8a04] to-[#a16207] text-white text-3xl font-bold">&uarr;</button>
         </div>
 
 

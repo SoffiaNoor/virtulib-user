@@ -86,7 +86,7 @@
             </div>
     </section>
 
-    <section class="text-center p-10 mt-10 w-full bg-white rounded-2xl drop-shadow-md">
+    {{-- <section class="text-center p-10 mt-10 w-full bg-white rounded-2xl drop-shadow-md">
         <!-- Container for demo purpose -->
         <div class="container my-24 mx-auto md:px-6">
             <section class="mb-32 text-center">
@@ -123,7 +123,7 @@
                 </div>
             </section>
         </div>
-    </section>
+    </section> --}}
 
     <section class="text-center p-10 mt-10 w-full bg-white rounded-2xl drop-shadow-md">
         <div class="text-center">
