@@ -12,4 +12,17 @@ class CartController extends Controller
         $cart = Cart::all();
         return view('buyer.cart', compact('cart'));
     }
+
+    public function destroy($id)
+    {
+        $product_cart = Cart::find($id);
+
+        if (!$product_cart) {
+            return redirect()->route('mentor.index')->with('error', 'Product Not Found!');
+        }
+
+        $product_cart->delete();
+
+        return redirect()->route('mentor.index')->with('success', 'Products already Deleted!');
+    }
 }

@@ -1,10 +1,10 @@
 @extends('layouts/buyer')
 @section('content')
-<section class="text-center p-10 w-full bg-white rounded-2xl drop-shadow-md">
+<section class="text-center p-10 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="grid grid-cols-2 gap-10">
         <div class="relative pb-48 overflow-hidden rounded-2xl">
             @if (isset($products->image) && !empty($products->image))
-            <img class="absolute inset-0 h-full w-full object-cover rounded-xl" src="{{ asset($products->image) }}"
+            <img class="absolute inset-0 h-full w-full object-cover rounded-xl" src="http://127.0.0.1:8000/uploads/produk/{{$products->image}}"
                 alt="">
             @else
             <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('assets/img/none.png') }}"
@@ -48,7 +48,7 @@
                     Si Cepat</div>
             </div>
             <div>Deskripsi Produk: </div>
-            <div>asda</div>
+            <div>{{$products->description}}</div>
 
             <div class="flex flex-cols-2 my-3 gap-4">
                 <div>
@@ -79,7 +79,7 @@
         </div>
 </section>
 
-<section class="text-center p-10 mt-10 w-full bg-white rounded-2xl drop-shadow-md">
+<section class="text-center p-10 mt-10 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="text-center">
         <div class="font-bold text-3xl my-5">Produk Toko Blabla Lainnya</div>
     </div>
