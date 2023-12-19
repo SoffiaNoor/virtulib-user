@@ -16,18 +16,18 @@ class CartController extends Controller
         return view('buyer.cart', compact('cart'));
     }
 
-    // public function destroy($id)
-    // {
-    //     $product_cart = Cart::find($id);
+    public function destroy($id)
+    {
+        $product_cart = Cart::find($id);
 
-    //     if (!$product_cart) {
-    //         return redirect()->route('buyer.cart')->with('error', 'Product Not Found!');
-    //     }
+        if (!$product_cart) {
+            return redirect()->route('buyer.cart')->with('error', 'Product Not Found!');
+        }
 
-    //     $product_cart->delete();
+        $product_cart->delete();
 
-    //     return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
-    // }
+        return redirect()->route('buyer.cart')->with('success', 'Products already Deleted!');
+    }
 
     // public function saveCheckedCart(Request $request, $productId)
     // {

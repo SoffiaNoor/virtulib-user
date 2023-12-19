@@ -17,7 +17,9 @@
 @foreach ($cart as $item)
 <section class="text-center p-10 mt-5 w-full bg-[#fffbeb] rounded-2xl drop-shadow-md">
     <div class="bg-transparent">
-        <div class="flex flex-cols-7 gap-3 self-center justify-center items-center">
+        <form class="flex flex-cols-7 gap-3 self-center justify-center items-center" method="POST" id="form1"
+            action="{{ route('tolongdong', $item->_id) }}" enctype="multipart/form-data">
+            @csrf
             <div><input type="checkbox" id="checkbox_{{ $loop->index }}" class="accent-amber-500"></div>
             <div class="mx-auto">
                 @if (isset($item->product->image) && !empty($item->product->image))
@@ -32,33 +34,37 @@
             </div>
             <div class="mx-auto font-bold">{{ $item->product->name }}</div>
             <div class="mx-auto text-red price"><span>{{ $item->product->price }}</div>
-            <div class="flex flex-cols-3">
-                <div
-                    class="minusBtn justify-center p-2 bg-gradient-to-r from-[#ca8a04] to-[#a16207] h-10 w-10 rounded-full items-center text-center">
-                    <i class="mt-1 justify-center text-white fa fa-minus mx-auto"></i>
-
-                </div>
-                <div class="mx-3"><span class="counter text-2xl">{{$item->quantity}}</span>
-                </div>
-                <div
-                    class="plusBtn p-2 bg-gradient-to-r from-[#ca8a04] to-[#a16207] h-10 w-10 rounded-full items-center text-center">
-                    <i class="mt-1 text-white fa fa-plus mx-auto"></i>
-                </div>
+            <div class="relative flex items-center max-w-[8rem]">
+                <button type="button" id="decrement-button" data-input-counter-decrement="total_quantity"
+                    class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h16" />
+                    </svg>
+                </button>
+                <input type="number" id="total_quantity" name="total_quantity" value="{{$item->quantity}}" data-input-counter
+                    aria-describedby="helper-text-explanation"
+                    class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="999" required>
+                <button type="button" id="increment-button" data-input-counter-increment="total_quantity"
+                    class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 1v16M1 9h16" />
+                    </svg>
+                </button>
             </div>
-            <div class="mx-auto text-red total"></div>
             <div class="grid grid-rows-2">
-                <form method="POST" id="form1" action="{{ route('tolongdong', $item->_id) }}" enctype="multipart/form-data">
-                    @csrf
-                    <button id="orderNowBtn_{{ $loop->index }}" type="submit"
-                        class="btn btn-warning font-bold rounded-full py-1 px-10 shadow-xl" disabled>Order Now</button>
-                </form>
-                <form method="POST" id="form2" action="{{ route('destroy.cart', $item->_id) }}" enctype="multipart/form-data">
-                    @csrf
-                    <button class="btn btn-error font-bold rounded-full py-1 px-10 shadow-xl ">Delete
-                        Product</button>
-                </form>
-            </div>
-        </div>
+                <button id="orderNowBtn_{{ $loop->index }}" type="submit"
+                    class="btn btn-warning font-bold rounded-full py-1 px-10 shadow-xl" disabled>Order Now</button>
+        </form>
+        <form method="POST" id="form2" action="{{ route('destroy.cart', $item->_id) }}" enctype="multipart/form-data">
+            @csrf
+            <button class="btn btn-error font-bold rounded-full py-1 px-10 shadow-xl ">Delete
+                Product</button>
+        </form>
     </div>
 </section>
 <div id="summarySection"
@@ -82,47 +88,29 @@
 
 @section('jquery')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    // Ambil semua elemen yang dibutuhkan
-    const counters = document.querySelectorAll('.counter');
-    const plusBtns = document.querySelectorAll('.plusBtn');
-    const minusBtns = document.querySelectorAll('.minusBtn');
-    const prices = document.querySelectorAll('.price');
-    const totals = document.querySelectorAll('.total');
+    document.addEventListener("DOMContentLoaded", function () {
+            const decrementButton = document.getElementById("decrement-button");
+            const incrementButton = document.getElementById("increment-button");
+            const quantityInput = document.getElementById("total_quantity");
 
-    // Tambahkan event listener untuk setiap item di dalam loop
-    counters.forEach((counter, index) => {
-        let counterValue = parseInt(counter.textContent);
-        const priceValue = parseFloat(prices[index].textContent);
+            decrementButton.addEventListener("click", function () {
+                updateCounter(-1);
+            });
 
-        function displayCounter() {
-            counters[index].textContent = counterValue;
-            calculateTotal(index);
-        }
+            incrementButton.addEventListener("click", function () {
+                updateCounter(1);
+            });
 
-        function calculateTotal(index) {
-            const total = counterValue * priceValue;
-            totals[index].textContent = total.toFixed(2);
-        }
+            function updateCounter(amount) {
+                let currentValue = parseInt(quantityInput.value) || 0;
+                currentValue += amount;
 
-        function increaseCounter() {
-            counterValue++;
-            displayCounter();
-        }
+                // Ensure the value doesn't go below 0
+                currentValue = Math.max(currentValue, 0);
 
-        function decreaseCounter() {
-            if (counterValue > 1) {
-                counterValue--;
-                displayCounter();
+                quantityInput.value = currentValue;
             }
-        }
-
-        plusBtns[index].addEventListener('click', increaseCounter);
-        minusBtns[index].addEventListener('click', decreaseCounter);
-
-        displayCounter();
-    });
-});
+        });
 
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('[type="checkbox"]');
