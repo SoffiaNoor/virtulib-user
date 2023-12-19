@@ -9,13 +9,14 @@ use App\Models\Produk_Pesan;
 use App\Models\Produk_Dikirim;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 
 class ProdukController extends Controller
 {
     public function index()
     {
-        
+
         $products = Products::paginate(5);
         return view("seller.produk.index", compact('products'));
     }
@@ -70,30 +71,47 @@ class ProdukController extends Controller
     }
 
     public function destroy($_id)
-    {
-        $products = Products::find($_id);
+{
+    $product = Products::find($_id);
 
-        if (!$products) {
-            return redirect()->route('produk.index')->with('error', 'Produk tidak ditemukan!');
-        }
-        $image = $products->image;
-        $destinationPath = public_path('uploads/produk/');
-        $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
-        
-        $filePath = $destinationPath . $profileImage;
-        
-        if (file_exists($filePath)) {
-            unlink($filePath);
-            echo "File berhasil dihapus.";
-        } else {
-            echo "File tidak ditemukan.";
-        }
-        
-
-        $products->delete();
-
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus!');
+    if (!$product) {
+        return redirect()->route('produk.index')->with('error', 'Produk tidak ditemukan!');
     }
+
+    $image = $product->image;
+
+    if ($image) {
+        $destinationPath = public_path('uploads/produk/');
+        $filePath = $destinationPath . $image;
+
+        try {
+            if (file_exists($filePath)) {
+                unlink($filePath);
+                $product->image = null;
+                $product->delete();
+                return redirect()->route('produk.index')->with('success', 'Produk dan gambar berhasil dihapus!');
+            } else {
+                return redirect()->route('produk.index')->with('error', 'Gambar produk tidak ditemukan.');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('produk.index')->with('error', 'Gagal menghapus gambar produk.');
+        }
+    }
+
+    // Jika produk tidak memiliki gambar
+    $product->delete();
+    return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus!');
+    }
+
+     
+
+
+     // $destinationPath = public_path('uploads/produk/');
+        // $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+
+        // $filePath = $destinationPath . $profileImage;
+
+
 
     public function store(Request $request)
     {
@@ -107,11 +125,9 @@ class ProdukController extends Controller
                 $input['image'] = "$profileImage";
             }
 
-            $seller_id = Auth::user()->_id;
-
             $data = [
-                '_id' => (string) Str::uuid(), 
-                'seller_id' => $seller_id,
+                '_id' => (string) Str::uuid(),
+                'seller_id' => Auth::user()->_id,
                 'name' => $request->input('name'),
                 'image' => $profileImage,
                 'description' => $request->input('description'),
@@ -131,23 +147,23 @@ class ProdukController extends Controller
     public function update(Request $request, $_id, Products $products)
     {
         try {
-            
+
             $input = $request->all();
             // var_dump($input);die;
 
             if ($image = $request->file('image')) {
-            $previousImage = $products->image;
-            if ($previousImage && file_exists(public_path('uploads/produk/' . $previousImage))) {
-                unlink(public_path('uploads/produk/' . $previousImage));
+                $previousImage = $products->image;
+                if ($previousImage && file_exists(public_path('uploads/produk/' . $previousImage))) {
+                    unlink(public_path('uploads/produk/' . $previousImage));
+                }
+
+                $destinationPath = 'uploads/produk';
+                $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = $profileImage;
+            } else {
+                unset($input['image']);
             }
-    
-            $destinationPath = 'uploads/produk';
-            $profileImage = "produk" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = $profileImage;
-        } else {
-            unset($input['image']);
-        }
 
             $data = [
                 'name' => $request->input('name'),
