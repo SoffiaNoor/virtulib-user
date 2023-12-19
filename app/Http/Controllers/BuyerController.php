@@ -84,36 +84,23 @@ class BuyerController extends Controller
         }
     }
 
-    public function updatePhotoProfile(Request $request, $id, Buyer $buyer)
+    public function updatePhotoProfile(Request $request, $id)
     {
+
         try {
-
-            $input = $request->all();
-   
-
-            if ($image = $request->file('image')) {
-                $previousImage = $buyer->image;
-                if ($previousImage && file_exists(public_path('uploads/buyer/' . $previousImage))) {
-                    unlink(public_path('uploads/buyer/' . $previousImage));
-                }
-
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
                 $destinationPath = 'uploads/buyer';
-                $profileImage = "buyer" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
-                $image->move($destinationPath, $profileImage);
-                $input['image'] = $profileImage;
-            } else {
-                unset($input['image']);
+                $imageName = "buyer" . "-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $imageName);
+                $data['image'] = $imageName;
             }
 
-            $data = [
-                'image' => $profileImage,
-            ];
+            Buyer::updateOrCreate(['user_id' => $id], $data);
 
-            Buyer::where('_id', $id)->update($data);
-
-            return redirect()->route('profile')->with('success', 'Success update photo profile!');
+            return redirect()->route('profile')->with('success', 'Profil berhasil diubah!');
         } catch (\Exception $e) {
-            return redirect()->route('profile')->with('error', 'Failed update photo profile.');
+            return redirect()->route('profile')->with('error', 'Gagal mengubah profil. Pastikan data yang Anda masukkan benar.');
         }
     }
 

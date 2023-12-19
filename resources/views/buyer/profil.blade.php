@@ -17,13 +17,19 @@
                 <hr style="background-color:#5e4218;height:10px;border-radius:40px;width:75%">
             </div>
             <div class="px-10 container-fluid py-2">
-                <form class="p-3" method="POST" action="{{route('updatePhotoProfile', ['id' => $login])}}" enctype="multipart/form-data">
+                <form class="p-3" method="POST" action="{{ route('updatePhotoProfile', ['id' => $login]) }}"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="grid grid-cols-2">
                             <div>
-                                <img class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                                    src="assets/img/book_login.jpg" alt="Bordered avatar">
+                                @if (isset($profil->image) && !empty($profil->image))
+                                    <img class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
+                                        src="http://127.0.0.1:8000/uploads/buyer/{{$profil->image}}" alt="Bordered avatar">
+                                @else
+                                    <img class="w-64 mx-auto h-64 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 object-cover"
+                                        src="assets/img/book_login.jpg" alt="Bordered avatar">
+                                @endif
                             </div>
                             <div class="self-center">
                                 <div class="mb-2 bg-[#ca8a04] py-2 px-10 shadow-xl rounded-full text-white">
