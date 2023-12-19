@@ -13,7 +13,7 @@ class Order extends Model
 
     protected $collection = 'order';
 
-    protected $fillable = ['_id', 'user_id', 'seller_id', 'product_id', 'total_quantity', 'total_price'];
+    protected $fillable = ['_id', 'user_id', 'seller_id', 'product_id', 'total_quantity', 'total_price', 'status'];
     public function user()
     {
         return $this->belongsTo(User::class);
