@@ -144,4 +144,12 @@ class BuyerController extends Controller
         return view('buyer.order', compact('order'));
     }
 
+    public function showTopup()
+    {
+        $login = Auth::user()->_id;
+        $order = Order::where('user_id', $login)->get();
+        $buyer = Buyer::where('user_id', $login)->first();
+        return view('buyer.topup', compact('order','buyer'));
+    }
+
 }

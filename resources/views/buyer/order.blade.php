@@ -12,7 +12,7 @@
                     <li class="mb-2 bg-[#5e4218] py-2 px-10 rounded-full shadow-xl"><a href="/order"
                             class="text-white font-bold">My
                             Order</a></li>
-                            <li class="mb-2 bg-transparent py-2 px-10 rounded-full shadow-xl"><a href="#r"
+                            <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="/topup"
                                 class="text-white font-bold">Top Up</a></li>
                 </ul>
             </div>

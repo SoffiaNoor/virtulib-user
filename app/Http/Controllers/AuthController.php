@@ -52,12 +52,14 @@ class AuthController extends Controller
                     '_id' => (string) Str::uuid(), 
                     'user_id' => $uu_id,
                     'name' => $user->name,
+                    'balance' => 0,
                 ]);
             } else {
                 Seller::create([
                     '_id' => (string) Str::uuid(), 
                     'user_id' => $uu_id,
                     'nama' => $user->name,
+                    'balace' => 0,
                 ]
                 );
             }

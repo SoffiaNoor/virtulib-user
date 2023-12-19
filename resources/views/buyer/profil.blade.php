@@ -8,6 +8,8 @@
                             class="text-white font-bold">My Account</a></li>
                     <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="/order" class="text-white font-bold">My
                             Order</a></li>
+                            <li class="mb-2 bg-transparent py-2 px-10 rounded-full"><a href="/topup"
+                                class="text-white font-bold">Top Up</a></li>
                 </ul>
             </div>
         </div>
