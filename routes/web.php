@@ -71,6 +71,7 @@ Route::middleware(['auth', 'role:buyer'])->group(function () {
     Route::post('/topup/{id}', [BuyerController::class, 'updateBalance'])->name('balanceupdate');
     Route::post('/buytoCart/{id}', [BuyerController::class, 'buytoCart'])->name('buytoCart');
     Route::post('/changestatus/{productId}', [BuyerController::class, 'moveProductPengiriman'])->name('ubahprodukstatus');
+    Route::post('/givetestimonial/{productId}', [RiwayatController::class, 'testimonials'])->name('testimoni');
 });
 
 Route::get('/404', function () {

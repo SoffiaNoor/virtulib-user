@@ -52,20 +52,38 @@
                         <details class="dropdown">
                             <summary class="bg-blue-500 px-10 py-2 rounded-full shadow-xl text-white mt-2">Actions
                             </summary>
-                            <ul class="p-2 shadow menu dropdown-content z-50 bg-base-100 rounded-box w-52">
+                            <ul class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-full">
                                 <li>
-                                    <form class="p-3" method="POST"
-                                        action="{{ route('ubahprodukstatus', $item->_id) }}"
+                                    <form method="POST" action="{{ route('ubahprodukstatus', $item->_id) }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <button type="submit">Product Already Received</button>
                                     </form>
                                 </li>
-                                <li><a>Report Product</a></li>
                             </ul>
                         </details>
                         @elseif ($item->status == 2)
-                        <div class="bg-green-500 px-10 py-2  rounded-full shadow-xl text-white">Done</div>
+                        <div class="bg-green-500 px-10 py-2  rounded-full shadow-xl text-white text-center font-bold">
+                            Done
+                        </div>
+                        <button onclick="openModal('my_modal_5_{{ $item->_id }}')"
+                            class="bg-gradient-to-r from-[#ca8a04] to-[#a16207] rounded-xl shadow-lg mt-2 px-10 py-2 text-white font-bold"
+                            type="button">Give Testimonial</button>
+                        <dialog id="my_modal_5_{{ $item->_id }}" class="modal modal-bottom sm:modal-middle">
+                            <div class="modal-box">
+                                <h3 class="font-bold text-lg">Hello!</h3>
+                                <p class="py-4">Press ESC key or click the button below to close</p>
+                                <div class="modal-action">
+                                    <form method="POST" action="{{ route('testimoni', $item->_id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <button class="btn" type="submit">Submit</button>
+                                    </form>
+                                    <button class="btn"
+                                        onclick="closeModal('my_modal_5_{{ $item->_id }}')">Close</button>
+                                </div>
+                            </div>
+                        </dialog>
                         @endif
                     </div>
                 </div>
@@ -98,5 +116,16 @@
                 reader.readAsDataURL(file);
             }
         }
+</script>
+<script>
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.showModal();
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.close();
+    }
 </script>
 @endsection

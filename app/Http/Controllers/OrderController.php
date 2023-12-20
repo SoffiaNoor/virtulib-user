@@ -21,7 +21,7 @@ class OrderController extends Controller
         $userBalance = Buyer::where('user_id', Auth::id())->value('balance');
     
         if ($userBalance < $totalPrice) {
-            return redirect()->back()->with('error', 'Saldo anda tidak cukup');
+            return redirect()->back()->with('error', 'Your Balance not Enough');
         }
     
         $order = new Order();
@@ -42,6 +42,6 @@ class OrderController extends Controller
     
         $cartItem->delete();
     
-        return redirect()->back()->with('success', 'Item moved to checked cart successfully.');
+        return redirect()->back()->with('success', 'Checkout Product Successfully');
     }
 }

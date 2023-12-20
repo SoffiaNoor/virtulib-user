@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produk_Pesan;
-use App\Models\Produk_Dikirim;
 use App\Models\Produk_Selesai;
 use App\Models\Penjualan;
 use App\Models\Order;
+use App\Models\Products;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class RiwayatController extends Controller
 {
@@ -20,7 +22,7 @@ class RiwayatController extends Controller
     public function pengiriman()
     {
         $products = Order::where('status', 1)->paginate(2);
-    return view("riwayat.pengiriman", compact('products'));
+        return view("riwayat.pengiriman", compact('products'));
     }
 
     public function selesai()
@@ -32,7 +34,7 @@ class RiwayatController extends Controller
     public function moveProductPesanan(Request $request, $orderId)
     {
         $order = Order::find($orderId);
-        
+
 
         if (!$order) {
             return redirect()->back()->with('error', 'Product not found.');
@@ -74,6 +76,26 @@ class RiwayatController extends Controller
         ]);
 
         $product->delete();
+
+        return redirect()->back()->with('success', 'Product moved successfully.');
+    }
+
+    public function testimonials(Request $request, $productId)
+    {
+        $product = Products::find($productId);
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+        
+        $product->testimonials[] = [
+            '_id' => (string) Str::uuid(),
+            'user_id' => Auth::user()->_id,
+            'comment' => 'Great product!',
+            'rating' => 5,
+        ];
+
+        $product->save();
 
         return redirect()->back()->with('success', 'Product moved successfully.');
     }
