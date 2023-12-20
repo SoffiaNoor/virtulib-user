@@ -22,7 +22,7 @@
                             <div class="col-md-6"style="align-self:end!important;">
                                 <div class="form-group">
                                     <label>Nama Produk</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control" id="name" name="name" required value="{{$products->name}}">
                                 </div>
                             </div>
                         </div>
@@ -30,13 +30,13 @@
                             <div class="col-md-6" style="align-self:end!important;">
                                 <div class="form-group">
                                     <label>Gambar Produk</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
+                                    <input type="file" class="form-control" id="image" name="image" value="{{$products->image}}">
                                 </div>
                             </div>
                             <div class="col-md-6"style="align-self:end!important;">
                                 <div class="form-group">
                                     <label>Deskripsi Produk</label>
-                                    <input type="text" class="form-control" id="description" name="description" required>
+                                    <input type="text" class="form-control" id="description" name="description" required value="{{$products->description}}">
                                 </div>
                             </div>
                         </div>
@@ -44,13 +44,13 @@
                             <div class="col-md-6" style="align-self:end!important;">
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <input type="number" class="form-control" id="price" name="price" required>
+                                    <input type="number" class="form-control" id="price" name="price" required value="{{$products->price}}">
                                 </div>
                             </div>
                             <div class="col-md-6"style="align-self:end!important;">
                                 <div class="form-group">
                                     <label>Stok</label>
-                                    <input type="number" class="form-control" id="stock" name="stock" required>
+                                    <input type="number" class="form-control" id="stock" name="stock" required value="{{$products->stock}}">
                                 </div>
                             </div>
                         </div>
